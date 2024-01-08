@@ -1,0 +1,50 @@
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploy to production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node env
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+      - name: Cache node_modules
+        uses: actions/cache@v4.0.2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: make install
+      - name: Test project
+        run: make test
+      - name: Lint project
+        run: make lint
+      - name: Build project
+        run: make build
+      - name: Build project for staging
+        run: make build
+        env:
+          GOOGLE_ANALYTICS_TOKEN: ${{ secrets.GOOGLE_STAGING_PRODUCTION_TOKEN }}
+          ENV: STAGING
+      - name: Deploy project to staging
+        run: make deploy
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_STAGING_PROJECT_NAME }}
+      - name: Run smoke tests on staging
+        run: make smoketest
+        env:
+          ROOT_URL: 'https://staging.goscope.net'

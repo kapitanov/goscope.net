@@ -1,0 +1,49 @@
+on:
+  release:
+    types:
+      - published
+
+concurrency:
+  group: release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploy to production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node env
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+      - name: Cache node_modules
+        uses: actions/cache@v4.0.0
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: make install
+      - name: Test project
+        run: make test
+      - name: Lint project
+        run: make lint
+      - name: Build project
+        run: make build
+      - name: Build project for production
+        run: make build
+        env:
+          GOOGLE_ANALYTICS_TOKEN: ${{ secrets.GOOGLE_ANALYTICS_PRODUCTION_TOKEN }}
+          ENV: PRODUCTION
+      - name: Deploy project to production
+        run: make deploy
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PRODUCTION_PROJECT_NAME }}
+      - name: Run smoke tests on production
+        run: make smoketest
+        env:
+          ROOT_URL: 'https://goscope.net'
