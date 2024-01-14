@@ -1,5 +1,8 @@
-export interface GoroutineProfile {
-  items: Goroutine[];
+export interface GoroutineStackFrame {
+  function: string;
+  file: string;
+  line?: number;
+  offset?: string;
 }
 
 export interface Goroutine {
@@ -8,16 +11,13 @@ export interface Goroutine {
   stack: GoroutineStackFrame[];
 }
 
-export interface GoroutineStackFrame {
-  function: string;
-  file: string;
-  line?: number;
-  offset?: string;
+export interface GoroutineProfile {
+  items: Goroutine[];
 }
 
 export const parse = (input: string): GoroutineProfile => {
   if (input.match(/^\s*$/)) {
-    throw new Error("Input is empty!");
+    throw new Error('Input is empty!');
   }
 
   return parseGoroutineProfile(input);
@@ -41,7 +41,7 @@ function parseGoroutineProfile(input: string): GoroutineProfile {
   }
 
   if (goroutines.length === 0) {
-    throw new Error("Input is empty!");
+    throw new Error('Input is empty!');
   }
 
   goroutines.sort((a, b) => a.id - b.id);
@@ -56,11 +56,11 @@ function parseGoroutine(reader: TextReader): Goroutine | null {
 
   const matchGoRoutine =
     reader.match(/^goroutine (\d+) \[([^:]+)\]:$/) ||
-    reader.fail("expected a goroutine header");
+    reader.fail('expected a goroutine header');
   const goroutine: Goroutine = {
     id: parseInt(matchGoRoutine[1]),
     state: matchGoRoutine[2],
-    stack: [],
+    stack: []
   };
 
   while (reader.advance()) {
@@ -70,17 +70,17 @@ function parseGoroutine(reader: TextReader): Goroutine | null {
 
     const functionName = reader.peek();
     if (!reader.advance()) {
-      reader.fail("expected a goroutine stack frame");
+      reader.fail('expected a goroutine stack frame');
     }
 
     const matchStack =
       reader.match(/^\s+([^:]+):?(\d*)\s?([^$]*)$/) ||
-      reader.fail("expected a goroutine stack frame");
+      reader.fail('expected a goroutine stack frame');
     const stackFrame: GoroutineStackFrame = {
       function: functionName,
       file: matchStack[1],
-      line: parseInt(matchStack[2] || "0"),
-      offset: matchStack[3],
+      line: parseInt(matchStack[2] || '0'),
+      offset: matchStack[3]
     };
     goroutine.stack.push(stackFrame);
   }
@@ -93,7 +93,7 @@ class TextReader {
   private i: number;
 
   constructor(input: string) {
-    this.lines = input.split("\n");
+    this.lines = input.split('\n');
     this.i = 0;
   }
 
@@ -103,7 +103,7 @@ class TextReader {
 
   peek(): string {
     if (this.eof()) {
-      return "";
+      return '';
     }
 
     return this.lines[this.i];
@@ -121,6 +121,6 @@ class TextReader {
   }
 
   fail(message: string): never {
-    throw new Error(`At line ${this.i + 1}: ${message}\nSee: "${this.peek()}"`);
+    throw new Error(`At line ${this.i + 1}: ${message}. See: "${this.peek()}"`);
   }
 }

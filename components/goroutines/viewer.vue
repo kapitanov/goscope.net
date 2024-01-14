@@ -1,15 +1,21 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { ICONS } from '../../const';
 
-const props = defineProps(['data']);
+defineProps({
+  data: { type: Object, default: null }
+});
 const emit = defineEmits(['reset']);
 </script>
 
 <template>
-    <form class="flex gap-2 mt-4 mb-2">
-        <Button @click="emit('reset')" :icon="ICONS.RESET" text="Try another stack trace" />
-        <button type="submit" style="display: none;"></button>
-    </form>
+  <form class="flex gap-2 mt-4 mb-2">
+    <Button @click="emit('reset')">
+      <Icon :name="ICONS.RESET" />
+      <span>Try another stack trace</span>
+    </Button>
+    <button type="submit" style="display: none" />
+  </form>
 
-    <GoroutinesTable :data="data" />
+  <GoroutinesTable :data="data" />
 </template>

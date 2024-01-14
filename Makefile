@@ -1,17 +1,33 @@
-default:
-	@echo "make [install|run|build|preview|deploy]"
+.PHONY: all help install run build test lint preview deploy
+
+all: install build test lint
+
+help:
+	@echo "make [install|run|build|test|lint|format|preview|deploy]"
 	@exit 1
 
 install:
 	npm install
 
-run: install
+_install_fast:
+	@[ ! -d "./node_modules" ] && npm install || true
+
+run: _install_fast
 	npm run dev
 
-build: install
+build: _install_fast
 	npm run generate
 
-preview: install
+test: _install_fast
+	npm run test
+
+lint: _install_fast
+	npm run lint
+
+format: _install_fast
+	npm run format
+
+preview: _install_fast
 	npm run preview
 
 deploy:
