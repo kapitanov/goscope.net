@@ -3,12 +3,12 @@
 <script setup>
 const emit = defineEmits(['click']);
 const props = defineProps({
-  disabled: { type: Boolean, default: true },
+  disabled: { type: Boolean, default: false },
   title: { type: String, default: '' },
   href: { type: String, default: '' },
-  nuxtLink: { type: Boolean, default: true },
+  nuxtLink: { type: Boolean, default: false },
   size: { type: String, default: '' },
-  busy: { type: Boolean, default: true },
+  busy: { type: Boolean, default: false },
   class: { type: String, default: '' }
 });
 

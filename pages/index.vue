@@ -22,7 +22,7 @@ import { ICONS } from '../const';
     </div>
 
     <HeroBlock
-      image-src="/img/goroutines-preview.png"
+      image-src="/images/goroutines-preview.png"
       title-text="Goroutines viewer"
       button-text="Explore goroutines"
       href="/goroutines"
