@@ -21,8 +21,8 @@ const textareaClass = {
   'h-64': true
 };
 
-const error = useState('error');
-const disabled = useState('disabled');
+const error = useState('goroutines-textInput-error');
+const disabled = useState('goroutines-textInput-disabled');
 const text = defineModel<string>({ default: '' });
 
 const setText = (value: string) => {
@@ -58,39 +58,39 @@ const goHandler = () => {
 </script>
 
 <template>
-  <Hotkey hotkey="Ctrl+Enter" @pressed="goHandler">
-    <div class="mt-4 mb-2 flex items-center">
-      <span class="flex-1">
-        Paste your PPROF stack trace into a text field below:
-      </span>
-      <Button :disabled="disabled" @click="useExampleHandler">
-        <Icon :name="ICONS.USE_EXAMPLE" />
-        <span>Use an example input</span>
-      </Button>
-    </div>
+  <Hotkey hotkey="Ctrl+Enter" @pressed="goHandler" />
 
-    <textarea ref="textarea" v-model="text" :class="textareaClass" placeholder="Paste your stack trace here"
-      :disabled="disabled" />
+  <div class="mt-4 mb-2 flex items-center">
+    <span class="flex-1">
+      Paste your PPROF stack trace into a text field below:
+    </span>
+    <Button :disabled="disabled" @click="useExampleHandler">
+      <Icon :name="ICONS.USE_EXAMPLE" />
+      <span>Use an example input</span>
+    </Button>
+  </div>
 
-    <div class="flex gap-1">
-      <Button :disabled="disabled" @click="goHandler">
-        <Icon :name="ICONS.GO" />
-        <span>Go!</span>
-      </Button>
-      <HotkeyHint ctrl="true">Enter</HotkeyHint>
-      <div class="flex-1" />
-      <Button :disabled="disabled" @click="pasteHandler">
-        <Icon :name="ICONS.PASTE" />
-        <span>Paste from clipboard</span>
-      </Button>
-      <Button :disabled="disabled" @click="clearHandler">
-        <Icon :name="ICONS.CLEAR" />
-        <span>Clear</span>
-      </Button>
-    </div>
+  <textarea ref="textarea" v-model="text" :class="textareaClass" placeholder="Paste your stack trace here"
+    :disabled="disabled" />
 
-    <div v-if="error" class="mt-2 border-2 rounded border-red-200 bg-red-200 p-2">
-      {{ error }}
-    </div>
-  </Hotkey>
+  <div class="flex gap-1">
+    <Button :disabled="disabled" @click="goHandler">
+      <Icon :name="ICONS.GO" />
+      <span>Go!</span>
+    </Button>
+    <HotkeyHint :ctrl="true">Enter</HotkeyHint>
+    <div class="flex-1" />
+    <Button :disabled="disabled" @click="pasteHandler">
+      <Icon :name="ICONS.PASTE" />
+      <span>Paste from clipboard</span>
+    </Button>
+    <Button :disabled="disabled" @click="clearHandler">
+      <Icon :name="ICONS.CLEAR" />
+      <span>Clear</span>
+    </Button>
+  </div>
+
+  <div class="mt-2">
+    <ErrorPresenter :error="error" />
+  </div>
 </template>

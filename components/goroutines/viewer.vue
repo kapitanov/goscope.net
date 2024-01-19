@@ -3,14 +3,19 @@
 import { ICONS } from '../../const';
 
 defineProps({
-  data: { type: Object, default: null }
+  data: { type: Object, default: null },
+  demo: { type: Boolean, default: false }
 });
 const emit = defineEmits(['reset']);
 </script>
 
 <template>
   <form class="flex gap-2 mt-4 mb-2">
-    <Button @click="emit('reset')">
+    <Button v-if="demo" href="/goroutines" :nuxt-link="true">
+      <Icon :name="ICONS.RESET" />
+      <span>Try another stack trace</span>
+    </Button>
+    <Button v-else @click="emit('reset')">
       <Icon :name="ICONS.RESET" />
       <span>Try another stack trace</span>
     </Button>

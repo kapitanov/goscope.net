@@ -1,7 +1,25 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
+import { example } from '~/pprof/goroutines/example';
+import { parse } from '~/pprof/goroutines/parser';
+
 const emit = defineEmits(['data']);
+
+onMounted(() => {
+  const route = useRoute();
+  if (route.query.demo !== undefined) {
+    try {
+      const data = parse(example);
+      data.demo = true;
+      emit('data', data);
+    } catch (err) {
+
+      /* eslint-disable no-console */
+      console.error(err);
+    }
+  }
+});
 </script>
 
 <template>

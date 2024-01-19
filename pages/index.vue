@@ -26,6 +26,8 @@ import { ICONS } from '../const';
       title-text="Goroutines viewer"
       button-text="Explore goroutines"
       href="/goroutines"
+      demo-text="Try demo"
+      demo-href="/goroutines/demo"
     >
       <div>
         Dig into goroutines of your program:

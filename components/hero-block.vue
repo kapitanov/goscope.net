@@ -5,6 +5,8 @@ defineProps({
   titleText: { type: String, default: '' },
   buttonText: { type: String, default: '' },
   href: { type: String, default: '' },
+  demoText: { type: String, default: '' },
+  demoHref: { type: String, default: '' },
   mirror: { type: Boolean, default: false }
 });
 </script>
@@ -22,7 +24,17 @@ defineProps({
         <div class="text-lg text-gray-600 grow">
           <slot />
         </div>
-        <div>
+        <div v-if="demoHref" class="flex gap-4 w-100">
+          <Button :nuxt-link="true" :href="href" class="w-6/12">
+            <span>{{ buttonText }}</span>
+            <Icon :name="ICONS.ARROW_RIGHT" />
+          </Button>
+          <Button :nuxt-link="true" :href="demoHref" class="w-6/12">
+            <span>{{ demoText }}</span>
+            <Icon :name="ICONS.ARROW_RIGHT" />
+          </Button>
+        </div>
+        <div v-else class="flex w-100">
           <Button :nuxt-link="true" :href="href">
             <span>{{ buttonText }}</span>
             <Icon :name="ICONS.ARROW_RIGHT" />
