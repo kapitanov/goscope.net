@@ -7,8 +7,6 @@ useHead({
 });
 </script>
 <template>
-  <CloudflareWebAnalytics />
-
   <NuxtErrorBoundary>
     <template #error="{ error }">
       <ErrorPresenter :error="error" />
@@ -27,5 +25,8 @@ useHead({
         <Footer />
       </footer>
     </main>
+
+    <CloudflareWebAnalytics />
+
   </NuxtErrorBoundary>
 </template>
