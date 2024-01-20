@@ -42,8 +42,5 @@
     "vue": "^3.4.14",
     "vue-router": "^4.2.5",
     "wrangler": "^3.23.0"
-  },
-  "dependencies": {
-    "nuxt-cloudflare-analytics": "^1.0.8"
   }
 }

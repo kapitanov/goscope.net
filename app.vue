@@ -2,11 +2,13 @@
 import * as C from './const';
 
 useHead({
-    ...C.HEAD,
+  ...C.HEAD,
   title: C.APP_NAME,
 });
 </script>
 <template>
+  <CloudflareWebAnalytics />
+
   <NuxtErrorBoundary>
     <template #error="{ error }">
       <ErrorPresenter :error="error" />

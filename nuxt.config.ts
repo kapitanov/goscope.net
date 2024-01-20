@@ -16,7 +16,8 @@ const runtime: NuxtConfig = {
     public: {
       environment: process.env.ENV || 'PRODUCTION',
       commitHash: commitHash || '?',
-      buildDate: buildDate || '<Now>'
+      buildDate: buildDate || '<Now>',
+      cloudflareAnalyticsToken: process.env.CLOUDFLARE_WEB_ANALYTICS_TOKEN
     }
   }
 };
@@ -28,14 +29,7 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
     '@nuxt/image',
-    '@nuxtjs/tailwindcss',
-    [
-      'nuxt-cloudflare-analytics',
-      {
-        token: process.env.CLOUDFLARE_WEB_ANALYTICS_TOKEN,
-        scriptPath: false
-      }
-    ]
+    '@nuxtjs/tailwindcss'
   ],
   telemetry: false,
   devtools: { enabled: true },
