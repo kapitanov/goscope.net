@@ -10,34 +10,31 @@ help:
 	@echo "make [install|run|build|test|lint|format|preview|deploy]"
 	@exit 1
 
-install:
-	npm install
-
-_install_fast:
-	@[ ! -d "./node_modules" ] && npm install || true
-
-run: _install_fast _generate
-	npm run dev
-
-build: _install_fast _generate
-	NITRO_PRESET=cloudflare npx nuxi build --preset=cloudflare_pages
-
-_generate:
+prepare:
 	@echo "export const commitHash = '$(COMMIT_HASH)';" > ./config.ts
 	@echo "export const buildDate = '$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")';" >> ./config.ts
 	@echo "export const cloudflareWebAnalyticsToken = '$(CLOUDFLARE_WEB_ANALYTICS_TOKEN)';" >> ./config.ts
 	@echo "export const environment = '$(ENV)';" >> ./config.ts
 
-test: _install_fast
+install: prepare
+	@[ ! -d "./node_modules" ] && npm install || true
+
+run: install prepare
+	npm run dev
+
+build: install prepare
+	NITRO_PRESET=cloudflare npx nuxi build --preset=cloudflare_pages
+
+test: install
 	npm run test
 
-lint: _install_fast
+lint: install
 	npm run lint
 
-format: _install_fast
+format: install
 	npm run format
 
-preview: _install_fast build
+preview: install build
 	cd dist && npx wrangler pages dev .
 
 deploy:
