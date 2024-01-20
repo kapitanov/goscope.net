@@ -25,18 +25,10 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: ['nuxt-icon', '@nuxtjs/sitemap', '@nuxt/image'],
+  modules: ['nuxt-icon', '@nuxtjs/sitemap', '@nuxt/image','@nuxtjs/tailwindcss'],
   telemetry: false,
   devtools: { enabled: true },
   css: ['~/app.css'],
-  ssr: true,
-  target: 'static',
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {}
-    }
-  },
   app: {
     head: {
       charset: 'utf-8',

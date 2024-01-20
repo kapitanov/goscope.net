@@ -35,8 +35,8 @@ lint: _install_fast
 format: _install_fast
 	npm run format
 
-preview: _install_fast
-	npm run preview
+preview: _install_fast build
+	cd dist && npx wrangler pages dev .
 
 deploy:
 	@[ -z "$(CLOUDFLARE_ACCOUNT_ID)" ] && echo "CLOUDFLARE_ACCOUNT_ID is not set" && exit 1 || true
