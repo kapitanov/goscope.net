@@ -1,10 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+import { NuxtConfig } from 'nuxt/schema';
+
+const cloudflare: NuxtConfig = {
+  
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false
+    }
+  }
+};
+
 export default defineNuxtConfig({
+  ...cloudflare,
+
   modules: ['nuxt-icon', '@nuxtjs/sitemap', '@nuxt/image'],
   telemetry: false,
   devtools: { enabled: true },
   css: ['~/app.css'],
-  ssr: false,
+  ssr: true,
   target: 'static',
   postcss: {
     plugins: {

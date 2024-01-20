@@ -16,7 +16,7 @@ run: _install_fast
 	npm run dev
 
 build: _install_fast
-	npm run generate
+	NITRO_PRESET=cloudflare npx nuxi build --preset=cloudflare_pages
 
 test: _install_fast
 	npm run test
@@ -31,13 +31,8 @@ preview: _install_fast
 	npm run preview
 
 deploy:
-	@[ -z "$(AWS_ACCESS_KEY_ID)" ] && echo "AWS_ACCESS_KEY_ID is not set" && exit 1 || true
-	@[ -z "$(AWS_SECRET_ACCESS_KEY)" ] && echo "AWS_SECRET_ACCESS_KEY is not set" && exit 1 || true
-	@[ -z "$(AWS_BUCKET)" ] && echo "AWS_BUCKET is not set" && exit 1 || true
-	@[ -z "$(AWS_REGION)" ] && echo "AWS_REGION is not set" && exit 1 || true
-	@[ -z "$(AWS_DISTRIBUTION_ID)" ] && echo "AWS_DISTRIBUTION_ID is not set" && exit 1 || true
+	@[ -z "$(CLOUDFLARE_ACCOUNT_ID)" ] && echo "CLOUDFLARE_ACCOUNT_ID is not set" && exit 1 || true
+	@[ -z "$(CLOUDFLARE_API_TOKEN)" ] && echo "CLOUDFLARE_API_TOKEN is not set" && exit 1 || true
+	@[ -z "$(CLOUDFLARE_PROJECT_NAME)" ] && echo "CLOUDFLARE_PROJECT_NAME is not set" && exit 1 || true
 
-	aws s3 sync "./.output/public/" "s3://$(AWS_BUCKET)/" --region "$(AWS_REGION)"
-	INVALIDATION_ID=$$(aws cloudfront create-invalidation --distribution-id "$(AWS_DISTRIBUTION_ID)" --paths "/*" --region "$(AWS_REGION)" --output text --query "Invalidation.Id"); \
-	aws cloudfront wait invalidation-completed --distribution-id "$(AWS_DISTRIBUTION_ID)" --id "$$INVALIDATION_ID" --region "$(AWS_REGION)"
-	aws s3 sync "./.output/public/" "s3://$(AWS_BUCKET)/" --region "$(AWS_REGION)" --delete
+	cd dist && npx wrangler pages deploy --project-name="$(CLOUDFLARE_PROJECT_NAME)" --branch=main --commit-dirty=true --skip-caching .
