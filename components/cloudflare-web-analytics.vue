@@ -9,8 +9,8 @@ onMounted(() => {
         return;
     }
 
-    const beaconData = JSON.stringify({ token: config.token, spa: true });
-    const scriptUrl = 'https://static.cloudflareinsights.com/beacon.min.js'
+    const beaconData = JSON.stringify({ token, spa: true });
+    const scriptUrl = 'https://static.cloudflareinsights.com/beacon.min.js';
 
     const scriptElement = document.createElement('script');
     scriptElement.setAttribute('src', scriptUrl);
@@ -19,3 +19,5 @@ onMounted(() => {
     document.body.appendChild(scriptElement);
 });
 </script>
+
+<template></template>
