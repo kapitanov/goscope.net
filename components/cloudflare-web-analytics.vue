@@ -4,7 +4,7 @@
 const config = useRuntimeConfig();
 
 onMounted(() => {
-    const token = config.public.cloudflareAnalyticsToken;
+    const token = config.public.cloudflareWebAnalyticsToken;
     if (!token) {
         return;
     }

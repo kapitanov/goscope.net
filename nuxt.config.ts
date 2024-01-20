@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import { NuxtConfig } from 'nuxt/schema';
-import { commitHash, buildDate } from './version';
+import {
+  commitHash,
+  buildDate,
+  environment,
+  cloudflareWebAnalyticsToken
+} from './config';
 
 const cloudflare: NuxtConfig = {
   nitro: {
@@ -14,10 +19,10 @@ const cloudflare: NuxtConfig = {
 const runtime: NuxtConfig = {
   runtimeConfig: {
     public: {
-      environment: process.env.ENV || 'PRODUCTION',
-      commitHash: commitHash || '?',
-      buildDate: buildDate || '<Now>',
-      cloudflareAnalyticsToken: process.env.CLOUDFLARE_WEB_ANALYTICS_TOKEN
+      environment,
+      commitHash,
+      buildDate,
+      cloudflareWebAnalyticsToken
     }
   }
 };
@@ -26,11 +31,7 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: [
-    'nuxt-icon',
-    '@nuxt/image',
-    '@nuxtjs/tailwindcss'
-  ],
+  modules: ['nuxt-icon', '@nuxt/image', '@nuxtjs/tailwindcss'],
   telemetry: false,
   devtools: { enabled: true },
   css: ['~/app.css'],

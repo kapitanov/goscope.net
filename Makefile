@@ -16,15 +16,17 @@ install:
 _install_fast:
 	@[ ! -d "./node_modules" ] && npm install || true
 
-run: _install_fast version
+run: _install_fast _generate
 	npm run dev
 
-build: _install_fast version
+build: _install_fast _generate
 	NITRO_PRESET=cloudflare npx nuxi build --preset=cloudflare_pages
 
-version:
-	@echo "export const commitHash = '$(COMMIT_HASH)';" > ./version.ts
-	@echo "export const buildDate = '$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")';" >> ./version.ts
+_generate:
+	@echo "export const commitHash = '$(COMMIT_HASH)';" > ./config.ts
+	@echo "export const buildDate = '$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")';" >> ./config.ts
+	@echo "export const cloudflareWebAnalyticsToken = '$(CLOUDFLARE_WEB_ANALYTICS_TOKEN)';" >> ./config.ts
+	@echo "export const environment = '$(ENV)';" >> ./config.ts
 
 test: _install_fast
 	npm run test
