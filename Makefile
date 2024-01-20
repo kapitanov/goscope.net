@@ -35,4 +35,8 @@ deploy:
 	@[ -z "$(CLOUDFLARE_API_TOKEN)" ] && echo "CLOUDFLARE_API_TOKEN is not set" && exit 1 || true
 	@[ -z "$(CLOUDFLARE_PROJECT_NAME)" ] && echo "CLOUDFLARE_PROJECT_NAME is not set" && exit 1 || true
 
-	cd dist && npx wrangler pages deploy --project-name="$(CLOUDFLARE_PROJECT_NAME)" --branch=main --commit-dirty=true --skip-caching .
+	@COMMIT_HASH=$(shell git log --pretty=format:%h -n 1)
+	@COMMIT_MESSAGE=$(shell git log --pretty=format:%s -n 1)
+	@COMMIT_BRANCH="main"
+
+	cd dist && npx wrangler pages deploy --project-name="$(CLOUDFLARE_PROJECT_NAME)" --branch="$(COMMIT_BRANCH)" --commit-hash="$(COMMIT_HASH)" --commit-message="$(COMMIT_MESSAGE)" --commit-dirty=true --skip-caching .
