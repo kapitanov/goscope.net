@@ -1,7 +1,7 @@
 on:
-  push:
-    branches:
-      - release
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -34,4 +34,4 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_STAGING_PROJECT_NAME }}
+          CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PRODUCTION_PROJECT_NAME }}
