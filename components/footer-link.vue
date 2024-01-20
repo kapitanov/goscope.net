@@ -2,7 +2,8 @@
 defineProps({
   href: { type: String, default: '' },
   nuxtLink: { type: Boolean, default: false },
-  target: { type: String, default: '' }
+  target: { type: String, default: '' },
+  style: { type: Object, default: null }
 });
 const anchorClass = {
   flex: true,
@@ -28,7 +29,7 @@ const spanClass = {
 </script>
 
 <template>
-  <a v-if="!nuxtLink" :href="href" :class="anchorClass" :target="target">
+  <a v-if="!nuxtLink" :href="href" :class="anchorClass" :target="target" :style="style">
     <span :class="spanClass">
       <slot />
     </span>
@@ -38,6 +39,7 @@ const spanClass = {
     :href="href"
     :class="anchorClass"
     :target="target"
+    :style="style"
   >
     <span :class="spanClass">
       <slot />

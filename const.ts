@@ -1,5 +1,10 @@
 export const APP_NAME = 'goscope.net';
+export const MAINTAINER_NAME='Albert Kapitanov';
+export const MAINTAINER_URL='https://github.com/kapitanov';
 export const GITHUB_URL = 'https://github.com/kapitanov/goscope.net';
+export const githubCommitUrl = (commitHash: string) => {
+  return `${GITHUB_URL}/commit/${commitHash}`;
+};
 
 export const ICONS = {
   GITHUB: 'ph:github-logo',
@@ -16,6 +21,7 @@ export const ICONS = {
   CARET_DOWN: 'ph:caret-down-fill',
   QUESTION: 'ph:question',
   COPYRIGHT: 'ph:copyright',
+  BETA: 'mdi:beta',
 
   GOLANG: 'tabler:brand-golang',
   GOPHER: 'logos:gopher'

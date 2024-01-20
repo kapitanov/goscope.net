@@ -8,7 +8,7 @@ const anchorClass = {
   'w-12': true,
   'h-12': true,
   'rounded-full': true,
-  flex: true,
+  'flex': true,
   'items-center': true,
   'place-items-center': true,
   'text-cyan-800': true,

@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import { NuxtConfig } from 'nuxt/schema';
+import { commitHash, buildDate } from './version';
 
 const cloudflare: NuxtConfig = {
-  
   nitro: {
     prerender: {
       autoSubfolderIndex: false
@@ -11,8 +11,19 @@ const cloudflare: NuxtConfig = {
   }
 };
 
+const runtime: NuxtConfig = {
+  runtimeConfig: {
+    public: {
+      environment: process.env.ENV || 'PRODUCTION',
+      commitHash: commitHash || '?',
+      buildDate: buildDate || '<Now>'
+    }
+  }
+};
+
 export default defineNuxtConfig({
   ...cloudflare,
+  ...runtime,
 
   modules: ['nuxt-icon', '@nuxtjs/sitemap', '@nuxt/image'],
   telemetry: false,
