@@ -38,9 +38,9 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_STAGING_PROJECT_NAME }}
       - name: Run smoke tests on staging
-        uses: prism-be/actions-smoke-test@main
-        with:
-          sitemap: "https://staging.goscope.net/sitemap.xml"
+        run: make smoketest
+        env:
+          SITEMAP_URL: "https://staging.goscope.net/sitemap.xml"
       - name: Deploy project to production
         run: make deploy
         env:

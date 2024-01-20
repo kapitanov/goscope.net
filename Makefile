@@ -44,3 +44,16 @@ deploy:
 	@[ -z "$(CLOUDFLARE_PROJECT_NAME)" ] && echo "CLOUDFLARE_PROJECT_NAME is not set" && exit 1 || true
 
 	cd dist && npx wrangler pages deploy --project-name="$(CLOUDFLARE_PROJECT_NAME)" --branch="$(COMMIT_BRANCH)" --commit-hash="$(COMMIT_HASH)" --commit-message="$(COMMIT_MESSAGE)" --commit-dirty=true --skip-caching .
+
+smoketest:
+	@[ -z "$(SITEMAP_URL)" ] && echo "SITEMAP_URL is not set" && exit 1 || true
+
+	@URLS=$$(curl -s "$(SITEMAP_URL)" | grep -o '<loc>.*</loc>' | sed 's/<loc>\(.*\)<\/loc>/\1/g'); \
+	for URL in $$URLS; do \
+		STATUS=$$(curl -s -o /dev/null -w "%{http_code}" "$$URL"); \
+		echo "GET $$URL -> $$STATUS"; \
+		if [ "$$STATUS" -ne 200 ]; then \
+			echo "Error: $$URL returned $$STATUS"; \
+			exit 1; \
+		fi; \
+	done
