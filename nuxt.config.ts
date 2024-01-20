@@ -35,13 +35,9 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1'
     }
   },
-  site: {
-    url: 'https://goscope.net'
-  },
   sitemap: {
-    hostname: 'https://goscope.net',
     gzip: true,
-    routes: ['/', '/goroutines']
+    //routes: ['/', '/goroutines']
   },
   router: {
     mode: 'history'
