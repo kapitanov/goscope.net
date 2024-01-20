@@ -1,5 +1,7 @@
 <!-- eslint-disable vue/valid-template-root -->
 
+<template></template>
+
 <script setup lang="ts">
 const config = useRuntimeConfig();
 
@@ -19,5 +21,3 @@ onMounted(() => {
     document.body.appendChild(scriptElement);
 });
 </script>
-
-<template></template>

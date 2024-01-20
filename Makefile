@@ -11,11 +11,10 @@ help:
 	@exit 1
 
 prepare:
-	echo "export const commitHash = '$(COMMIT_HASH)';" > ./config.ts; \
-	echo "export const buildDate = '$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")';" >> ./config.ts; \
-	echo "export const cloudflareWebAnalyticsToken = '$(CLOUDFLARE_WEB_ANALYTICS_TOKEN)';" >> ./config.ts; \
-	echo "export const environment = '$(ENV)';" >> ./config.ts; \
-
+	@echo "export const commitHash = '$(COMMIT_HASH)';" > ./config.ts
+	@echo "export const buildDate = '$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")';" >> ./config.ts
+	@echo "export const cloudflareWebAnalyticsToken = '$(CLOUDFLARE_WEB_ANALYTICS_TOKEN)';" >> ./config.ts
+	@echo "export const environment = '$(ENV)';" >> ./config.ts
 
 install: prepare
 	@[ ! -d "./node_modules" ] && npm install || true
