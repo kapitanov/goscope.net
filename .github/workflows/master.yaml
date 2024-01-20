@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Deploy to staging
+    name: Deploy to production
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,5 +34,4 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_STAGING_PROJECT_NAME }}
-
+          CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PRODUCTION_PROJECT_NAME }}
