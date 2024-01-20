@@ -42,7 +42,7 @@ jobs:
       - name: Build project for production
         run: make build
         env:
-          CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ secrets.CLOUDFLARE_WEB_ANALYTICS_TOKEN }}
+          CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ secrets.CLOUDFLARE_PRODUCTION_WEB_ANALYTICS_TOKEN }}
           ENV: PRODUCTION
       - name: Deploy project to production
         run: make deploy
