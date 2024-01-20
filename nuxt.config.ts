@@ -25,7 +25,18 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: ['nuxt-icon', '@nuxt/image', '@nuxtjs/tailwindcss'],
+  modules: [
+    'nuxt-icon',
+    '@nuxt/image',
+    '@nuxtjs/tailwindcss',
+    [
+      'nuxt-cloudflare-analytics',
+      {
+        token: process.env.CLOUDFLARE_WEB_ANALYTICS_TOKEN,
+        scriptPath: false
+      }
+    ]
+  ],
   telemetry: false,
   devtools: { enabled: true },
   css: ['~/app.css'],
