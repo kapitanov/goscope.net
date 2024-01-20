@@ -40,7 +40,7 @@ jobs:
       - name: Run smoke tests on staging
         run: make smoketest
         env:
-          SITEMAP_ROOT_URLURL: "https://staging.goscope.net"
+          ROOT_URL: "https://staging.goscope.net"
       - name: Deploy project to production
         run: make deploy
         env:

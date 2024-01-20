@@ -46,7 +46,7 @@ deploy:
 	cd dist && npx wrangler pages deploy --project-name="$(CLOUDFLARE_PROJECT_NAME)" --branch="$(COMMIT_BRANCH)" --commit-hash="$(COMMIT_HASH)" --commit-message="$(COMMIT_MESSAGE)" --commit-dirty=true --skip-caching .
 
 smoketest:
-	@[ -z "$(ROOT_URL)" ] && echo "SITEMAP_URL is not set" && exit 1 || true
+	@[ -z "$(ROOT_URL)" ] && echo "ROOT_URL is not set" && exit 1 || true
 
 	@TEST_URL="$(ROOT_URL)" make _smoketest_url
 	@TEST_URL="$(ROOT_URL)/" make _smoketest_url
