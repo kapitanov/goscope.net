@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@nuxtjs/sitemap": "^5.0.1",
-    "nuxt": "^3.8.2",
+    "nuxt": "^3.9.3",
     "nuxt-icon": "^0.6.8"
   }
 }
