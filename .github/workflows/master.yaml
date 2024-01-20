@@ -47,3 +47,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PRODUCTION_PROJECT_NAME }}
+      - name: Run smoke tests on production
+        run: make smoketest
+        env:
+          SITEMAP_URL: "https://goscope.net/sitemap.xml"

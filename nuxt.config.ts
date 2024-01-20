@@ -39,5 +39,8 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1'
     }
+  },
+  site: {
+    hostname: process.env.DOMAIN
   }
 });
