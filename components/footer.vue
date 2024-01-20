@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup>
-import { default as moment } from 'moment';
+import moment from 'moment';
 import { GITHUB_URL, MAINTAINER_NAME, MAINTAINER_URL, ICONS, githubCommitUrl } from '../const';
 const year = new Date(Date.now()).getFullYear();
 const config = useRuntimeConfig();
@@ -21,22 +21,22 @@ if (config.public.commitHash) {
   <div class="border-t-2 pt-4">
     <div class="flex text-sm">
       <div class="w-6/12 flex justify-start text-gray-800 items-center gap-1">
-          <FooterLink :href="GITHUB_URL" target="_blank" style="display: inline-block;">
-            <Icon :name="ICONS.GITHUB" />
-            View on GitHub
-          </FooterLink>
-          <Icon :name="ICONS.COPYRIGHT" />
-          {{ year }}
-          <Beta>
-            (This is a beta version)
-          </Beta>
-      </div>
-      <div class="w-6/12 flex justify-end items-center place-items-center gap-1 ">
+        <FooterLink :href="GITHUB_URL" target="_blank" style="display: inline-block;">
+          <Icon :name="ICONS.GITHUB" />
+          View on GitHub
+        </FooterLink>
+        <Icon :name="ICONS.COPYRIGHT" />
+        {{ year }}
+        <Beta>
+          (This is a beta version)
+        </Beta>
         Built by
         <FooterLink :href="MAINTAINER_URL" target="_blank" style="display: inline-block;">
           {{ MAINTAINER_NAME }}
         </FooterLink>
-        at {{ buildDate }} from commit
+      </div>
+      <div class="w-6/12 flex justify-end items-center place-items-center gap-1 ">
+        Built at {{ buildDate }} from commit
         <FooterLink :href="githubCommitUrl(commit)" target="_blank" style="display: inline-block;">
           {{ commit }}
         </FooterLink>
