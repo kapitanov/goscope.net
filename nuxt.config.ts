@@ -25,12 +25,7 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: [
-    'nuxt-icon',
-    '@nuxtjs/sitemap',
-    '@nuxt/image',
-    '@nuxtjs/tailwindcss'
-  ],
+  modules: ['nuxt-icon', '@nuxt/image', '@nuxtjs/tailwindcss'],
   telemetry: false,
   devtools: { enabled: true },
   css: ['~/app.css'],
@@ -39,8 +34,5 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1'
     }
-  },
-  site: {
-    hostname: process.env.DOMAIN
   }
 });
