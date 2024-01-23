@@ -3,8 +3,7 @@ const props = defineProps({
     enable: { type: Boolean, default: false, required: true },
 });
 const emit = defineEmits(['accepted', 'declined']);
-const show = useState<boolean>('gdpr-consent-screen');
-show.value = false;
+const show = ref<boolean>(false);
 
 const resolve = (accepted: boolean) => {
     if (process.client) {
@@ -16,6 +15,8 @@ const resolve = (accepted: boolean) => {
     } else {
         emit('declined');
     }
+
+    show.value = false;
 };
 
 const accept = () => resolve(true);
