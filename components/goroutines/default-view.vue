@@ -20,7 +20,7 @@ const onSelectTab = (tab: string) => {
 </script>
 <template>
   <div>
-    <div class="flex items-center mb-4">
+    <div class="flex flex-col md:flex-row items-start md:items-center mb-4 gap-4">
       <div class="flex">
         <h1 class="text-3xl sm:text-xl font-semibold">Goroutines viewer</h1>
         <span v-if="data?.url" class="text-gray-500 px-2 py-1">
@@ -31,7 +31,7 @@ const onSelectTab = (tab: string) => {
         </span>
       </div>
 
-      <TabBar v-if="!data" class="grow ms-4" :active="activeTab" @select="onSelectTab">
+      <TabBar v-if="!data" class="grow " :active="activeTab" @select="onSelectTab">
         <TabItem name="text">
           From Text
         </TabItem>

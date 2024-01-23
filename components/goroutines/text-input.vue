@@ -71,26 +71,30 @@ const goHandler = () => {
   <TextField v-model="text" type="textarea" :class="textareaClass" placeholder="Paste your stack trace here"
     :disabled="disabled" />
 
-  <div class="flex gap-1">
-    <Button :disabled="disabled" @click="goHandler">
-      <Icon :name="ICONS.GO" />
-      <span>Go!</span>
-      <HotkeyHint :ctrl="true">Enter</HotkeyHint>
-    </Button>
-    <Button :disabled="disabled" @click="useExampleHandler">
-      <Icon :name="ICONS.USE_EXAMPLE" />
-      <span>Use an example input</span>
-    </Button>
-    <div class="grow" />
-    <Button :disabled="disabled" @click="pasteHandler">
-      <Icon :name="ICONS.PASTE" />
-      <span>Paste from clipboard</span>
-      <HotkeyHint :ctrl="true">V</HotkeyHint>
-    </Button>
-    <Button :disabled="disabled" @click="clearHandler">
-      <Icon :name="ICONS.CLEAR" />
-      <span>Clear</span>
-    </Button>
+  <div class="flex flex-col md:flex-row gap-1">
+    <div class="flex gap-1">
+      <Button :disabled="disabled" @click="goHandler" class="w-full md:w-auto">
+        <Icon :name="ICONS.GO" />
+        <span>Go!</span>
+        <HotkeyHint :ctrl="true">Enter</HotkeyHint>
+      </Button>
+      <Button :disabled="disabled" @click="useExampleHandler" class="w-full md:w-auto">
+        <Icon :name="ICONS.USE_EXAMPLE" />
+        <span>Use an example input</span>
+      </Button>
+    </div>
+    <div class="hidden md:block grow"></div>
+    <div class="flex gap-1">
+      <Button :disabled="disabled" @click="pasteHandler" class="w-full md:w-auto">
+        <Icon :name="ICONS.PASTE" />
+        <span>Paste from clipboard</span>
+        <HotkeyHint :ctrl="true">V</HotkeyHint>
+      </Button>
+      <Button :disabled="disabled" @click="clearHandler" class="w-full md:w-auto">
+        <Icon :name="ICONS.CLEAR" />
+        <span>Clear</span>
+      </Button>
+    </div>
   </div>
 
   <div class="mt-2">

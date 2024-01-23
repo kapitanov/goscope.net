@@ -23,7 +23,7 @@ const toggleHandler = () => {
     <td class="px-2 py-1 font-mono">
       {{ item.id }}
     </td>
-    <td class="px-2 py-1 font-mono text-nowrap">
+    <td class="px-2 py-1 font-mono md:text-nowrap">
       {{ item.state }}
     </td>
     <td class="px-2 py-1 font-mono" :title="item.stack[0].file">
@@ -32,10 +32,24 @@ const toggleHandler = () => {
       </a>
     </td>
   </tr>
-  <tr :style="{ visibility: expanded ? 'visible' : 'collapse' }">
+  <tr class="hidden lg:table-row" :style="{ visibility: expanded ? 'visible' : 'collapse' }">
     <td />
     <td />
     <td class="px-2 pb-1 font-mono">
+      <ul class="border-s-2 border-cyan-900">
+        <li v-for="frame in item.stack" :key="frame.id" class="flex flex-col ms-2">
+          <span class="text-cyan-900">
+            {{ frame.function }}
+          </span>
+          <span class="ms-4">
+            {{ frame.file }}:{{ frame.line }} {{ frame.offset }}
+          </span>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="table-row lg:hidden" :style="{ visibility: expanded ? 'visible' : 'collapse' }">
+    <td class="px-2 pb-1 font-mono" colspan="3">
       <ul class="border-s-2 border-cyan-900">
         <li v-for="frame in item.stack" :key="frame.id" class="flex flex-col ms-2">
           <span class="text-cyan-900">

@@ -11,54 +11,82 @@ const clickHandler = () => {
   isExpanded.value = !isExpanded.value;
 };
 
-const clickable = {
+const collapseButton = {
+  'border': true,
+  'px-4': true,
   'text-cyan-700': true,
-  'hover:text-cyan-600': true,
-  'active:text-cyan-800': true,
-  flex: true,
-  'items-center': true
+  'bg-gray-200': true,
+  'border-gray-500': true,
+  'hover:bg-cyan-600': true,
+  'hover:text-white': true,
+  'hover:bg-cyan-800': true,
+  'active:text-white': true,
+};
+
+const collapseButtonTop = {
+  ...collapseButton,
+  'border-t-0': true,
+  'rounded-bl': true,
+  'rounded-br': true,
+};
+
+const collapseButtonBottom = {
+  ...collapseButton,
+  'border-b-0': true,
+  'rounded-tl': true,
+  'rounded-tr': true,
 };
 </script>
 <template>
-  <a href="" :class="clickable" @click.prevent="clickHandler">
+  <Button @click="clickHandler" v-if="!isExpanded">
     <Icon :name="ICONS.QUESTION" />
     What is PPROF and how do I get it?
-  </a>
+  </Button>
 
-  <div v-if="isExpanded" class="mt-4">
-    <p>
-      Package
-      <Hyperlink href="https://pkg.go.dev/net/http/pprof" text="pprof" /> serves
-      via its HTTP server runtime profiling data.
-    </p>
-    <p>
-      The package is typically only imported for the side effect of registering
-      its HTTP handlers. The handled paths all begin with
-      <code class="font-mono text-cyan-900">/debug/pprof/</code>.
-    </p>
+  <div v-if="isExpanded" class="mt-4 px-4 rounded border border-gray-500">
+    <div class="flex justify-center w-full">
+      <button :class="collapseButtonTop" @click="clickHandler">
+        <Icon :name="ICONS.COLLAPSE" />
+      </button>
+    </div>
 
-    <p>To use pprof, link this package into your program:</p>
+    <div class="py-4">
+      <p>
+        Package
+        <Hyperlink href="https://pkg.go.dev/net/http/pprof" text="pprof" /> serves
+        via its HTTP server runtime profiling data.
+      </p>
+      <p>
+        The package is typically only imported for the side effect of registering
+        its HTTP handlers. The handled paths all begin with
+        <code class="font-mono text-cyan-900">/debug/pprof/</code>.
+      </p>
 
-    <!-- eslint-disable-next-line vue/html-quotes -->
-    <Code code='import _ "net/http/pprof"' />
+      <p>To use pprof, link this package into your program:</p>
 
-    <p>For instance, try running the following program:</p>
+      <!-- eslint-disable-next-line vue/html-quotes -->
+      <Code code='import _ "net/http/pprof"' />
 
-    <Code :code="exampleSourceCode" />
+      <p>For instance, try running the following program:</p>
 
-    <p>
-      <strong>Goroutines viewer</strong> needs only one of profiles data, which
-      is <code class="font-mono text-cyan-900">goroutine</code> profile in
-      <code class="font-mono text-cyan-900">?debug=2</code> format.
-    </p>
+      <Code :code="exampleSourceCode" />
 
-    <p>
-      To get it, run the program and open
-      <Hyperlink
-        href="http://localhost:6060/debug/pprof/goroutine?debug=2"
-        target="_blank"
-      />
-      in your browser.
-    </p>
+      <p>
+        <strong>Goroutines viewer</strong> needs only one of profiles data, which
+        is <code class="font-mono text-cyan-900">goroutine</code> profile in
+        <code class="font-mono text-cyan-900">?debug=2</code> format.
+      </p>
+
+      <p>
+        To get it, run the program and open
+        <Hyperlink href="http://localhost:6060/debug/pprof/goroutine?debug=2" target="_blank" />
+        in your browser.
+      </p>
+    </div>
+    <div class="flex justify-center w-full">
+      <button :class="collapseButtonBottom" @click="clickHandler">
+        <Icon :name="ICONS.COLLAPSE" />
+      </button>
+    </div>
   </div>
 </template>

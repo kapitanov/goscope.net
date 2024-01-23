@@ -13,7 +13,7 @@ defineProps({
 
 <template>
   <div class="mb-4 bg-gray-200 rounded">
-    <div class="flex flex-row gap-4 p-4">
+    <div class="flex flex-col md:flex-row gap-4 p-4">
       <div v-if="!mirror" class="w-6/12">
         <img :src="imageSrc" />
       </div>
@@ -24,12 +24,12 @@ defineProps({
         <div class="text-lg text-gray-600 grow">
           <slot />
         </div>
-        <div v-if="demoHref" class="flex gap-4 w-100">
-          <Button :nuxt-link="true" :href="href" class="w-6/12">
+        <div v-if="demoHref" class="flex gap-4 w-100 flex-col sm:flex-row">
+          <Button :nuxt-link="true" :href="href" class="w-full sm:w-6/12">
             <span>{{ buttonText }}</span>
             <Icon :name="ICONS.ARROW_RIGHT" />
           </Button>
-          <Button :nuxt-link="true" :href="demoHref" class="w-6/12">
+          <Button :nuxt-link="true" :href="demoHref" class="w-full sm:w-6/12">
             <span>{{ demoText }}</span>
             <Icon :name="ICONS.ARROW_RIGHT" />
           </Button>

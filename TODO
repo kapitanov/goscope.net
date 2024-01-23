@@ -1,4 +1,4 @@
-[ ] Transfer domain and drop AWS
+[ ] Transfer domain and drop AWS (or not?)
 [ ] Deploy to prod on release only
 [ ] write README
 [ ] squash commits
@@ -7,4 +7,5 @@
 [x] Layout
 [x] GDPR
 [ ] Cleanup NPM packages
-[ ] Responsible UI
+[x] Responsible UI (kind of)
+[ ] PWA

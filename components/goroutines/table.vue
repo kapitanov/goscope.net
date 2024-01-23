@@ -12,12 +12,14 @@ defineProps({
 <template>
   <table
     v-if="data && data.items && data.items.length > 0"
-    class="border-collapse border border-gray-500 w-full"
+    class="border-collapse border border-gray-500 w-full max-w-full min-w-full"
   >
     <thead class="bg-gray-200">
       <tr>
-        <th class="px-2 py-1">
+        <th class="px-2 py-1 text-nowrap">
+          <span class="hidden lg:inline">
           Goroutine
+        </span>
           <Icon :name="ICONS.CARET_DOWN" />
         </th>
         <th class="px-2 py-1">State</th>
