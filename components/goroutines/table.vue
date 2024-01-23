@@ -32,7 +32,7 @@ defineProps({
       />
     </tbody>
   </table>
-  <div class="text-gray-600 mt-2">
+  <div class="text-gray-600 text-sm mt-2">
     Click on a goroutine to see its stack trace.
   </div>
 </template>

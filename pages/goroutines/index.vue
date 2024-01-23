@@ -1,20 +1,14 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
-const data = useState('goroutines-data');
-const onData = (value: string) => {
-  data.value = value;
-};
-const onReset = () => {
-  data.value = null;
-};
+const route = useRoute();
+const permalinkUrl = computed(() => route.query.url as string | undefined);
+const isPermalink = computed(() => permalinkUrl.value !== undefined);
+const isDefault = computed(() => !isPermalink.value);
 </script>
 <template>
   <div>
-    <GoroutinesHeader />
-
-    <GoroutinesInput v-if="!data" @data="onData" />
-
-    <GoroutinesViewer v-if="data" :data="data" @reset="onReset" />
+    <GoroutinesDefaultView v-if="isDefault" />
+    <GoroutinesPermalinkView v-if="isPermalink" :url="permalinkUrl" />
   </div>
 </template>

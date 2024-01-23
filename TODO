@@ -1,0 +1,10 @@
+[ ] Transfer domain and drop AWS
+[ ] Deploy to prod on release only
+[ ] write README
+[ ] squash commits
+[x] Add 'from url' option and 'permalink' option.
+[x] Google Analytics
+[x] Layout
+[x] GDPR
+[ ] Cleanup NPM packages
+[ ] Responsible UI

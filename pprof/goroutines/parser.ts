@@ -13,6 +13,8 @@ export interface Goroutine {
 
 export interface GoroutineProfile {
   items: Goroutine[];
+  url?: string;
+  text?: string;
 }
 
 export const parse = (input: string): GoroutineProfile => {

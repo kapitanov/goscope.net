@@ -8,7 +8,7 @@ const commandButton = isMacOS ? '\u2318' : 'Ctrl';
 
 <template>
   <ClientOnly>
-    <span class="flex items-center text-gray-500 mx-4">
+    <span class="flex items-center ms-2 opacity-50">
       <span v-if="ctrl">{{ commandButton }}+</span>
       <span>
         <slot />

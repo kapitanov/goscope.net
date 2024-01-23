@@ -5,7 +5,7 @@ import {
   commitHash,
   buildDate,
   environment,
-  cloudflareWebAnalyticsToken
+  googleAnalyticsToken
 } from './config';
 
 const cloudflare: NuxtConfig = {
@@ -22,7 +22,7 @@ const runtime: NuxtConfig = {
       environment,
       commitHash,
       buildDate,
-      cloudflareWebAnalyticsToken
+      googleAnalyticsToken
     }
   }
 };
@@ -31,12 +31,27 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: ['nuxt-icon', '@nuxt/image', '@nuxtjs/tailwindcss'],
+  modules: [
+    'nuxt-icon',
+    '@nuxt/image',
+    '@nuxtjs/tailwindcss',
+    'nuxt-gtag',
+    'nuxt-snackbar'
+  ],
+  snackbar: {
+    bottom: true,
+    right: true,
+    duration: 5000
+  },
+  gtag: {
+    id: googleAnalyticsToken,
+    initialConsent: false,
+    loadingStrategy: 'async'
+  },
   telemetry: false,
   devtools: { enabled: true },
-  css: ['~/app.css'],
   app: {
-    head: {
+    head: { 
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1'
     }

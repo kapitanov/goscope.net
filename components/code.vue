@@ -9,7 +9,7 @@ const props = defineProps({
 <template>
   <div class="border-2 rounded bg-slate-200 p-4 my-2">
     <div class="float-end">
-      <CopyButton :text="props.code" />
+      <CopyButton :text="props.code" size="sm" />
     </div>
     <pre><code>{{ props.code }}</code></pre>
   </div>

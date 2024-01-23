@@ -1,68 +1,39 @@
 <script setup lang="ts">
 import { ICONS } from '../const';
 const props = defineProps({
-  text: { type: String, default: '' }
+  text: { type: String, default: '' },
+  title: { type: String, default: '' },
+  disabled: { type: Boolean, default: false },
+  size: { type: String, default: '' },
+  class: { type: String, default: '' },
+  color: { type: String, default: '' },
 });
-
-const layout = {
-  flex: true,
-  'justify-center': true,
-  'items-center': true,
-  'px-2': true,
-  'py-1': true,
-  rounded: true,
-  'border-2': true
-};
-const clickable = {
-  'border-cyan-700': true,
-  'text-white': true,
-  'bg-cyan-700': true,
-  'hover:bg-cyan-600': true,
-  'hover:border-cyan-600': true,
-  'active:bg-cyan-800': true,
-  'active:border-cyan-800': true
-};
-const success = {
-  'border-green-700': true,
-  'text-white': true,
-  'bg-green-700': true
-};
-const error = {
-  'border-red-700': true,
-  'text-white': true,
-  'bg-red-700': true
-};
-
-const state = ref('idle');
-
-const clickHandler = async () => {
+const snackbar = useSnackbar();
+const disabled = ref(false);
+const slots = useSlots();
+const copyHandler = async () => {
   try {
+    disabled.value = true;
     await navigator.clipboard.writeText(props.text);
-  } catch (e) {
-    state.value = 'error';
-    return;
+    snackbar.add({
+      text: 'Copied to clipboard',
+      type: 'success',
+    });
+  } catch (err: any) {
+    snackbar.add({
+      text: `Failed to copy: ${err.message || err}`,
+      type: 'error',
+    });
+  } finally {
+    disabled.value = false;
   }
-
-  state.value = 'copied';
-  setTimeout(() => {
-    state.value = 'idle';
-  }, 1500);
 };
 </script>
 
 <template>
-  <button
-    v-if="state === 'idle'"
-    :class="{ ...clickable, ...layout }"
-    title="Copy to clipboard"
-    @click="clickHandler"
-  >
-    <Icon :name="ICONS.COPY" />
-  </button>
-  <button v-if="state === 'copied'" :class="{ ...success, ...layout }" disabled>
-    <Icon :name="ICONS.COPY_OK" />
-  </button>
-  <button v-if="state === 'error'" :class="{ ...error, ...layout }" disabled>
-    <Icon :name="ICONS.COPY_ERROR" />
-  </button>
+  <Button @click="copyHandler" :title="props.title" :disabled="props.disabled || disabled" :size="props.size"
+    :color="props.color" :class="props.class">
+    <slot></slot>
+    <Icon :name="ICONS.COPY" v-if="!slots.default" />
+  </Button>
 </template>

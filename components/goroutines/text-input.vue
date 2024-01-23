@@ -21,8 +21,8 @@ const textareaClass = {
   'h-64': true
 };
 
-const error = useState('goroutines-textInput-error');
-const disabled = useState('goroutines-textInput-disabled');
+const error = ref<any | null>(null);
+const disabled = ref<boolean>(false);
 const text = defineModel<string>({ default: '' });
 
 const setText = (value: string) => {
@@ -32,6 +32,8 @@ const setText = (value: string) => {
 
 const useExampleHandler = () => {
   setText(example);
+
+  useTrackEvent('select_content', { content_type: 'example', content_id: 'goroutines_text' });
 };
 
 const pasteHandler = async () => {
@@ -50,6 +52,7 @@ const clearHandler = () => {
 const goHandler = () => {
   try {
     const data = parse(text.value);
+    data.text = text.value;
     emit('data', data);
   } catch (err) {
     error.value = err;
@@ -59,30 +62,30 @@ const goHandler = () => {
 
 <template>
   <Hotkey hotkey="Ctrl+Enter" @pressed="goHandler" />
+  <Hotkey hotkey="Ctrl+V" @pressed="pasteHandler" />
 
-  <div class="mt-4 mb-2 flex items-center">
-    <span class="flex-1">
-      Paste your PPROF stack trace into a text field below:
-    </span>
-    <Button :disabled="disabled" @click="useExampleHandler">
-      <Icon :name="ICONS.USE_EXAMPLE" />
-      <span>Use an example input</span>
-    </Button>
+  <div class="mb-2">
+    Paste your PPROF stack trace into a text field below:
   </div>
 
-  <textarea ref="textarea" v-model="text" :class="textareaClass" placeholder="Paste your stack trace here"
+  <TextField v-model="text" type="textarea" :class="textareaClass" placeholder="Paste your stack trace here"
     :disabled="disabled" />
 
   <div class="flex gap-1">
     <Button :disabled="disabled" @click="goHandler">
       <Icon :name="ICONS.GO" />
       <span>Go!</span>
+      <HotkeyHint :ctrl="true">Enter</HotkeyHint>
     </Button>
-    <HotkeyHint :ctrl="true">Enter</HotkeyHint>
-    <div class="flex-1" />
+    <Button :disabled="disabled" @click="useExampleHandler">
+      <Icon :name="ICONS.USE_EXAMPLE" />
+      <span>Use an example input</span>
+    </Button>
+    <div class="grow" />
     <Button :disabled="disabled" @click="pasteHandler">
       <Icon :name="ICONS.PASTE" />
       <span>Paste from clipboard</span>
+      <HotkeyHint :ctrl="true">V</HotkeyHint>
     </Button>
     <Button :disabled="disabled" @click="clearHandler">
       <Icon :name="ICONS.CLEAR" />

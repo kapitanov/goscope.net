@@ -1,4 +1,5 @@
 export const APP_NAME = 'goscope.net';
+export const APP_URL = 'https://goscope.net';
 export const MAINTAINER_NAME='Albert Kapitanov';
 export const MAINTAINER_URL='https://github.com/kapitanov';
 export const GITHUB_URL = 'https://github.com/kapitanov/goscope.net';
@@ -22,12 +23,18 @@ export const ICONS = {
   QUESTION: 'ph:question',
   COPYRIGHT: 'ph:copyright',
   BETA: 'mdi:beta',
+  X: 'ph:x',
+  SHARE: 'ph:share-network',
+  LINK: 'ph:link',
+  EXPAND: 'mdi:arrow-expand-vertical',
+  COLLAPSE: 'mdi:arrow-collapse-vertical',
 
   GOLANG: 'tabler:brand-golang',
   GOPHER: 'logos:gopher'
 };
 
 export const HEAD = {
+  title: APP_NAME,
   bodyAttrs: {
     class: 'bg-background'
   },
