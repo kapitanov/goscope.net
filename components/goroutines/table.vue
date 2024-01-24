@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { ICONS } from '../../const';
+import { ICONS } from '~/const';
 defineProps({
   data: {
     type: Object,
@@ -10,30 +10,27 @@ defineProps({
 </script>
 
 <template>
-  <table
-    v-if="data && data.items && data.items.length > 0"
-    class="border-collapse border border-gray-500 w-full max-w-full min-w-full"
-  >
-    <thead class="bg-gray-200">
-      <tr>
-        <th class="px-2 py-1 text-nowrap">
-          <span class="hidden lg:inline">
-          Goroutine
-        </span>
-          <Icon :name="ICONS.CARET_DOWN" />
-        </th>
-        <th class="px-2 py-1">State</th>
-        <th class="px-2 py-1">Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      <GoroutinesTableRow
-        v-for="item in data.items"
-        :key="item.id"
-        :item="item"
-      />
-    </tbody>
-  </table>
+  <div v-if="data && data.items && data.items.length > 0" class="flex flex-col border boder-gray-200">
+    <div class="flex flex-row bg-gray-200 gap-2 px-2 py-1 font-bold">
+      <div class="w-6"></div>
+      <div class="w-16 text-nowrap">
+        #
+        <Icon :name="ICONS.CARET_DOWN" />
+      </div>
+      <div class="hidden md:block w-48">
+        State
+      </div>
+      <div class="block md:hidden grow">
+        State
+      </div>
+      <div class="hidden md:block grow">
+        Stack trace
+      </div>
+    </div>
+
+    <GoroutinesTableRow v-for="item in data.items" :key="item.id" :item="item" />
+  </div>
+
   <div class="text-gray-600 text-sm mt-2">
     Click on a goroutine to see its stack trace.
   </div>

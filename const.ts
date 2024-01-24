@@ -28,6 +28,8 @@ export const ICONS = {
   LINK: 'ph:link',
   EXPAND: 'mdi:arrow-expand-vertical',
   COLLAPSE: 'mdi:arrow-collapse-vertical',
+  EXPAND_ROW: 'ph:plus-square',
+  COLLAPSE_ROW: 'ph:minus-square',
 
   GOLANG: 'tabler:brand-golang',
   GOPHER: 'logos:gopher'

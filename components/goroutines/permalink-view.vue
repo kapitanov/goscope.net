@@ -29,14 +29,11 @@ const onReset = () => {
 </script>
 <template>
     <div>
-        <div v-if="data" class="flex items-center mb-4">
-            <div class="flex gap-2 items-bottom">
-                <h1 class="text-3xl sm:text-xl font-semibold">Goroutines viewer</h1>
-                <span class="text-gray-500 px-2 py-1">
-                    Displaying data from <span class="font-mono">{{ props.url }}</span>
-                </span>
-            </div>
-        </div>
+        <GoroutinesHeader v-if="data">
+            <span class="text-gray-500 py-1 text-balance break-all">
+                Displaying data from <span class="font-mono">{{ props.url }}</span>
+            </span>
+        </GoroutinesHeader>
 
         <GoroutinesViewer v-if="data" :data="data" @reset="onReset" />
 

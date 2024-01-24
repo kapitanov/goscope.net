@@ -20,17 +20,13 @@ const onSelectTab = (tab: string) => {
 </script>
 <template>
   <div>
-    <div class="flex flex-col md:flex-row items-start md:items-center mb-4 gap-4">
-      <div class="flex">
-        <h1 class="text-3xl sm:text-xl font-semibold">Goroutines viewer</h1>
-        <span v-if="data?.url" class="text-gray-500 px-2 py-1">
-          Displaying data from <span class="font-mono">{{ data.url }}</span>
-        </span>
-        <span v-if="data?.text" class="text-gray-500 px-2 py-1">
-          Displaying data from manually entered text
-        </span>
-      </div>
-
+    <GoroutinesHeader>
+      <span v-if="data?.url" class="text-gray-500">
+        Displaying data from <span class="font-mono">{{ data.url }}</span>
+      </span>
+      <span v-if="data?.text" class="text-gray-500">
+        Displaying data from manually entered text
+      </span>
       <TabBar v-if="!data" class="grow " :active="activeTab" @select="onSelectTab">
         <TabItem name="text">
           From Text
@@ -39,8 +35,7 @@ const onSelectTab = (tab: string) => {
           From URL
         </TabItem>
       </TabBar>
-    </div>
-
+    </GoroutinesHeader>
 
     <div v-if="!data">
       <div class="mt-4">

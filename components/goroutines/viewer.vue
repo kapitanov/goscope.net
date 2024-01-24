@@ -1,4 +1,5 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+
 <script setup lang="ts">
 import { GoroutineProfile } from '~/pprof/goroutines/parser';
 import { APP_URL, ICONS } from '../../const';
@@ -53,7 +54,7 @@ provide('TableControl', tableControl);
   <div class="flex gap-1 mt-4 mb-2">
     <Button @click="emit('reset')" size="sm">
       <Icon :name="ICONS.RESET" />
-      <span>Try another stack trace</span>
+      <span class="hidden md:inline">Try another stack trace</span>
     </Button>
     <Button @click="() => tableControl.expand()" size="sm" title="Expand all table rows">
       <Icon :name="ICONS.EXPAND" />
