@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+
 <script setup lang="ts">
 import * as C from '../const';
 useHead({
@@ -12,8 +14,8 @@ useHead({
         </template>
 
         <GoogleAnalytics>
-            <header class="sticky top-0 w-100 bg-background/70 backdrop-blur px-8 pt-4 mb-8">
-                <Header></Header>
+            <header class="sticky top-0 w-full h-16 border-b border-gray-500 bg-white px-8 mb-8">
+                <PageHeader />
             </header>
 
             <main>
@@ -22,7 +24,7 @@ useHead({
                 </section>
 
                 <footer class="w-100 px-8 pb-8">
-                    <Footer></Footer>
+                    <PageFooter />
                 </footer>
             </main>
         </GoogleAnalytics>

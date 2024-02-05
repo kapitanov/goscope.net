@@ -12,10 +12,10 @@ enableScreen.value = hasGoogleAnalyticsToken;
 const enableGoogleAnalytics = (enable: boolean) => {
     if (hasGoogleAnalyticsToken && enable) {
         setConsent({ id: googleAnalyticsToken, hasConsent: true });
-        console.log(`Google Analytics enabled (${googleAnalyticsToken})`);
+        console.log(`Google Analytics enabled (${googleAnalyticsToken})`); /* eslint-disable-line no-console */
     } else {
         setConsent({ id: googleAnalyticsToken, hasConsent: false });
-        console.log('Google Analytics disabled');
+        console.log('Google Analytics disabled');  /* eslint-disable-line no-console */
     }
 
     enableScreen.value = false;

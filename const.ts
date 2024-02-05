@@ -1,4 +1,5 @@
 export const APP_NAME = 'goscope.net';
+export const APP_NAME_SHORT = 'scope.net';
 export const APP_URL = 'https://goscope.net';
 export const MAINTAINER_NAME='Albert Kapitanov';
 export const MAINTAINER_URL='https://github.com/kapitanov';

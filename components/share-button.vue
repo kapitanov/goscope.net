@@ -9,7 +9,7 @@ const props = defineProps({
     color: { type: String, default: '' },
 });
 const snackbar = useSnackbar();
-const disabled = ref(false);
+const disabled = ref(false); /* eslint-disable-line vue/no-dupe-keys */
 const slots = useSlots();
 const shareHandler = async () => {
     try {
@@ -28,9 +28,9 @@ const shareHandler = async () => {
 };
 </script>
 <template>
-    <Button @click="shareHandler" :title="props.title" :disabled="props.disabled || disabled" :size="props.size"
-        :color="props.color" :class="props.class">
+    <Button :title="props.title" :disabled="props.disabled || disabled" :size="props.size" :color="props.color"
+        :class="props.class" @click="shareHandler">
         <slot></slot>
-        <Icon :name="ICONS.SHARE" v-if="!slots.default" />
+        <Icon v-if="!slots.default" :name="ICONS.SHARE" />
     </Button>
 </template>

@@ -9,7 +9,7 @@ const props = defineProps({
   color: { type: String, default: '' },
 });
 const snackbar = useSnackbar();
-const disabled = ref(false);
+const disabled = ref(false); /* eslint-disable-line vue/no-dupe-keys */
 const slots = useSlots();
 const copyHandler = async () => {
   try {
@@ -31,9 +31,9 @@ const copyHandler = async () => {
 </script>
 
 <template>
-  <Button @click="copyHandler" :title="props.title" :disabled="props.disabled || disabled" :size="props.size"
-    :color="props.color" :class="props.class">
+  <Button :title="props.title" :disabled="props.disabled || disabled" :size="props.size" :color="props.color"
+    :class="props.class" @click="copyHandler">
     <slot></slot>
-    <Icon :name="ICONS.COPY" v-if="!slots.default" />
+    <Icon v-if="!slots.default" :name="ICONS.COPY" />
   </Button>
 </template>

@@ -1,5 +1,6 @@
-import { GoroutineProfile, parse } from './parser';
 import axios from 'axios';
+import { GoroutineProfile } from './model';
+import { parse } from './parser';
 
 export const fetch = async (url: string): Promise<GoroutineProfile> => {
   const response = await axios.get<string>(url, {

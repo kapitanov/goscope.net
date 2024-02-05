@@ -31,6 +31,14 @@ defineProps({
     <GoroutinesTableRow v-for="item in data.items" :key="item.id" :item="item" />
   </div>
 
+  <div v-if="data && data.items && data.items.length !== data.total" class="text-gray-900 mt-2">
+    Displaying {{ data?.items?.length }} of {{ data?.total }} goroutines.
+  </div>
+
+  <div v-if="data && data.items && data.items.length === data.total" class="text-gray-900 mt-2">
+    Displaying all {{ data?.total }} goroutines.
+  </div>
+
   <div class="text-gray-600 text-sm mt-2">
     Click on a goroutine to see its stack trace.
   </div>

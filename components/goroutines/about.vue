@@ -38,7 +38,7 @@ const collapseButtonBottom = {
 };
 </script>
 <template>
-  <Button @click="clickHandler" v-if="!isExpanded">
+  <Button v-if="!isExpanded" @click="clickHandler">
     <Icon :name="ICONS.QUESTION" />
     What is PPROF and how do I get it?
   </Button>

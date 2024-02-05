@@ -1,6 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup>
+import { combineClasses } from '~/utils/classes';
+
 const emit = defineEmits(['click']);
 const props = defineProps({
   type: { type: String, default: 'button' },
@@ -120,19 +122,6 @@ const contentClass = computed(() => {
   }
 });
 
-function combine(...classes) {
-  let result = {};
-
-  for (const c of classes) {
-    if (typeof c === 'string') {
-      result = { ...result, [c]: true };
-    } else {
-      result = { ...result, ...c };
-    }
-  }
-
-  return result;
-}
 
 const isHref = computed(() => !!props.href);
 const isDisabled = computed(() => !!props.disabled);
@@ -140,30 +129,30 @@ const isBusy = computed(() => !props.disabled && !!props.busy);
 </script>
 
 <template>
-  <a v-if="isHref && !nuxtLink && !isDisabled && !isBusy" :href="href" :class="combine(clickable, layout, props.class)"
-    :title="title">
+  <a v-if="isHref && !nuxtLink && !isDisabled && !isBusy" :href="href"
+    :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </a>
   <NuxtLink v-if="isHref && nuxtLink && !isDisabled && !isBusy" :href="href"
-    :class="combine(clickable, layout, props.class)" :title="title">
+    :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </NuxtLink>
-  <button v-if="!isHref && !isDisabled && !isBusy" :class="combine(clickable, layout, props.class)" :title="title"
+  <button v-if="!isHref && !isDisabled && !isBusy" :class="combineClasses(clickable, layout, props.class)" :title="title"
     :type="props.type" @click="emit('click')">
     <span :class="contentClass">
       <slot />
     </span>
   </button>
-  <span v-if="isDisabled && !isBusy" :class="combine(disabledNonClickable, layout, props.class)" :title="title">
+  <span v-if="isDisabled && !isBusy" :class="combineClasses(disabledNonClickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </span>
-  <span v-if="isBusy" :class="combine(busyNonClickable, layout, props.class)" :title="title">
+  <span v-if="isBusy" :class="combineClasses(busyNonClickable, layout, props.class)" :title="title">
     <span style="display: block; position: relative">
       <span :class="contentClass" style="visibility: hidden;">
         <slot />

@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
-import { GoroutineProfile } from '~/pprof/goroutines/parser';
-import { APP_URL, ICONS } from '../../const';
+import { GoroutineProfile, filter } from '~/pprof/goroutines';
+import { APP_URL, ICONS } from '~/const';
 
 const props = defineProps({
   data: { type: Object, default: null },
@@ -48,26 +48,50 @@ class TableControl {
 };
 const tableControl = new TableControl();
 provide('TableControl', tableControl);
+
+
+const textFilter = ref('');
+const displayData = ref<GoroutineProfile | null>(null);
+
+const refreshDisplayData = () => {
+  if (!props.data) {
+    displayData.value = null;
+    return;
+  }
+
+  displayData.value = filter(props.data as GoroutineProfile, {
+    text: textFilter.value,
+  });
+}
+watch(() => props.data, () => {
+  textFilter.value = '';
+  refreshDisplayData();
+});
+watch(textFilter, () => refreshDisplayData());
+refreshDisplayData();
 </script>
 
 <template>
   <div class="flex gap-1 mt-4 mb-2">
-    <Button @click="emit('reset')" size="sm">
+    <Button size="sm" @click="emit('reset')">
       <Icon :name="ICONS.RESET" />
       <span class="hidden md:inline">Try another stack trace</span>
     </Button>
-    <Button @click="() => tableControl.expand()" size="sm" title="Expand all table rows">
+    <Button size="sm" title="Expand all table rows" @click="() => tableControl.expand()">
       <Icon :name="ICONS.EXPAND" />
     </Button>
-    <Button @click="() => tableControl.collapse()" size="sm" title="Collapse all table rows">
+    <Button size="sm" title="Collapse all table rows" @click="() => tableControl.collapse()">
       <Icon :name="ICONS.COLLAPSE" />
     </Button>
-    <div class="grow"> </div>
+
+    <TextField ref="textFilterField" v-model="textFilter" class="w-64" placeholder="Filter by text..." hotkey="ctrl+K" :clearable="true" />
+
+    <div class="grow"></div>
     <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard" size="sm">
       <Icon :name="ICONS.LINK" />
     </CopyButton>
     <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink" size="sm" />
   </div>
 
-  <GoroutinesTable :data="data" />
+  <GoroutinesTable v-if="displayData" :data="displayData" />
 </template>

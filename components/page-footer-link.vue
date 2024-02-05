@@ -21,7 +21,7 @@ const anchorClass = {
 const spanClass = {
   'text-sm': true,
   'flex-1': true,
-  flex: true,
+  'flex': true,
   'gap-1': true,
   'items-center': true,
   'place-items-center': true

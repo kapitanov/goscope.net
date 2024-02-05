@@ -1,25 +1,9 @@
 <script setup lang="ts">
 import { ICONS } from '../../const';
 
-import { example } from '~/pprof/goroutines/example';
-import { parse } from '~/pprof/goroutines/parser';
+import { example, parse } from '~/pprof/goroutines';
 
 const emit = defineEmits(['data']);
-
-const textareaClass = {
-  'font-mono': true,
-  'bg-white': true,
-  rounded: true,
-  outline: true,
-  'outline-1': true,
-  'outline-gray-500': true,
-  'hover:outline-cyan-700': true,
-  'focus:outline-cyan-700': true,
-  'px-2': true,
-  'py-2': true,
-  'w-full': true,
-  'h-64': true
-};
 
 const error = ref<any | null>(null);
 const disabled = ref<boolean>(false);
@@ -68,29 +52,29 @@ const goHandler = () => {
     Paste your PPROF stack trace into a text field below:
   </div>
 
-  <TextField v-model="text" type="textarea" :class="textareaClass" placeholder="Paste your stack trace here"
-    :disabled="disabled" />
+  <TextField v-model="text" type="textarea" class="w-full" placeholder="Paste your stack trace here" :disabled="disabled"
+    :autofocus="true" />
 
-  <div class="flex flex-col md:flex-row gap-1">
+  <div class="flex flex-col md:flex-row gap-1 mt-2">
     <div class="flex gap-1">
-      <Button :disabled="disabled" @click="goHandler" class="w-full md:w-auto">
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="goHandler">
         <Icon :name="ICONS.GO" />
         <span>Go!</span>
-        <HotkeyHint :ctrl="true">Enter</HotkeyHint>
+        <HotkeyHint hotkey="Ctrl+Enter" />
       </Button>
-      <Button :disabled="disabled" @click="useExampleHandler" class="w-full md:w-auto">
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="useExampleHandler">
         <Icon :name="ICONS.USE_EXAMPLE" />
         <span>Use an example input</span>
       </Button>
     </div>
     <div class="hidden md:block grow"></div>
     <div class="flex gap-1">
-      <Button :disabled="disabled" @click="pasteHandler" class="w-full md:w-auto">
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="pasteHandler">
         <Icon :name="ICONS.PASTE" />
         <span>Paste from clipboard</span>
-        <HotkeyHint :ctrl="true">V</HotkeyHint>
+        <HotkeyHint hotkey="Ctrl+V" />
       </Button>
-      <Button :disabled="disabled" @click="clearHandler" class="w-full md:w-auto">
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="clearHandler">
         <Icon :name="ICONS.CLEAR" />
         <span>Clear</span>
       </Button>

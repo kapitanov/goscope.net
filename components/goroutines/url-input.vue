@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { APP_URL, ICONS } from '../../const';
-import { fetch } from '~/pprof/goroutines/fetcher';
+import { APP_URL, ICONS } from '~/const';
+import { fetch } from '~/pprof/goroutines';
 
 const emit = defineEmits(['data']);
 
@@ -87,9 +87,8 @@ const useExampleHandler = () => {
         return;
     }
 
-    window.location.hostname
-    url.value = window && window.location ?
-        `${window.location.origin}/debug/pprof/goroutine?debug=2`
+    url.value = window && window.location
+        ? `${window.location.origin}/debug/pprof/goroutine?debug=2`
         : `${APP_URL}/debug/pprof/goroutine?debug=2`;
     useTrackEvent('select_content', { content_type: 'example', content_id: 'goroutines_url' });
 };
@@ -115,29 +114,30 @@ const clearHandler = () => {
         </div>
 
         <div class="flex gap-2">
-            <TextField type="url" v-model="url" placeholder="Paste your URL here" :disabled="disabled" />
+            <TextField v-model="url" type="url" class="w-full" placeholder="Paste your URL here" :disabled="disabled"
+                :autofocus="true" />
         </div>
 
         <div class="flex flex-col md:flex-row gap-1">
             <div class="flex gap-1">
-                <Button :disabled="disabled" @click="goHandler" class="w-full md:w-auto">
+                <Button :disabled="disabled" class="w-full md:w-auto" @click="goHandler">
                     <Icon :name="ICONS.GO" />
                     <span>Go!</span>
-                    <HotkeyHint :ctrl="true">Enter</HotkeyHint>
+                    <HotkeyHint hotkey="Ctrl+Enter" />
                 </Button>
-                <Button :disabled="disabled" @click="useExampleHandler" class="w-full md:w-auto">
+                <Button :disabled="disabled" class="w-full md:w-auto" @click="useExampleHandler">
                     <Icon :name="ICONS.USE_EXAMPLE" />
                     <span>Use an example input</span>
                 </Button>
             </div>
             <div class="hidden md:block grow"></div>
             <div class="flex gap-1">
-                <Button :disabled="disabled" @click="pasteHandler" class="w-full md:w-auto">
+                <Button :disabled="disabled" class="w-full md:w-auto" @click="pasteHandler">
                     <Icon :name="ICONS.PASTE" />
                     <span>Paste from clipboard</span>
-                    <HotkeyHint :ctrl="true">V</HotkeyHint>
+                    <HotkeyHint hotkey="Ctrl+V" />
                 </Button>
-                <Button :disabled="disabled" @click="clearHandler" class="w-full md:w-auto">
+                <Button :disabled="disabled" class="w-full md:w-auto" @click="clearHandler">
                     <Icon :name="ICONS.CLEAR" />
                     <span>Clear</span>
                 </Button>

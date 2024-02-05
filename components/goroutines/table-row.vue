@@ -12,8 +12,8 @@ defineProps({
 const expanded = ref(false);
 const tableControl = inject<TableControl>('TableControl');
 if (tableControl) {
-  tableControl.onExpand(() => expanded.value = true);
-  tableControl.onCollapse(() => expanded.value = false);
+  tableControl.onExpand(() => { expanded.value = true; });
+  tableControl.onCollapse(() => { expanded.value = false; });
 }
 
 const toggleHandler = () => {
@@ -23,19 +23,19 @@ const toggleHandler = () => {
 <template>
   <div class="flex flex-col gap-1 px-2 py-1 font-mono border-b boder-gray-200">
     <div class="flex flex-row gap-2">
-      <div class="w-6">
+      <div class="w-6 shrink-0">
         <a href="" class="block hover:text-cyan-700" @click.prevent="toggleHandler">
-          <Icon :name="ICONS.EXPAND_ROW" v-if="!expanded" />
-          <Icon :name="ICONS.COLLAPSE_ROW" v-if="expanded" />
+          <Icon v-if="!expanded" :name="ICONS.EXPAND_ROW" />
+          <Icon v-if="expanded" :name="ICONS.COLLAPSE_ROW" />
         </a>
       </div>
-      <div class="w-16">
+      <div class="w-16 shrink-0">
         {{ item.id }}
       </div>
-      <div class="hidden md:block w-48 overflow-hidden text-ellipsis" :title="item.state">
+      <div class="hidden md:block w-48 shrink-0 overflow-hidden text-ellipsis" :title="item.state">
         {{ item.state }}
       </div>
-      <div class="block md:hidden grow overflow-hidden text-ellipsis" :title="item.state">
+      <div class="block md:hidden grow shrink-0 overflow-hidden text-ellipsis" :title="item.state">
         {{ item.state }}
       </div>
       <div class="hidden md:block grow">
@@ -47,7 +47,7 @@ const toggleHandler = () => {
     </div>
 
     <div class="flex md:hidden flex-row gap-2">
-      <div class="w-6"></div>
+      <div class="w-6 shrink-0"></div>
       <div class="grow">
         <a href="" class="block hover:text-cyan-700 hover:underline decoration-cyan-700 text-balance break-all"
           @click.prevent="toggleHandler">
@@ -56,10 +56,10 @@ const toggleHandler = () => {
       </div>
     </div>
 
-    <div class="flex flex-row gap-2" v-if="expanded">
-      <div class="w-6"> </div>
-      <div class="w-16 hidden lg:block"> </div>
-      <div class="w-48 hidden lg:block"> </div>
+    <div v-if="expanded" class="flex flex-row gap-2">
+      <div class="w-6 shrink-0"> </div>
+      <div class="w-16 shrink-0 hidden lg:block"> </div>
+      <div class="w-48 shrink-0 hidden lg:block"> </div>
       <div class="grow">
         <ul class="border-s-2 border-cyan-900">
           <li v-for="frame in item.stack" :key="frame.id" class="flex flex-col ms-2">

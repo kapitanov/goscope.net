@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { GoroutineProfile } from '~/pprof/goroutines/parser';
-import { fetch } from '~/pprof/goroutines/fetcher';
+import { GoroutineProfile, fetch } from '~/pprof/goroutines';
 
 const router = useRouter();
 const props = defineProps({
@@ -30,9 +29,7 @@ const onReset = () => {
 <template>
     <div>
         <GoroutinesHeader v-if="data">
-            <span class="text-gray-500 py-1 text-balance break-all">
-                Displaying data from <span class="font-mono">{{ props.url }}</span>
-            </span>
+            Displaying data from <span class="font-mono">{{ props.url }}</span>
         </GoroutinesHeader>
 
         <GoroutinesViewer v-if="data" :data="data" @reset="onReset" />

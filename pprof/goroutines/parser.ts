@@ -1,21 +1,4 @@
-export interface GoroutineStackFrame {
-  function: string;
-  file: string;
-  line?: number;
-  offset?: string;
-}
-
-export interface Goroutine {
-  id: number;
-  state: string;
-  stack: GoroutineStackFrame[];
-}
-
-export interface GoroutineProfile {
-  items: Goroutine[];
-  url?: string;
-  text?: string;
-}
+import { GoroutineProfile, Goroutine, GoroutineStackFrame } from './model';
 
 export const parse = (input: string): GoroutineProfile => {
   if (input.match(/^\s*$/)) {
@@ -48,7 +31,7 @@ function parseGoroutineProfile(input: string): GoroutineProfile {
 
   goroutines.sort((a, b) => a.id - b.id);
 
-  return { items: goroutines };
+  return { items: goroutines, total: goroutines.length };
 }
 
 function parseGoroutine(reader: TextReader): Goroutine | null {

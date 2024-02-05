@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
-import { GoroutineProfile } from '~/pprof/goroutines/parser';
+import { GoroutineProfile } from '~/pprof/goroutines';
 
 const data = ref<GoroutineProfile | null>(null);
 
@@ -21,10 +21,10 @@ const onSelectTab = (tab: string) => {
 <template>
   <div>
     <GoroutinesHeader>
-      <span v-if="data?.url" class="text-gray-500">
+      <span v-if="data?.url">
         Displaying data from <span class="font-mono">{{ data.url }}</span>
       </span>
-      <span v-if="data?.text" class="text-gray-500">
+      <span v-if="data?.text">
         Displaying data from manually entered text
       </span>
       <TabBar v-if="!data" class="grow " :active="activeTab" @select="onSelectTab">

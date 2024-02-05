@@ -1,8 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
-import { example } from '~/pprof/goroutines/example';
-import { parse } from '~/pprof/goroutines/parser';
+import { example, parse } from '~/pprof/goroutines';
 const router = useRouter();
 
 const data = parse(example);
@@ -15,9 +14,7 @@ const onReset = () => {
 <template>
      <div>
           <GoroutinesHeader>
-               <span class="text-gray-500">
-                    Displaying demo data
-               </span>
+               Displaying demo data
           </GoroutinesHeader>
 
           <GoroutinesViewer :data="data" @reset="onReset" />
