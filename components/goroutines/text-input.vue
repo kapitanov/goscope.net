@@ -49,13 +49,13 @@ const goHandler = () => {
   <Hotkey hotkey="Ctrl+V" @pressed="pasteHandler" />
 
   <div class="mb-2">
-    Paste your PPROF stack trace into a text field below:
+    Paste your PPROF stack trace into a text field below (it won't be sent anywhere) and click "Go!" to visualize it.
   </div>
 
   <TextField v-model="text" type="textarea" class="w-full" placeholder="Paste your stack trace here" :disabled="disabled"
     :autofocus="true" />
 
-  <div class="flex flex-col md:flex-row gap-1 mt-2">
+  <div class="flex flex-col md:flex-row gap-2 mt-2">
     <div class="flex gap-1">
       <Button :disabled="disabled" class="w-full md:w-auto" @click="goHandler">
         <Icon :name="ICONS.GO" />
@@ -79,6 +79,11 @@ const goHandler = () => {
         <span>Clear</span>
       </Button>
     </div>
+  </div>
+
+  <div class="grow text-gray-500 text-sm mt-2">
+    We will process this PPROF text locally.
+    No data will be sent to our servers.
   </div>
 
   <div class="mt-2">

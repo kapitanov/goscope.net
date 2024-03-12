@@ -14,10 +14,12 @@ import { ICONS } from '../const';
         <h2 class="text-2xl sm:text-4xl font-bold text-gray-100">
           Let's explore your Go programs!
         </h2>
+        <!--
         <div class="mt-6 text-lg text-gray-300">
           This is a collection of interactive visualizations to help you
           understand how your Go programs work.
         </div>
+        -->
       </div>
     </div>
 

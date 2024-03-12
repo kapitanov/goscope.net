@@ -5,7 +5,7 @@ const config = useRuntimeConfig();
 </script>
 
 <template>
-    <div v-if="config.public.environment === 'STAGING'">
+    <span v-if="config.public.environment === 'STAGING'">
         <slot></slot>
-    </div>
+    </span>
 </template>

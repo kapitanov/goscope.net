@@ -109,8 +109,10 @@ const clearHandler = () => {
 
     <form class="flex flex-col gap-2" @submit.prevent="goHandler">
         <div>
-            Paste an URL of your PPROF goroutines endpoint into a text field below
-            (it works event with localhost URLs!):
+            Paste an URL of your PPROF goroutines endpoint into a text field below and click "Go!" to visualize it.
+        </div>
+        <div>
+            It works event with localhost URLs (assuming you have correct CORS policy on your service's side)!
         </div>
 
         <div class="flex gap-2">

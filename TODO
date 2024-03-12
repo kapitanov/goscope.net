@@ -1,4 +1,4 @@
-[ ] Transfer domain and drop AWS (or not?)
+[x] Transfer domain and drop AWS (or not?)
 [ ] Deploy to prod on release only
 [ ] write README
 [ ] squash commits

@@ -3,8 +3,8 @@
 <script setup lang="ts">
 import * as C from '../const';
 useHead({
-  ...C.HEAD,
-  title: C.APP_NAME,
+    ...C.HEAD,
+    title: C.APP_NAME,
 });
 </script>
 <template>
@@ -19,7 +19,7 @@ useHead({
             </header>
 
             <main>
-                <section class="px-8 pb-8">
+                <section class="px-8 pb-8 min-h-[100vh]">
                     <NuxtPage />
                 </section>
 

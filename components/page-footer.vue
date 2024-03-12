@@ -2,7 +2,7 @@
 
 <script setup>
 import moment from 'moment';
-import { GITHUB_URL, MAINTAINER_NAME, MAINTAINER_URL, ICONS, githubCommitUrl } from '../const';
+import { GITHUB_URL, githubCommitUrl } from '../const';
 const year = new Date(Date.now()).getFullYear();
 const config = useRuntimeConfig();
 
@@ -19,27 +19,19 @@ if (config.public.commitHash) {
 
 <template>
   <div class="border-t-2 pt-4">
-    <div class="flex text-sm">
-      <div class="w-6/12 flex justify-start text-gray-800 items-center gap-1">
-        <PageFooterLink :href="GITHUB_URL" target="_blank" style="display: inline-block;">
-          <Icon :name="ICONS.GITHUB" />
-          View on GitHub
-        </PageFooterLink>
-        <Icon :name="ICONS.COPYRIGHT" />
-        {{ year }}
-        <Beta>
-          (This is a beta version)
-        </Beta>
-        Built by
-        <PageFooterLink :href="MAINTAINER_URL" target="_blank" style="display: inline-block;">
-          {{ MAINTAINER_NAME }}
-        </PageFooterLink>
-      </div>
-      <div class="w-6/12 flex justify-end items-center place-items-center gap-1 ">
+    <div class="flex flex-col md:flex-row text-sm">
+      <div class="w-full md:w-auto">
+        &copy; {{ year }}
         Built at {{ buildDate }} from commit
-        <PageFooterLink :href="githubCommitUrl(commit)" target="_blank" style="display: inline-block;">
-          {{ commit }}
-        </PageFooterLink>
+        <PageFooterLink :href="githubCommitUrl(commit)" target="_blank">{{ commit }}</PageFooterLink>.
+        <Beta>(This is a beta version)</Beta>
+      </div>
+      <div class="grow-0 md:grow">
+      </div>
+      <div class="w-full md:w-auto">
+        <PageFooterLink href="/terms">Terms and conditions</PageFooterLink> |
+        <PageFooterLink href="/privacy-policy" style="display: inline-block;">Privacy policy</PageFooterLink> |
+        <PageFooterLink :href="GITHUB_URL" target="_blank" style="display: inline-block;">Source code</PageFooterLink>
       </div>
     </div>
   </div>

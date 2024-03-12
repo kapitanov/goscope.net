@@ -35,7 +35,7 @@ if (props.enable) {
 </script>
 <template>
     <ClientOnly>
-        <div v-if="show">
+        <template v-if="show">
             <slot></slot>
             <div class="fixed bottom-0 left-0 top-0 right-0 z-10 bg-white/50"> </div>
             <div
@@ -55,9 +55,9 @@ if (props.enable) {
                     <Button @click="decline">Decline</Button>
                 </div>
             </div>
-        </div>
-        <div v-else>
+        </template>
+        <template v-else>
             <slot></slot>
-        </div>
+        </template>
     </ClientOnly>
 </template>

@@ -1,9 +1,11 @@
 export const APP_NAME = 'goscope.net';
 export const APP_NAME_SHORT = 'scope.net';
 export const APP_URL = 'https://goscope.net';
-export const MAINTAINER_NAME='Albert Kapitanov';
-export const MAINTAINER_URL='https://github.com/kapitanov';
+export const MAINTAINER_NAME = 'Albert Kapitanov';
+export const MAINTAINER_URL = 'https://github.com/kapitanov';
 export const GITHUB_URL = 'https://github.com/kapitanov/goscope.net';
+export const GITHUB_ISSUES_URL =  `${GITHUB_URL}/issues`;
+
 export const githubCommitUrl = (commitHash: string) => {
   return `${GITHUB_URL}/commit/${commitHash}`;
 };

@@ -6,9 +6,7 @@ defineProps({
   style: { type: Object, default: null }
 });
 const anchorClass = {
-  flex: true,
-  'items-center': true,
-  'place-items-center': true,
+  'inline-block': true,
   'text-cyan-800': true,
   'no-underline': true,
   'hover:text-cyan-600': true,
