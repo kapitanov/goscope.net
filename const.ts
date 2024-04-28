@@ -16,7 +16,7 @@ export const ICONS = {
   ARROW_LEFT: 'ph:arrow-left',
   COPY: 'ph:copy',
   COPY_OK: 'ph:check-square-offset',
-  COPY_ERROR: 'ph:warning-circle-fill',
+  COPY_ERROR: 'ph:x-square-fill',
   PASTE: 'ph:clipboard',
   CLEAR: 'ph:trash',
   USE_EXAMPLE: 'ph:bookmark-simple',

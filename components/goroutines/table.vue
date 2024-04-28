@@ -47,7 +47,8 @@ defineProps({
   </div>
 
   <div class="text-gray-600 text-sm mt-2">
-    Click on a goroutine to see its stack trace.
-    Runnable goroutines are highlighted <span class="text-green-900">in green</span>, non-runnable - <span class="text-red-900">in red</span>.
+    Click on a goroutine to see its stack trace. Runnable goroutines are
+    highlighted <span class="text-green-900">in green</span>, non-runnable -
+    <span class="text-red-900">in red</span>.
   </div>
 </template>
