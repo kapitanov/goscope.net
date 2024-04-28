@@ -32,10 +32,11 @@ export default defineNuxtConfig({
   ...runtime,
 
   modules: [
-    'nuxt-icon',
     '@nuxt/image',
     '@nuxtjs/tailwindcss',
+    '@vite-pwa/nuxt',
     'nuxt-gtag',
+    'nuxt-icon',
     'nuxt-snackbar'
   ],
   snackbar: {
@@ -67,6 +68,51 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1'
+    }
+  },
+  pwa: {
+    strategies: 'injectManifest',
+    srcDir: 'service-worker',
+    filename: 'index.ts',
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'goscope.net',
+      short_name: 'goscope_net',
+      theme_color: '#ffffff',
+      icons: [
+        {
+          src: 'pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
+        {
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable'
+        }
+      ]
+    },
+    workbox: {
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+    },
+    injectManifest: {
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+    },
+    client: {
+      installPrompt: true,
+    },
+    devOptions: {
+      enabled: true,
+      suppressWarnings: true,
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module'
     }
   }
 });
