@@ -1,8 +1,18 @@
 # goscope.net
 
+![GitHub Release](https://img.shields.io/github/v/release/kapitanov/goscope.net?style=flat&label=release)
+![GitHub Actions Workflow Status - Release](https://img.shields.io/github/actions/workflow/status/kapitanov/goscope.net/release.yaml?style=flat&label=release)
+![GitHub Actions Workflow Status - Staging](https://img.shields.io/github/actions/workflow/status/kapitanov/goscope.net/master.yaml?style=flat&label=staging)
+![GitHub License](https://img.shields.io/github/license/kapitanov/goscope.net?style=flat)
+
 A small set of tools to expore state of Golang programs.
 
 This application is a small frontend-only web application written with Vue and Nuxt.
+
+## Links
+
+- [goscope.net](https://goscope.net)
+- [staging.goscope.net](https://staging.goscope.net)
 
 ## Motivation
 

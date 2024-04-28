@@ -36,7 +36,7 @@ jobs:
       - name: Build project for staging
         run: make build
         env:
-          GOOGLE_ANALYTICS_TOKEN: ${{ secrets.GOOGLE_STAGING_PRODUCTION_TOKEN }}
+          GOOGLE_ANALYTICS_TOKEN: ${{ secrets.GOOGLE_ANALYTICS_STAGING_TOKEN }}
           ENV: STAGING
       - name: Deploy project to staging
         run: make deploy
