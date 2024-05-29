@@ -37,6 +37,6 @@
     "nuxt-snackbar": "^1.0.4",
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
-    "wrangler": "^3.52.0"
+    "wrangler": "^3.57.2"
   }
 }
