@@ -36,7 +36,7 @@
     "nuxt-icon": "^0.6.10",
     "nuxt-snackbar": "^1.0.4",
     "prettier": "^3.3.2",
-    "ts-jest": "^29.1.4",
+    "ts-jest": "^29.2.0",
     "wrangler": "^3.63.1"
   }
 }
