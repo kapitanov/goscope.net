@@ -12,9 +12,24 @@ jobs:
     runs-on: ubuntu-latest
     name: Pull request build
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node env
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: make install
-      - run: make build
+      - name: Cache node_modules
+        uses: actions/cache@v4.0.2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: make install
+      - name: Test project
+        run: make test
+      - name: Lint project
+        run: make lint
+      - name: Build project
+        run: make build
