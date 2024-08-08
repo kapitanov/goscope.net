@@ -7,7 +7,9 @@ const activeTab = inject<string>('activeTab');
 
 const selectTab = inject<(tab: string) => void>('selectTab');
 const onClick = () => {
-  selectTab && selectTab(props.name);
+  if(selectTab) {
+    selectTab(props.name);
+  }
 };
 
 const activeClass = {
