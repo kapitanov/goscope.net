@@ -4,9 +4,7 @@
 </template>
 
 <script setup lang="ts">
-const isMacOS = /(Mac|iPhone|iPod|iPad)/i.test(
-  (navigator && navigator.platform) || ''
-);
+const isMacOS = /(Mac|iPhone|iPod|iPad)/i.test((navigator && navigator.platform) || '');
 const props = defineProps({
   hotkey: { type: String, default: '' }
 });

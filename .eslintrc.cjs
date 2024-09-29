@@ -2,11 +2,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:vue/vue3-recommended',
-    'prettier'
-  ],
+  extends: ['@nuxtjs/eslint-config-typescript', 'plugin:vue/vue3-recommended', 'prettier'],
   rules: {
     semi: ['off'],
     'space-before-function-paren': ['off'],

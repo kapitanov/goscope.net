@@ -1,61 +1,37 @@
-import { GoroutineProfile, Goroutine } from './model';
+import Fuse from 'fuse.js';
+import { GoroutineProfile } from './model';
 
 export interface FilterArgs {
   text?: string;
 }
 
-export const filter = (
-  profile: GoroutineProfile,
-  args: FilterArgs
-): GoroutineProfile => {
-  const predicate = createGoroutinePredicate(args);
-  return {
-    items: profile.items.filter(predicate),
-    url: profile.url,
-    text: profile.text,
-    total: profile.total
-  };
+export const filter = (profile: GoroutineProfile, args: FilterArgs): GoroutineProfile => {
+  if (args.text) {
+    profile = filterByText(profile, args.text);
+  }
+
+  return profile;
 };
 
-function createGoroutinePredicate(
-  args: FilterArgs
-): (goroutine: Goroutine) => boolean {
-  const predicates: ((goroutine: Goroutine) => boolean)[] = [];
+function filterByText(profile: GoroutineProfile, query: string): GoroutineProfile {
+  const textDocuments = profile.items.map((goroutine) => ({
+    goroutine,
+    text: [
+      `${goroutine.id}`,
+      goroutine.state,
+      ...goroutine.stack.map((frame) => {
+        return `${frame.function} ${frame.file}`;
+      })
+    ]
+  }));
 
-  if (args.text) {
-    const filterText = args.text.toLowerCase();
-    predicates.push((goroutine: Goroutine) => {
-      const text = getGoroutineText(goroutine).toLowerCase();
-      return text.includes(filterText);
-    });
-  }
+  const fuse = new Fuse(textDocuments, { keys: ['text'] });
+  const results = fuse.search(query);
 
-  return joinGoroutinePredicates(predicates);
-}
-
-function joinGoroutinePredicates(
-  predicates: ((goroutine: Goroutine) => boolean)[]
-): (goroutine: Goroutine) => boolean {
-  if (predicates.length === 0) {
-    return () => true;
-  }
-
-  if (predicates.length === 1) {
-    return predicates[0];
-  }
-
-  return (goroutine: Goroutine) =>
-    predicates.every((predicate) => predicate(goroutine));
-}
-
-function getGoroutineText(goroutine: Goroutine): string {
-  let text = '';
-  const frame = goroutine.stack[0];
-
-  text += `${frame.function}\n`;
-  if (frame.file) {
-    text += `${frame.file}\n`;
-  }
-
-  return text;
+  return {
+    items: results.map((x) => x.item.goroutine),
+    url: profile.url,
+    text: profile.text,
+    total: results.length
+  };
 }

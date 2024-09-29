@@ -59,12 +59,7 @@ const clickHandler = async () => {
 </script>
 <template>
   <span class="flex">
-    <button
-      :class="buttonClass"
-      type="button"
-      :disabled="state !== 'idle'"
-      @click.prevent="clickHandler"
-    >
+    <button :class="buttonClass" type="button" :disabled="state !== 'idle'" @click.prevent="clickHandler">
       <Icon v-if="state === 'idle'" :name="ICONS.COPY" />
       <Icon v-if="state === 'ok'" :name="ICONS.COPY_OK" />
       <Icon v-if="state === 'error'" :name="ICONS.COPY_ERROR" />

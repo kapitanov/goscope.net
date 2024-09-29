@@ -2,9 +2,7 @@
 const props = defineProps({
   hotkey: { type: String, default: '' }
 });
-const isMacOS = /(Mac|iPhone|iPod|iPad)/i.test(
-  (navigator && navigator.platform) || ''
-);
+const isMacOS = /(Mac|iPhone|iPod|iPad)/i.test((navigator && navigator.platform) || '');
 const commandButton = isMacOS ? '\u2318' : 'Ctrl';
 
 const hotkey = computed(() => {

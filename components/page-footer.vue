@@ -22,25 +22,16 @@ if (config.public.commitHash) {
     <div class="flex flex-col md:flex-row text-sm">
       <div class="w-full md:w-auto">
         &copy; {{ year }} Built at {{ buildDate }} from commit
-        <PageFooterLink :href="githubCommitUrl(commit)" target="_blank">{{
-          commit
-        }}</PageFooterLink
+        <PageFooterLink :href="githubCommitUrl(commit)" target="_blank">{{ commit }}</PageFooterLink
         >.
         <Beta>(This is a beta version)</Beta>
       </div>
       <div class="grow-0 md:grow"></div>
       <div class="w-full md:w-auto">
         <PageFooterLink href="/terms">Terms and conditions</PageFooterLink> |
-        <PageFooterLink href="/privacy-policy" style="display: inline-block"
-          >Privacy policy</PageFooterLink
-        >
+        <PageFooterLink href="/privacy-policy" style="display: inline-block">Privacy policy</PageFooterLink>
         |
-        <PageFooterLink
-          :href="GITHUB_URL"
-          target="_blank"
-          style="display: inline-block"
-          >Source code</PageFooterLink
-        >
+        <PageFooterLink :href="GITHUB_URL" target="_blank" style="display: inline-block">Source code</PageFooterLink>
       </div>
     </div>
   </div>

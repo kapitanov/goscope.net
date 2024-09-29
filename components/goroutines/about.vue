@@ -57,8 +57,7 @@ const collapseButtonBottom = {
         serves via its HTTP server runtime profiling data.
       </p>
       <p>
-        The package is typically only imported for the side effect of
-        registering its HTTP handlers. The handled paths all begin with
+        The package is typically only imported for the side effect of registering its HTTP handlers. The handled paths all begin with
         <code class="font-mono text-cyan-900">/debug/pprof/</code>.
       </p>
 
@@ -72,17 +71,13 @@ const collapseButtonBottom = {
       <Code :code="exampleSourceCode" />
 
       <p>
-        <strong>Goroutines viewer</strong> needs only one of profiles data,
-        which is <code class="font-mono text-cyan-900">goroutine</code> profile
-        in <code class="font-mono text-cyan-900">?debug=2</code> format.
+        <strong>Goroutines viewer</strong> needs only one of profiles data, which is <code class="font-mono text-cyan-900">goroutine</code> profile in
+        <code class="font-mono text-cyan-900">?debug=2</code> format.
       </p>
 
       <p>
         To get it, run the program and open
-        <Hyperlink
-          href="http://localhost:6060/debug/pprof/goroutine?debug=2"
-          target="_blank"
-        />
+        <Hyperlink href="http://localhost:6060/debug/pprof/goroutine?debug=2" target="_blank" />
         in your browser.
       </p>
     </div>

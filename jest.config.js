@@ -4,10 +4,7 @@ export default {
   testEnvironment: 'node',
   reporters: [
     'default',
-    [
-      'jest-junit',
-      { outputDirectory: '.output', outputName: 'test-results.xml' }
-    ],
+    ['jest-junit', { outputDirectory: '.output', outputName: 'test-results.xml' }],
     ['github-actions', { silent: false }],
     'summary'
   ]
