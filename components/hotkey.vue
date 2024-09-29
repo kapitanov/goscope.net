@@ -21,7 +21,15 @@ const hotkey = computed(() => {
 });
 
 const keyDownHandler = (e: KeyboardEvent) => {
-  if (e.key.toLowerCase() !== hotkey.value.key) {
+  if (!hotkey.value.ctrl) {
+    const focused = document.activeElement as HTMLElement;
+    if (focused.tagName === 'INPUT' || focused.tagName === 'TEXTAREA') {
+      return;
+    }
+  }
+
+  const expected = hotkey.value.key.toLowerCase();
+  if (e.key.toLowerCase() !== expected && e.code.toLowerCase() !== expected) {
     return;
   }
 

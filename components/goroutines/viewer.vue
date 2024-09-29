@@ -74,6 +74,12 @@ watch(
 watch(textFilter, () => refreshDisplayData());
 watch(stateFilter, () => refreshDisplayData());
 refreshDisplayData();
+
+const hasFilter = computed(() => textFilter.value.length > 0 || stateFilter.value.length > 0);
+const clearFilter = () => {
+  textFilter.value = '';
+  stateFilter.value = [];
+};
 </script>
 
 <template>
@@ -101,7 +107,13 @@ refreshDisplayData();
     <div class="flex sm:flex-row flex-col gap-1 mb-1">
       <GoroutinesStateFilter v-model="stateFilter" class="w-full sm:w-1/2 lg:w-[220px]" :data="data" />
       <TextField ref="textFilterField" v-model="textFilter" class="w-full sm:w-1/2 lg:w-[220px]"
-        placeholder="Filter by text..." hotkey="ctrl+K" :clearable="true" />
+        placeholder="Filter by text..." hotkey="/" altHotkey="ctrl+KeyK" />
+      <Hotkey hotkey="KeyX" @pressed="clearFilter" />
+      <Button v-if="hasFilter" @click="clearFilter">
+        <Icon :name="ICONS.X" />
+        <span class="hidden lg:inline">Clear filter</span>
+        <HotkeyHint hotkey="X" />
+      </Button>
     </div>
 
     <div class="grow"></div>

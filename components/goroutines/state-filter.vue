@@ -37,14 +37,14 @@ const onSelect = (selected: string[]) => {
 
 <template>
     <div :class="combineClasses('inline-block', 'relative', props.class)">
-        <Hotkey hotkey="ctrl+F" @pressed="showModal" />
+        <Hotkey hotkey="KeyF" @pressed="showModal" />
         <Button class="w-full h-full" align="justify" :title="displayText" @click="showModal">
-            <Icon :name="ICONS.LIST_CHECKS" />
+            <Icon class="min-w-4" :name="ICONS.LIST_CHECKS" />
             <span class="me-1">State:</span>
             <span class="grow text-start inline-block align-top max-h-full text-nowrap text-ellipsis overflow-hidden">
                 {{ displayText }}
             </span>
-            <HotkeyHint hotkey="ctrl+F" />
+            <HotkeyHint hotkey="F" />
         </Button>
     </div>
 
