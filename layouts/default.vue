@@ -3,6 +3,32 @@
 <script setup lang="ts">
 import * as C from '../const';
 useHead({ ...C.HEAD, title: C.APP_NAME });
+
+const isModalOpen = ref(false);
+
+class ModalOverlay {
+  constructor() {
+    this.modal = null;
+  }
+
+  show(modal) {
+    this.modal = modal;
+    isModalOpen.value = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  click() {
+    this.modal?.closed();
+  }
+
+  hide() {
+    isModalOpen.value = false;
+    document.body.style.overflow = 'initial';
+    this.modal = null;
+  }
+}
+const modalOverlay = new ModalOverlay()
+provide('ModalOverlay', modalOverlay);
 </script>
 <template>
   <NuxtErrorBoundary>
@@ -23,6 +49,10 @@ useHead({ ...C.HEAD, title: C.APP_NAME });
         <footer class="w-100 px-8 pb-8">
           <PageFooter />
         </footer>
+
+        <div v-if="isModalOpen" class="fixed inset-0 bg-gray-50 bg-opacity-75 transition-opacity z-20"
+          @click="() => { modalOverlay.click(); }">
+        </div>
       </main>
     </GoogleAnalytics>
   </NuxtErrorBoundary>

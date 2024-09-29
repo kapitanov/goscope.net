@@ -10,6 +10,7 @@ export const githubCommitUrl = (commitHash: string) => {
   return `${GITHUB_URL}/commit/${commitHash}`;
 };
 
+// Refer to https://icones.js.org/ for icon names.
 export const ICONS = {
   GITHUB: 'ph:github-logo',
   ARROW_RIGHT: 'ph:arrow-right',
@@ -33,6 +34,10 @@ export const ICONS = {
   COLLAPSE: 'mdi:arrow-collapse-vertical',
   EXPAND_ROW: 'ph:plus-square',
   COLLAPSE_ROW: 'ph:minus-square',
+  LIST_CHECKS: 'ph:list-checks',
+  CHECK: 'ph:check',
+  CHECK_SQUARE: 'ph:check-square',
+  SQUARE: 'ph:square',
 
   GOLANG: 'tabler:brand-golang',
   GOPHER: 'logos:gopher'

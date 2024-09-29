@@ -50,6 +50,7 @@ const tableControl = new TableControl();
 provide('TableControl', tableControl);
 
 const textFilter = ref('');
+const stateFilter = ref([]);
 const displayData = ref<GoroutineProfile | null>(null);
 
 const refreshDisplayData = () => {
@@ -59,7 +60,8 @@ const refreshDisplayData = () => {
   }
 
   displayData.value = filter(props.data as GoroutineProfile, {
-    text: textFilter.value
+    text: textFilter.value,
+    states: stateFilter.value,
   });
 };
 watch(
@@ -70,29 +72,46 @@ watch(
   }
 );
 watch(textFilter, () => refreshDisplayData());
+watch(stateFilter, () => refreshDisplayData());
 refreshDisplayData();
 </script>
 
 <template>
-  <div class="flex gap-1 mt-4 mb-2">
-    <Button size="sm" @click="emit('reset')">
-      <Icon :name="ICONS.RESET" />
-      <span class="hidden md:inline">Try another stack trace</span>
-    </Button>
-    <Button size="sm" title="Expand all table rows" @click="() => tableControl.expand()">
-      <Icon :name="ICONS.EXPAND" />
-    </Button>
-    <Button size="sm" title="Collapse all table rows" @click="() => tableControl.collapse()">
-      <Icon :name="ICONS.COLLAPSE" />
-    </Button>
+  <div class="flex flex-col lg:flex-row gap-1 mt-4 mb-2">
+    <div class="flex flex-row gap-1 mb-1 justify-items-stretch lg:justify-items-start">
+      <Button align="center" class="grow lg:grow-0" @click="emit('reset')">
+        <Icon :name="ICONS.RESET" />
+        <span class="hidden md:inline">Try another stack trace</span>
+      </Button>
+      <Button title="Expand all table rows" class="grow lg:grow-0" @click="() => tableControl.expand()">
+        <Icon :name="ICONS.EXPAND" />
+      </Button>
+      <Button title="Collapse all table rows" class="grow lg:grow-0" @click="() => tableControl.collapse()">
+        <Icon :name="ICONS.COLLAPSE" />
+      </Button>
 
-    <TextField ref="textFilterField" v-model="textFilter" class="w-64" placeholder="Filter by text..." hotkey="ctrl+K" :clearable="true" />
+      <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard"
+        class="inline-block grow lg:hidden">
+        <Icon :name="ICONS.LINK" />
+      </CopyButton>
+      <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink"
+        class="inline-block grow lg:hidden" />
+    </div>
+
+    <div class="flex sm:flex-row flex-col gap-1 mb-1">
+      <GoroutinesStateFilter v-model="stateFilter" class="w-full sm:w-1/2 lg:w-[220px]" :data="data" />
+      <TextField ref="textFilterField" v-model="textFilter" class="w-full sm:w-1/2 lg:w-[220px]"
+        placeholder="Filter by text..." hotkey="ctrl+K" :clearable="true" />
+    </div>
 
     <div class="grow"></div>
-    <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard" size="sm">
-      <Icon :name="ICONS.LINK" />
-    </CopyButton>
-    <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink" size="sm" />
+
+    <div class="hidden lg:flex flex-row gap-1 mb-1">
+      <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard">
+        <Icon :name="ICONS.LINK" />
+      </CopyButton>
+      <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink" />
+    </div>
   </div>
 
   <GoroutinesTable v-if="displayData" :data="displayData" />
