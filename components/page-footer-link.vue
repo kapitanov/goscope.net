@@ -27,24 +27,12 @@ const spanClass = {
 </script>
 
 <template>
-  <a
-    v-if="!nuxtLink"
-    :href="href"
-    :class="anchorClass"
-    :target="target"
-    :style="style"
-  >
+  <a v-if="!nuxtLink" :href="href" :class="anchorClass" :target="target" :style="style">
     <span :class="spanClass">
       <slot />
     </span>
   </a>
-  <NuxtLink
-    v-if="!!nuxtLink"
-    :href="href"
-    :class="anchorClass"
-    :target="target"
-    :style="style"
-  >
+  <NuxtLink v-if="!!nuxtLink" :href="href" :class="anchorClass" :target="target" :style="style">
     <span :class="spanClass">
       <slot />
     </span>

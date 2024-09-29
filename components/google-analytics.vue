@@ -37,11 +37,7 @@ router.afterEach(() => {
 });
 </script>
 <template>
-  <GdprConsentScreen
-    :enable="enableScreen"
-    @accepted="enableGoogleAnalytics(true)"
-    @declined="enableGoogleAnalytics(false)"
-  >
+  <GdprConsentScreen :enable="enableScreen" @accepted="enableGoogleAnalytics(true)" @declined="enableGoogleAnalytics(false)">
     <slot></slot>
   </GdprConsentScreen>
 </template>

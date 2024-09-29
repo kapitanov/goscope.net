@@ -7,7 +7,7 @@ const activeTab = inject<string>('activeTab');
 
 const selectTab = inject<(tab: string) => void>('selectTab');
 const onClick = () => {
-  if(selectTab) {
+  if (selectTab) {
     selectTab(props.name);
   }
 };
@@ -26,11 +26,7 @@ const inactiveClass = {
 </script>
 <template>
   <li>
-    <a
-      href=""
-      :class="activeTab === props.name ? activeClass : inactiveClass"
-      @click.prevent="onClick"
-    >
+    <a href="" :class="activeTab === props.name ? activeClass : inactiveClass" @click.prevent="onClick">
       <slot></slot>
     </a>
   </li>

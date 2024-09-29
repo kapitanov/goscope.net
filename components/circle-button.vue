@@ -33,12 +33,7 @@ const spanClass = {
       <slot />
     </span>
   </a>
-  <NuxtLink
-    v-if="!!nuxtLink"
-    :href="href"
-    :class="anchorClass"
-    :target="target"
-  >
+  <NuxtLink v-if="!!nuxtLink" :href="href" :class="anchorClass" :target="target">
     <span :class="spanClass">
       <slot />
     </span>

@@ -63,9 +63,7 @@ const colorSchemes = {
   }
 };
 
-const colors = computed(
-  () => colorSchemes[props.color] || colorSchemes.default
-);
+const colors = computed(() => colorSchemes[props.color] || colorSchemes.default);
 
 const layout = computed(() => {
   switch (props.size) {
@@ -92,17 +90,9 @@ const layout = computed(() => {
   }
 });
 
-const clickable = computed(
-  () => colors.value.clickable || colorSchemes.default.clickable
-);
-const disabledNonClickable = computed(
-  () =>
-    colors.value.disabledNonClickable ||
-    colorSchemes.default.disabledNonClickable
-);
-const busyNonClickable = computed(
-  () => colors.value.busyNonClickable || colorSchemes.default.busyNonClickable
-);
+const clickable = computed(() => colors.value.clickable || colorSchemes.default.clickable);
+const disabledNonClickable = computed(() => colors.value.disabledNonClickable || colorSchemes.default.disabledNonClickable);
+const busyNonClickable = computed(() => colors.value.busyNonClickable || colorSchemes.default.busyNonClickable);
 
 const contentClass = computed(() => {
   switch (props.size) {
@@ -138,22 +128,12 @@ const isBusy = computed(() => !props.disabled && !!props.busy);
 </script>
 
 <template>
-  <a
-    v-if="isHref && !nuxtLink && !isDisabled && !isBusy"
-    :href="href"
-    :class="combineClasses(clickable, layout, props.class)"
-    :title="title"
-  >
+  <a v-if="isHref && !nuxtLink && !isDisabled && !isBusy" :href="href" :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </a>
-  <NuxtLink
-    v-if="isHref && nuxtLink && !isDisabled && !isBusy"
-    :href="href"
-    :class="combineClasses(clickable, layout, props.class)"
-    :title="title"
-  >
+  <NuxtLink v-if="isHref && nuxtLink && !isDisabled && !isBusy" :href="href" :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
@@ -169,20 +149,12 @@ const isBusy = computed(() => !props.disabled && !!props.busy);
       <slot />
     </span>
   </button>
-  <span
-    v-if="isDisabled && !isBusy"
-    :class="combineClasses(disabledNonClickable, layout, props.class)"
-    :title="title"
-  >
+  <span v-if="isDisabled && !isBusy" :class="combineClasses(disabledNonClickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </span>
-  <span
-    v-if="isBusy"
-    :class="combineClasses(busyNonClickable, layout, props.class)"
-    :title="title"
-  >
+  <span v-if="isBusy" :class="combineClasses(busyNonClickable, layout, props.class)" :title="title">
     <span style="display: block; position: relative">
       <span :class="contentClass" style="visibility: hidden">
         <slot />

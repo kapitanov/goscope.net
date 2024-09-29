@@ -87,30 +87,14 @@ onMounted(() => {
         <HotkeyHint :hotkey="props.hotkey" />
       </div>
 
-      <div
-        v-if="clearable && model"
-        class="absolute top-0 right-0 bottom-0 w-auto flex"
-      >
+      <div v-if="clearable && model" class="absolute top-0 right-0 bottom-0 w-auto flex">
         <Button :disabled="disabled" title="Clear" @click="() => (model = '')">
           <Icon :name="ICONS.X" />
         </Button>
       </div>
 
-      <textarea
-        v-if="type === 'textarea'"
-        ref="textarea"
-        v-model="model"
-        :class="combineClasses(textareaClass, props.class)"
-        :disabled="disabled"
-      />
-      <input
-        v-else
-        ref="input"
-        v-model="model"
-        :type="type"
-        :class="combineClasses(inputClass, props.class)"
-        :disabled="disabled"
-      />
+      <textarea v-if="type === 'textarea'" ref="textarea" v-model="model" :class="combineClasses(textareaClass, props.class)" :disabled="disabled" />
+      <input v-else ref="input" v-model="model" :type="type" :class="combineClasses(inputClass, props.class)" :disabled="disabled" />
     </div>
   </Hotkey>
 </template>

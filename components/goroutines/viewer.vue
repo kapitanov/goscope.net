@@ -79,45 +79,20 @@ refreshDisplayData();
       <Icon :name="ICONS.RESET" />
       <span class="hidden md:inline">Try another stack trace</span>
     </Button>
-    <Button
-      size="sm"
-      title="Expand all table rows"
-      @click="() => tableControl.expand()"
-    >
+    <Button size="sm" title="Expand all table rows" @click="() => tableControl.expand()">
       <Icon :name="ICONS.EXPAND" />
     </Button>
-    <Button
-      size="sm"
-      title="Collapse all table rows"
-      @click="() => tableControl.collapse()"
-    >
+    <Button size="sm" title="Collapse all table rows" @click="() => tableControl.collapse()">
       <Icon :name="ICONS.COLLAPSE" />
     </Button>
 
-    <TextField
-      ref="textFilterField"
-      v-model="textFilter"
-      class="w-64"
-      placeholder="Filter by text..."
-      hotkey="ctrl+K"
-      :clearable="true"
-    />
+    <TextField ref="textFilterField" v-model="textFilter" class="w-64" placeholder="Filter by text..." hotkey="ctrl+K" :clearable="true" />
 
     <div class="grow"></div>
-    <CopyButton
-      v-if="permalink"
-      :text="permalink"
-      title="Copy permalink to clipboard"
-      size="sm"
-    >
+    <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard" size="sm">
       <Icon :name="ICONS.LINK" />
     </CopyButton>
-    <ShareButton
-      v-if="permalink && isWebShareSupported"
-      :url="permalink"
-      title="Share permalink"
-      size="sm"
-    />
+    <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink" size="sm" />
   </div>
 
   <GoroutinesTable v-if="displayData" :data="displayData" />

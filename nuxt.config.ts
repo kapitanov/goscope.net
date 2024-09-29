@@ -1,12 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import { NuxtConfig } from 'nuxt/schema';
-import {
-  commitHash,
-  buildDate,
-  environment,
-  googleAnalyticsToken
-} from './config';
+import { commitHash, buildDate, environment, googleAnalyticsToken } from './config';
 
 const cloudflare: NuxtConfig = {
   nitro: {
@@ -31,19 +26,14 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: [
-    '@nuxt/image',
-    '@nuxtjs/tailwindcss',
-    '@vite-pwa/nuxt',
-    'nuxt-gtag',
-    'nuxt-icon',
-    'nuxt-snackbar'
-  ],
+  modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@vite-pwa/nuxt', 'nuxt-gtag', 'nuxt-icon', 'nuxt-snackbar'],
+
   snackbar: {
     bottom: true,
     right: true,
     duration: 5000
   },
+
   gtag: {
     id: googleAnalyticsToken,
     loadingStrategy: 'async',
@@ -60,16 +50,19 @@ export default defineNuxtConfig({
       ]
     ]
   },
+
   telemetry: false,
   ssr: true,
   devtools: { enabled: true },
   sourcemap: { client: true },
+
   app: {
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1'
     }
   },
+
   pwa: {
     strategies: 'injectManifest',
     srcDir: 'service-worker',
@@ -105,7 +98,7 @@ export default defineNuxtConfig({
       globPatterns: ['**/*.{js,css,html,png,svg,ico}']
     },
     client: {
-      installPrompt: true,
+      installPrompt: true
     },
     devOptions: {
       enabled: true,
@@ -114,5 +107,7 @@ export default defineNuxtConfig({
       navigateFallbackAllowlist: [/^\/$/],
       type: 'module'
     }
-  }
+  },
+
+  compatibilityDate: '2024-09-29'
 });
