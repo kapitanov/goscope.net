@@ -21,13 +21,13 @@ const borderClass = {
   flex: true,
   relative: true,
   rounded: true,
-  outline: true,
-  'outline-1': true,
+  border: true,
+  'border-1': true,
   'bg-white': true,
-  'outline-gray-500': true,
-  'hover:outline-cyan-700': true,
-  'focus:outline-cyan-700': true,
-  'disabled:outline-gray-500': true,
+  'border-gray-500': true,
+  'hover:border-cyan-700': true,
+  'focus:border-cyan-700': true,
+  'disabled:border-gray-500': true,
   'disabled:text-gray-500': true,
   'disabled:bg-gray-200': true
 };
@@ -42,6 +42,7 @@ const baseClass = {
 
 const textareaClass = {
   ...baseClass,
+  'outline-none': true,
   'px-2': true,
   'py-2': true,
   'h-64': true
@@ -94,7 +95,7 @@ onMounted(() => {
       </div>
 
       <textarea v-if="type === 'textarea'" ref="textarea" v-model="model" :class="combineClasses(textareaClass, props.class)" :disabled="disabled" />
-      <input v-else ref="input" v-model="model" :type="type" :class="combineClasses(inputClass, props.class)" :disabled="disabled" />
+      <input v-else ref="input" v-model="model" :type="type" :class="combineClasses(inputClass, 'w-full')" :disabled="disabled" />
     </div>
   </Hotkey>
 </template>

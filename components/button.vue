@@ -13,7 +13,8 @@ const props = defineProps({
   size: { type: String, default: '' },
   busy: { type: Boolean, default: false },
   class: { type: String, default: '' },
-  color: { type: String, default: '' }
+  color: { type: String, default: '' },
+  align: { type: String, default: 'center' },
 });
 
 const colorSchemes = {
@@ -67,11 +68,24 @@ const colors = computed(() => colorSchemes[props.color] || colorSchemes.default)
 
 const layout = computed(() => {
   switch (props.size) {
+    case 'xs':
+      return {
+        flex: true,
+        'justify-center': props.align === 'center',
+        'items-center': props.align === 'center' || props.align === 'justify',
+        'justify-stretch': props.align === 'justify',
+        'px-1': true,
+        'py-1': true,
+        rounded: true,
+        'border-1': true,
+        'text-xs': true
+      };
     case 'sm':
       return {
         flex: true,
-        'justify-center': true,
-        'items-center': true,
+        'justify-center': props.align === 'center',
+        'items-center': props.align === 'center' || props.align === 'justify',
+        'justify-stretch': props.align === 'justify',
         'px-1': true,
         'py-1': true,
         rounded: true,
@@ -80,12 +94,14 @@ const layout = computed(() => {
     default:
       return {
         flex: true,
-        'justify-center': true,
-        'items-center': true,
+        'justify-center': props.align === 'center',
+        'items-center': props.align === 'center' || props.align === 'justify',
+        'justify-stretch': props.align === 'justify',
         'px-2': true,
         'py-1': true,
         rounded: true,
-        'border-2': true
+        'border-2': true,
+        'min-h-6': true
       };
   }
 });
@@ -99,25 +115,44 @@ const contentClass = computed(() => {
     case 'xl':
       return {
         flex: true,
-        'items-center': true,
+        'items-center': props.align === 'center' || props.align === 'justify',
+        'justify-center': props.align === 'center',
         'gap-1': true,
         'mx-2': true,
-        'my-1': true
+        'my-1': true,
+        'overflow-hidden': true,
+        'w-full': true,
       };
     case 'sm':
       return {
         flex: true,
-        'items-center': true,
+        'items-center': props.align === 'center' || props.align === 'justify',
+        'justify-center': props.align === 'center',
         'gap-1': true,
-        'mx-1': true
+        'mx-1': true,
+        'overflow-hidden': true,
+        'w-full': true,
+      };
+    case 'xs':
+      return {
+        flex: true,
+        'items-center': props.align === 'center' || props.align === 'justify',
+        'justify-center': props.align === 'center',
+        'gap-1': true,
+        'mx-1': true,
+        'overflow-hidden': true,
+        'w-full': true,
       };
     default:
       return {
         flex: true,
         'items-center': true,
+        'justify-center': true,
         'gap-1': true,
         'mx-1': true,
-        'my-1': true
+        'my-1': true,
+        'overflow-hidden': true,
+        'w-full': true,
       };
   }
 });
@@ -128,23 +163,20 @@ const isBusy = computed(() => !props.disabled && !!props.busy);
 </script>
 
 <template>
-  <a v-if="isHref && !nuxtLink && !isDisabled && !isBusy" :href="href" :class="combineClasses(clickable, layout, props.class)" :title="title">
+  <a v-if="isHref && !nuxtLink && !isDisabled && !isBusy" :href="href"
+    :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </a>
-  <NuxtLink v-if="isHref && nuxtLink && !isDisabled && !isBusy" :href="href" :class="combineClasses(clickable, layout, props.class)" :title="title">
+  <NuxtLink v-if="isHref && nuxtLink && !isDisabled && !isBusy" :href="href"
+    :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </NuxtLink>
-  <button
-    v-if="!isHref && !isDisabled && !isBusy"
-    :class="combineClasses(clickable, layout, props.class)"
-    :title="title"
-    :type="props.type"
-    @click="emit('click')"
-  >
+  <button v-if="!isHref && !isDisabled && !isBusy" :class="combineClasses(clickable, layout, props.class)" :title="title"
+    :type="props.type" @click="emit('click')">
     <span :class="contentClass">
       <slot />
     </span>
