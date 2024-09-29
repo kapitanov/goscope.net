@@ -75,9 +75,9 @@ const onSubmit = () => {
 <template>
     <ModalContainer @close="emit('close')">
         <form class="flex flex-col w-full" @submit.prevent="onSubmit">
-            <Hotkey hotkey="ctrl+A" @pressed="selectAll" />
-            <Hotkey hotkey="ctrl+R" @pressed="selectRunnable" />
-            <Hotkey hotkey="ctrl+N" @pressed="selectNonRunnable" />
+            <Hotkey hotkey="KeyA" @pressed="selectAll" />
+            <Hotkey hotkey="KeyR" @pressed="selectRunnable" />
+            <Hotkey hotkey="KeyN" @pressed="selectNonRunnable" />
             <Hotkey hotkey="Enter" @pressed="onSubmit" />
             <Hotkey hotkey="Escape" @pressed="emit('close')" />
 
@@ -88,13 +88,13 @@ const onSubmit = () => {
                 <div class="mt-2">
                     <div class="flex flex-row gap-1">
                         <Button size="xs" class="min-w-32 grow" @click="selectAll">
-                            All <HotkeyHint hotkey="ctrl+A" />
+                            All <HotkeyHint hotkey="A" />
                         </Button>
                         <Button size="xs" class="min-w-32 grow" @click="selectRunnable">
-                            Runnable only <HotkeyHint hotkey="ctrl+R" />
+                            Runnable only <HotkeyHint hotkey="R" />
                         </Button>
                         <Button size="xs" class="min-w-32 grow" @click="selectNonRunnable">
-                            Non-runnable only <HotkeyHint hotkey="ctrl+N" />
+                            Non-runnable only <HotkeyHint hotkey="N" />
                         </Button>
                     </div>
                     <div class="flex flex-col mt-4 overflow-y-auto min-h-[250px] max-h-[250px]">
