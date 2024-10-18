@@ -21,7 +21,7 @@
     "@nuxt/kit": "^3.13.2",
     "@nuxt/schema": "^3.13.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@nuxtjs/tailwindcss": "^6.12.2",
     "@types/jest": "^29.5.13",
     "@types/moment": "^2.13.0",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
