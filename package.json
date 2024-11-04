@@ -25,7 +25,7 @@
     "@types/jest": "^29.5.13",
     "@types/moment": "^2.13.0",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
-    "@vite-pwa/nuxt": "^0.10.5",
+    "@vite-pwa/nuxt": "^0.10.6",
     "axios": "^1.7.7",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
