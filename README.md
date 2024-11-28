@@ -11,8 +11,8 @@ This application is a small frontend-only web application written with Vue and N
 
 ## Links
 
-- [goscope.net](https://goscope.net)
-- [staging.goscope.net](https://staging.goscope.net)
+- [**goscope.net**](https://goscope.net) (built from [GitHub releases](https://github.com/kapitanov/goscope.net/releases))
+- [**staging.goscope.net**](https://staging.goscope.net) (built from `master` branch)
 
 ## Motivation
 

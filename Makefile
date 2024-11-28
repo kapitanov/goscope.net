@@ -20,7 +20,7 @@ install: prepare
 	@[ ! -d "./node_modules" ] && npm install || true
 
 dev: install prepare
-	npm run dev
+	NODE_ENV="development" npm run dev
 
 build: install prepare
 	NITRO_PRESET=cloudflare npm run build
