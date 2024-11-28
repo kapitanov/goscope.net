@@ -17,11 +17,11 @@ const ICONS = C.ICONS;
         <span class="inline sm:hidden text-xl text-foreground">
           {{ C.APP_NAME_SHORT }}
         </span>
-        <Beta>
+        <BetaNotice>
           <span class="w-8 h-8 rounded-full bg-cyan-800 text-white flex items-center place-items-center">
             <Icon :name="ICONS.BETA" class="m-auto" />
           </span>
-        </Beta>
+        </BetaNotice>
       </NuxtLink>
     </div>
     <div class="flex gap-x-12 justify-end">

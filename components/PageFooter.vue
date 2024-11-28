@@ -24,7 +24,7 @@ if (config.public.commitHash) {
         &copy; {{ year }} Built at {{ buildDate }} from commit
         <PageFooterLink :href="githubCommitUrl(commit)" target="_blank">{{ commit }}</PageFooterLink
         >.
-        <Beta>(This is a beta version)</Beta>
+        <BetaNotice>(This is a beta version)</BetaNotice>
       </div>
       <div class="grow-0 md:grow"></div>
       <div class="w-full md:w-auto">

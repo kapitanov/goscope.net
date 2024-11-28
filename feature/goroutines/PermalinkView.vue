@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+import Header from './Header.vue';
+import Viewer from './Viewer.vue';
 import { GoroutineProfile, fetch } from '~/pprof/goroutines';
 
 const router = useRouter();
@@ -28,11 +31,11 @@ const onReset = () => {
 </script>
 <template>
   <div>
-    <GoroutinesHeader v-if="data">
+    <Header v-if="data">
       Displaying data from <span class="font-mono">{{ props.url }}</span>
-    </GoroutinesHeader>
+    </Header>
 
-    <GoroutinesViewer v-if="data" :data="data" @reset="onReset" />
+    <Viewer v-if="data" :data="data" @reset="onReset" />
 
     <ErrorPresenter :error="error" />
 

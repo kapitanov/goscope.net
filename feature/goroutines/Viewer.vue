@@ -1,6 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
+import StateFilter from './StateFilter.vue';
+import Table from './Table.vue';
 import { GoroutineProfile, filter } from '~/pprof/goroutines';
 import { APP_URL, ICONS } from '~/const';
 
@@ -105,9 +107,9 @@ const clearFilter = () => {
     </div>
 
     <div class="flex sm:flex-row flex-col gap-1 mb-1">
-      <GoroutinesStateFilter v-model="stateFilter" class="w-full sm:w-1/2 lg:w-[220px]" :data="data" />
+      <StateFilter v-model="stateFilter" class="w-full sm:w-1/2 lg:w-[220px]" :data="data" />
       <TextField ref="textFilterField" v-model="textFilter" class="w-full sm:w-1/2 lg:w-[220px]"
-        placeholder="Filter by text..." hotkey="/" altHotkey="ctrl+KeyK" />
+        placeholder="Filter by text..." hotkey="/" alt-hotkey="ctrl+KeyK" />
       <Hotkey hotkey="KeyX" @pressed="clearFilter" />
       <Button v-if="hasFilter" @click="clearFilter">
         <Icon :name="ICONS.X" />
@@ -126,5 +128,5 @@ const clearFilter = () => {
     </div>
   </div>
 
-  <GoroutinesTable v-if="displayData" :data="displayData" />
+  <Table v-if="displayData" :data="displayData" />
 </template>

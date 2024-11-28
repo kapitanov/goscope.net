@@ -1,6 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+import TableRow from './TableRow.vue';
 import { ICONS } from '~/const';
+
 defineProps({
   data: {
     type: Object,
@@ -22,7 +24,7 @@ defineProps({
       <div class="hidden md:block grow">Stack trace</div>
     </div>
 
-    <GoroutinesTableRow v-for="item in data.items" :key="item.id" :item="item" />
+    <TableRow v-for="item in data.items" :key="item.id" :item="item" />
   </div>
 
   <div v-if="data && data.items && data.items.length !== data.total" class="text-gray-900 mt-2">

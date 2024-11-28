@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import StateFilterModal from './StateFilterModal.vue';
 import { ICONS } from '~/const';
 
 const props = defineProps({
     data: { type: Object, default: null },
     class: { type: String, default: null },
 });
-const model = defineModel({ default: [] as string[] });
+const model = defineModel({
+    default: [] as string[],
+    type: Array as PropType<string[]>
+});
 
 const isModalOpen = ref(false);
 const showModal = () => { isModalOpen.value = true; };
@@ -49,6 +53,6 @@ const onSelect = (selected: string[]) => {
     </div>
 
     <div v-if="isModalOpen" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <GoroutinesStateFilterModal :data="props.data" :selected="model" @select="onSelect" @close="closeModal" />
+        <StateFilterModal :data="props.data" :selected="model" @select="onSelect" @close="closeModal" />
     </div>
 </template>

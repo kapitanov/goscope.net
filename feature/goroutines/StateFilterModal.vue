@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ICONS } from '~/const';
 import { GoroutineProfile } from '~/pprof/goroutines';
+
 const props = defineProps({
     data: { type: Object, default: null },
     selected: { type: Array, default: null },
