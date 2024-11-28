@@ -24,10 +24,13 @@ if (config.public.commitHash) {
         &copy; {{ year }} Built at {{ buildDate }} from commit
         <PageFooterLink :href="githubCommitUrl(commit)" target="_blank">{{ commit }}</PageFooterLink
         >.
-        <Beta>(This is a beta version)</Beta>
+        <BetaNotice>(This is a beta version)</BetaNotice>
       </div>
       <div class="grow-0 md:grow"></div>
       <div class="w-full md:w-auto">
+        <Environment name="development">
+          <PageFooterLink href="/_tailwind/ ">Tailwind</PageFooterLink> |
+        </Environment>
         <PageFooterLink href="/terms">Terms and conditions</PageFooterLink> |
         <PageFooterLink href="/privacy-policy" style="display: inline-block">Privacy policy</PageFooterLink>
         |

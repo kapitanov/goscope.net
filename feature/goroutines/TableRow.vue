@@ -33,6 +33,7 @@ const contextualTextClass = computed(() => {
   };
 });
 </script>
+
 <template>
   <div class="flex flex-col gap-1 px-2 py-1 font-mono border-b border-gray-200">
     <div class="flex flex-row gap-2">

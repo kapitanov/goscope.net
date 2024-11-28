@@ -1,6 +1,11 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
+import Header from './Header.vue';
+import About from './About.vue';
+import Viewer from './Viewer.vue';
+import TextInput  from './TextInput.vue';
+import UrlInput from './UrlInput.vue';
 import { GoroutineProfile } from '~/pprof/goroutines';
 
 const data = ref<GoroutineProfile | null>(null);
@@ -20,7 +25,7 @@ const onSelectTab = (tab: string) => {
 </script>
 <template>
   <div>
-    <GoroutinesHeader>
+    <Header>
       <span v-if="data?.url">
         Displaying data from <span class="font-mono">{{ data.url }}</span>
       </span>
@@ -29,7 +34,7 @@ const onSelectTab = (tab: string) => {
         <TabItem name="text"> From Text </TabItem>
         <TabItem name="url"> From URL </TabItem>
       </TabBar>
-    </GoroutinesHeader>
+    </Header>
 
     <div v-if="!data">
       <div class="mt-4">
@@ -38,15 +43,15 @@ const onSelectTab = (tab: string) => {
       </div>
 
       <div class="mt-4">
-        <GoroutinesAbout />
+        <About />
       </div>
 
       <div class="mt-4">
-        <GoroutinesTextInput v-if="activeTab === 'text'" @data="onData" />
-        <GoroutinesUrlInput v-if="activeTab === 'url'" @data="onData" />
+        <TextInput v-if="activeTab === 'text'" @data="onData" />
+        <UrlInput v-if="activeTab === 'url'" @data="onData" />
       </div>
     </div>
 
-    <GoroutinesViewer v-if="data" :data="data" @reset="onReset" />
+    <Viewer v-if="data" :data="data" @reset="onReset" />
   </div>
 </template>

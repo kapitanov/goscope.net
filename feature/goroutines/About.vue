@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 import { ICONS } from '../../const';
-import SOURCE_CODE from /* @vite-ignore */ '../../pprof/go/goroutines/goroutines.go?raw';
+import SOURCE_CODE from /* @vite-ignore */ '~/pprof/go/goroutines/goroutines.go?raw';
 const exampleSourceCode = (SOURCE_CODE as unknown as string).trim();
 
 const isExpanded = ref(false);
@@ -64,11 +64,11 @@ const collapseButtonBottom = {
       <p>To use pprof, link this package into your program:</p>
 
       <!-- eslint-disable-next-line vue/html-quotes -->
-      <Code code='import _ "net/http/pprof"' />
+      <CodeBlock code='import _ "net/http/pprof"' />
 
       <p>For instance, try running the following program:</p>
 
-      <Code :code="exampleSourceCode" />
+      <CodeBlock :code="exampleSourceCode" />
 
       <p>
         <strong>Goroutines viewer</strong> needs only one of profiles data, which is <code class="font-mono text-cyan-900">goroutine</code> profile in

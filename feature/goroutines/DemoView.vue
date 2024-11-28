@@ -1,11 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
+import Header from './Header.vue';
+import Viewer from './Viewer.vue';
 import { example, parse } from '~/pprof/goroutines';
+
 const router = useRouter();
-
 const data = parse(example);
-
 const onReset = () => {
   router.push('/goroutines');
 };
@@ -13,8 +14,8 @@ const onReset = () => {
 
 <template>
   <div>
-    <GoroutinesHeader> Displaying demo data </GoroutinesHeader>
+    <Header> Displaying demo data </Header>
 
-    <GoroutinesViewer :data="data" @reset="onReset" />
+    <Viewer :data="data" @reset="onReset" />
   </div>
 </template>
