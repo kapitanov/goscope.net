@@ -24,7 +24,7 @@
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@types/jest": "^29.5.14",
     "@types/moment": "^2.13.0",
-    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@vite-pwa/nuxt": "^0.10.6",
     "axios": "^1.7.8",
     "eslint": "^8.57.0",
