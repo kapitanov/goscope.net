@@ -93,6 +93,17 @@ Also, it's recommended to set the following environment variables:
 
 - `GOOGLE_ANALYTICS_TOKEN` - this variable should be set before running `make build` to include Google Analytics tracking code in the build.
 
+## Feature flags
+
+Feature flags are defines as environment variables.
+
+| Environment variable | Feature                    |
+|----------------------|----------------------------|
+| `FEATURE_GOROUTINES` | Enable "Goroutines viewer" |
+
+The value of an environment variable is not relevant: any non-empty value will be treated as "enabled".
+If no feature flags environment variables are set, the applciation will treat all flags as enabled.
+
 ## Contributions
 
 Community contributions are welcome via [Pull Requests](https://github.com/kapitanov/goscope.net/pulls) on GitHub.
