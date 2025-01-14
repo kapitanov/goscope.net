@@ -38,6 +38,7 @@ jobs:
         env:
           GOOGLE_ANALYTICS_TOKEN: ${{ secrets.GOOGLE_ANALYTICS_STAGING_TOKEN }}
           ENV: STAGING
+          FEATURE_GOROUTINES: true
       - name: Deploy project to staging
         run: make deploy
         env:

@@ -15,6 +15,9 @@ prepare:
 	@echo "export const buildDate = '$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")';" >> ./config.ts
 	@echo "export const googleAnalyticsToken = '$(GOOGLE_ANALYTICS_TOKEN)';" >> ./config.ts
 	@echo "export const environment = '$(ENV)';" >> ./config.ts
+	@echo "export const featureFlags = ["  >> ./config.ts; \
+	env | cut -d'=' -f1 | grep 'FEATURE_' | xargs -I {} echo "  '{}',"  >> ./config.ts; \
+	echo "];" >> ./config.ts
 
 install: prepare
 	@[ ! -d "./node_modules" ] && npm install || true

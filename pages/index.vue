@@ -2,6 +2,7 @@
 
 <script setup lang="ts">
 import { ICONS } from '../const';
+import { features } from '../composables/useFeatureFlag';
 </script>
 
 <template>
@@ -23,8 +24,8 @@ import { ICONS } from '../const';
       </div>
     </div>
 
-    <HeroBlock image-src="/images/goroutines-preview.png" title-text="Goroutines viewer" button-text="Explore goroutines"
-      href="/goroutines" demo-text="Try demo" demo-href="/goroutines/demo">
+    <HeroBlock v-feature="features.GOROUTINES" image-src="/images/goroutines-preview.png" title-text="Goroutines viewer"
+      button-text="Explore goroutines" href="/goroutines" demo-text="Try demo" demo-href="/goroutines/demo">
       <div>
         Dig into goroutines of your program:
 
@@ -34,6 +35,13 @@ import { ICONS } from '../const';
           <li>Filter goroutines to find the one you are interested in</li>
           <li>Identify a goroutine by its stack trace</li>
         </ul>
+      </div>
+    </HeroBlock>
+
+    <HeroBlock v-feature="features.DEMO" image-src="/images/goroutines-preview.png" title-text="Demo"
+      button-text="Explore demo" href="/demo">
+      <div>
+        View demo
       </div>
     </HeroBlock>
   </div>
