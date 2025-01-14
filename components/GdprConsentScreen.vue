@@ -6,7 +6,7 @@ const emit = defineEmits(['accepted', 'declined']);
 const show = ref<boolean>(false);
 
 const resolve = (accepted: boolean) => {
-  if (process?.client) {
+  if (import.meta.client) {
     localStorage.setItem('gdpr-consent', accepted.toString());
   }
 
@@ -23,7 +23,7 @@ const accept = () => resolve(true);
 const decline = () => resolve(false);
 
 if (props.enable) {
-  const storedValue = (process?.client && localStorage.getItem('gdpr-consent')) || null;
+  const storedValue = (import.meta.client && localStorage.getItem('gdpr-consent')) || null;
   if (storedValue !== null) {
     resolve(storedValue === 'true');
   } else {
