@@ -5,5 +5,7 @@ import { DemoView } from '~/feature/goroutines';
 </script>
 
 <template>
-  <DemoView />
+  <FeatureGuard :feature="features.GOROUTINES">
+    <DemoView />
+  </FeatureGuard>
 </template>

@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import { NuxtConfig } from 'nuxt/schema';
-import { commitHash, buildDate, environment, googleAnalyticsToken } from './config';
+import { commitHash, buildDate, environment, googleAnalyticsToken, featureFlags } from './config';
 
 const cloudflare: NuxtConfig = {
   nitro: {
@@ -14,6 +14,7 @@ const cloudflare: NuxtConfig = {
 const runtime: NuxtConfig = {
   runtimeConfig: {
     public: {
+      featureFlags,
       environment,
       commitHash,
       buildDate,
@@ -108,6 +109,8 @@ export default defineNuxtConfig({
       type: 'module'
     }
   },
+
+  tour: { prefix: 'V' },
 
   compatibilityDate: '2024-09-29'
 });

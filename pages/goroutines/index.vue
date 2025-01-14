@@ -10,8 +10,8 @@ const isDefault = computed(() => !isPermalink.value);
 </script>
 
 <template>
-  <div>
+  <FeatureGuard :feature="features.GOROUTINES">
     <DefaultView v-if="isDefault" />
     <PermalinkView v-if="isPermalink" :url="permalinkUrl" />
-  </div>
+  </FeatureGuard>
 </template>
