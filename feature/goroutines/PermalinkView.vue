@@ -2,7 +2,7 @@
 
 import Header from './Header.vue';
 import Viewer from './Viewer.vue';
-import { GoroutineProfile, fetch } from '~/pprof/goroutines';
+import { GoroutineProfile, fetch } from './impl';
 
 const router = useRouter();
 const props = defineProps({

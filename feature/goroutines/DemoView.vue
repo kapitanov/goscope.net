@@ -3,7 +3,7 @@
 <script setup lang="ts">
 import Header from './Header.vue';
 import Viewer from './Viewer.vue';
-import { example, parse } from '~/pprof/goroutines';
+import { example, parse } from './impl';
 
 const router = useRouter();
 const data = parse(example);

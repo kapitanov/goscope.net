@@ -3,7 +3,7 @@
 <script setup lang="ts">
 import StateFilter from './StateFilter.vue';
 import Table from './Table.vue';
-import { GoroutineProfile, filter } from '~/pprof/goroutines';
+import { GoroutineProfile, filter } from './impl';
 import { APP_URL, ICONS } from '~/const';
 
 const props = defineProps({
