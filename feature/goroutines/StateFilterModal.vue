@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { GoroutineProfile } from './impl';
 import { ICONS } from '~/const';
-import { GoroutineProfile } from '~/pprof/goroutines';
 
 const props = defineProps({
     data: { type: Object, default: null },

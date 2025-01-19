@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ICONS } from '../../const';
 
-import { example, parse } from '~/pprof/goroutines';
+import { example, parse } from './impl';
 
 const emit = defineEmits(['data']);
 

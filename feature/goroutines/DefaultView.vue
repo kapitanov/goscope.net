@@ -6,7 +6,7 @@ import About from './About.vue';
 import Viewer from './Viewer.vue';
 import TextInput  from './TextInput.vue';
 import UrlInput from './UrlInput.vue';
-import { GoroutineProfile } from '~/pprof/goroutines';
+import { GoroutineProfile } from './impl';
 
 const data = ref<GoroutineProfile | null>(null);
 

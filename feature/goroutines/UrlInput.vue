@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { fetch } from './impl';
 import { APP_URL, ICONS } from '~/const';
-import { fetch } from '~/pprof/goroutines';
 
 const emit = defineEmits(['data']);
 
