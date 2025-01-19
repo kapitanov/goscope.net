@@ -9,6 +9,7 @@ export interface Goroutine {
   id: number;
   state: string;
   stack: GoroutineStackFrame[];
+  text: string;
 }
 
 export interface GoroutineProfile {

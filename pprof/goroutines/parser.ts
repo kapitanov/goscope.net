@@ -43,7 +43,8 @@ function parseGoroutine(reader: TextReader): Goroutine | null {
   const goroutine: Goroutine = {
     id: parseInt(matchGoRoutine[1]),
     state: matchGoRoutine[2],
-    stack: []
+    stack: [],
+    text: ''
   };
 
   while (reader.advance()) {
@@ -66,6 +67,7 @@ function parseGoroutine(reader: TextReader): Goroutine | null {
     goroutine.stack.push(stackFrame);
   }
 
+  goroutine.text = formatGoroutineText(goroutine);
   return goroutine;
 }
 
@@ -102,4 +104,20 @@ class TextReader {
   fail(message: string): never {
     throw new Error(`At line ${this.i + 1}: ${message}. See: "${this.peek()}"`);
   }
+}
+
+function formatGoroutineText(g: Goroutine): string {
+  let str = `goroutine ${g.id} [${g.state}]:`;
+
+  for (const frame of g.stack) {
+    str += '\n';
+    str += formatGoroutineStackFrameText(frame);
+  }
+
+  return str;
+}
+
+function formatGoroutineStackFrameText(f: GoroutineStackFrame): string {
+  const str = `${f.function}\n\t${f.file}:${f.line} ${f.offset}`;
+  return str;
 }
