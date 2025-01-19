@@ -85,7 +85,8 @@ const contextualTextClass = computed(() => {
       <div class="w-16 shrink-0 hidden lg:block"></div>
       <div class="w-48 shrink-0 hidden lg:block"></div>
       <div class="grow">
-        <ul class="border-s-2 border-cyan-900">
+        <CopyButton size="xs" :text="item.text">Copy stack trace</CopyButton>
+        <ul class="border-s-2 border-cyan-900 mt-2">
           <li v-for="frame in item.stack" :key="frame.id" class="flex flex-col ms-2">
             <span class="text-cyan-900 text-balance break-all">
               {{ frame.function }}
