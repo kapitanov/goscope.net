@@ -14,12 +14,14 @@ export function isFeatureEnabled(feature: string): boolean {
     isEnabled = featureFlagValue.get(feature) || false;
   }
 
+  // eslint-disable-next-line no-console
   console.log(`Feature flag "${feature}" is ${isEnabled ? 'enabled' : 'disabled'}`);
   return isEnabled;
 }
 
 export const features = {
   GOROUTINES: 'goroutines',
+  BENCHMARK_VISUALIZER: 'benchmark_visualizer',
   DEMO: 'demo'
 };
 

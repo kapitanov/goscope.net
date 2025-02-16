@@ -13,7 +13,7 @@ defineProps({
 
 <template>
   <div class="mb-4 bg-gray-200 rounded">
-    <div class="flex m-4 mb-0">
+    <div class="flex lg:hidden m-4 mb-0">
       <h3 class="font-bold text-2xl sm:text-2xl">
         {{ titleText }}
       </h3>
@@ -21,10 +21,15 @@ defineProps({
     <div class="flex flex-col lg:flex-row gap-4 p-4">
       <div v-if="!mirror" class="w-full lg:w-6/12">
         <a :href="href">
-          <img :src="imageSrc" />
+          <img :src="imageSrc" class="border border-white" />
         </a>
       </div>
       <div class="grow flex flex-col gap-1">
+        <div class="hidden lg:flex m-0">
+          <h3 class="font-bold text-2xl sm:text-2xl">
+            {{ titleText }}
+          </h3>
+        </div>
         <div class="text-lg text-gray-600 grow mb-4">
           <slot />
         </div>
@@ -46,7 +51,9 @@ defineProps({
         </div>
       </div>
       <div v-if="!!mirror" class="w-6/12">
-        <NuxtImg :src="imageSrc" placeholder />
+        <a :href="href">
+          <img :src="imageSrc" class="border border-white" />
+        </a>
       </div>
     </div>
   </div>

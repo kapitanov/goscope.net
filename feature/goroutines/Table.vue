@@ -12,8 +12,8 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="data && data.items && data.items.length > 0" class="flex flex-col border boder-gray-200">
-    <div class="flex flex-row bg-gray-200 gap-2 px-2 py-1 font-bold">
+  <div v-if="data && data.items && data.items.length > 0" class="flex flex-col border border-cyan-700">
+    <div class="flex flex-row bg-cyan-700 text-white gap-2 px-2 py-1 font-bold">
       <div class="w-6"></div>
       <div class="w-16 text-nowrap">
         #

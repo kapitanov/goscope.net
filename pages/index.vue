@@ -15,12 +15,10 @@ import { features } from '../composables/useFeatureFlag';
         <h2 class="text-2xl sm:text-4xl font-bold text-gray-100">
           Let's explore your Go programs!
         </h2>
-        <!--
         <div class="mt-6 text-lg text-gray-300">
           This is a collection of interactive visualizations to help you
           understand how your Go programs work.
         </div>
-        -->
       </div>
     </div>
 
@@ -38,10 +36,16 @@ import { features } from '../composables/useFeatureFlag';
       </div>
     </HeroBlock>
 
-    <HeroBlock v-feature="features.DEMO" image-src="/images/goroutines-preview.png" title-text="Demo"
-      button-text="Explore demo" href="/demo">
+    <HeroBlock v-feature="features.BENCHMARK_VISUALIZER" image-src="/images/benchmarkviz-preview.png" title-text="Benchmark viewer"
+      button-text="View a benchmark results" href="/benchmark" demo-text="Try demo" demo-href="/benchmark/demo" mirror="true">
       <div>
-        View demo
+        Visualize your Go benchmark results:
+
+        <ul class="list-disc ms-8 mt-2">
+          <li>View benchmark results in a form of pretty printed table</li>
+          <li>Format them into Markdown to paste into your documentation or blog posts</li>
+          <li>Format them as a plain text with neat alignment</li>
+        </ul>
       </div>
     </HeroBlock>
   </div>
