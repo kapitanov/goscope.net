@@ -1,0 +1,87 @@
+<script setup lang="ts">
+import { ICONS } from '../../const';
+import { example, parse } from './impl';
+
+const emit = defineEmits(['data']);
+
+const error = ref<any | null>(null);
+const disabled = ref<boolean>(false);
+const text = defineModel<string>({ default: '' });
+
+const setText = (value: string) => {
+  text.value = value;
+  error.value = null;
+};
+
+const useExampleHandler = () => {
+  setText(example);
+
+  useTrackEvent('select_content', {
+    content_type: 'example',
+    content_id: 'benchmarkviz_text'
+  });
+};
+
+const pasteHandler = async () => {
+  try {
+    const value = await navigator.clipboard.readText();
+    setText(value);
+  } catch (err) {
+    error.value = err;
+  }
+};
+
+const clearHandler = () => {
+  setText('');
+};
+
+const goHandler = () => {
+  try {
+    const output = parse(text.value);
+    emit('data', output);
+  } catch (err) {
+    error.value = err;
+  }
+};
+</script>
+
+<template>
+  <Hotkey hotkey="Ctrl+Enter" @pressed="goHandler" />
+  <Hotkey hotkey="Ctrl+V" @pressed="pasteHandler" />
+
+  <div class="mb-2">Paste your benchmark console output (it won't be sent anywhere) and click "Go!" to visualize it.</div>
+
+  <TextField v-model="text" type="textarea" class="w-full" placeholder="Paste your benchmark output here" :disabled="disabled" :autofocus="true" />
+
+  <div class="flex flex-col md:flex-row gap-2 mt-2">
+    <div class="flex gap-1">
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="goHandler">
+        <Icon :name="ICONS.GO" />
+        <span>Go!</span>
+        <HotkeyHint hotkey="Ctrl+Enter" />
+      </Button>
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="useExampleHandler">
+        <Icon :name="ICONS.USE_EXAMPLE" />
+        <span>Use an example input</span>
+      </Button>
+    </div>
+    <div class="hidden md:block grow"></div>
+    <div class="flex gap-1">
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="pasteHandler">
+        <Icon :name="ICONS.PASTE" />
+        <span>Paste from clipboard</span>
+        <HotkeyHint hotkey="Ctrl+V" />
+      </Button>
+      <Button :disabled="disabled" class="w-full md:w-auto" @click="clearHandler">
+        <Icon :name="ICONS.CLEAR" />
+        <span>Clear</span>
+      </Button>
+    </div>
+  </div>
+
+  <div class="grow text-gray-500 text-sm mt-2">We will process this benchmark output locally. No data will be sent to our servers.</div>
+
+  <div class="mt-2">
+    <ErrorPresenter :error="error" />
+  </div>
+</template>

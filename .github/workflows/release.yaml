@@ -38,6 +38,7 @@ jobs:
           GOOGLE_ANALYTICS_TOKEN: ${{ secrets.GOOGLE_ANALYTICS_PRODUCTION_TOKEN }}
           ENV: PRODUCTION
           FEATURE_GOROUTINES: true
+          FEATURE_BENCHMARK_VISUALIZER: true
       - name: Deploy project to production
         run: make deploy
         env:

@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 import { ICONS } from '../../const';
-import SOURCE_CODE from /* @vite-ignore */ '~/pprof/go/goroutines/goroutines.go?raw';
+import SOURCE_CODE from /* @vite-ignore */ '~/go/goroutines/goroutines.go?raw';
 const exampleSourceCode = (SOURCE_CODE as unknown as string).trim();
 
 const isExpanded = ref(false);

@@ -97,9 +97,10 @@ Also, it's recommended to set the following environment variables:
 
 Feature flags are defines as environment variables.
 
-| Environment variable | Feature                    |
-|----------------------|----------------------------|
-| `FEATURE_GOROUTINES` | Enable "Goroutines viewer" |
+| Environment variable           | Feature                    |
+| ------------------------------ | -------------------------- |
+| `FEATURE_GOROUTINES`           | Enable "Goroutines viewer" |
+| `FEATURE_BENCHMARK_VISUALIZER` | Enable "Benchmark viewer"  |
 
 The value of an environment variable is not relevant: any non-empty value will be treated as "enabled".
 If no feature flags environment variables are set, the applciation will treat all flags as enabled.
