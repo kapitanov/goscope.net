@@ -28,9 +28,7 @@ if (config.public.commitHash) {
       </div>
       <div class="grow-0 md:grow"></div>
       <div class="w-full md:w-auto">
-        <Environment name="development">
-          <PageFooterLink href="/_tailwind/ ">Tailwind</PageFooterLink> |
-        </Environment>
+        <Environment name="development"> <PageFooterLink href="/_tailwind/ ">Tailwind</PageFooterLink> | </Environment>
         <PageFooterLink href="/terms">Terms and conditions</PageFooterLink> |
         <PageFooterLink href="/privacy-policy" style="display: inline-block">Privacy policy</PageFooterLink>
         |

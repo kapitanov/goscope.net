@@ -21,8 +21,7 @@ const onReset = () => {
     <div v-if="!data">
       <div class="mt-4">
         <strong>Benchmark visualizer</strong> is a tool to display an output of <CodeInline>go test -bench</CodeInline>
-        command
-        in a pretty format, allowing you to view, understand and export results of your benchmarks.
+        command in a pretty format, allowing you to view, understand and export results of your benchmarks.
       </div>
 
       <div class="mt-4">

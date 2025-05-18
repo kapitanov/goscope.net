@@ -74,14 +74,18 @@ onMounted(() => {
   <Hotkey :hotkey="props.hotkey" @pressed="onHotkey">
     <Hotkey :hotkey="props.altHotkey" @pressed="onHotkey" />
     <div :class="combineClasses(borderClass, props.class)">
-      <div v-if="!model && type === 'textarea'"
-        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-top px-2 py-2 text-gray-500">
+      <div
+        v-if="!model && type === 'textarea'"
+        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-top px-2 py-2 text-gray-500"
+      >
         <span class="grow">{{ placeholder }}</span>
         <HotkeyHint color="light" :hotkey="props.hotkey" />
       </div>
 
-      <div v-if="!model && type !== 'textarea'"
-        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-center px-2 py-2 text-gray-500">
+      <div
+        v-if="!model && type !== 'textarea'"
+        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-center px-2 py-2 text-gray-500"
+      >
         <span class="grow">{{ placeholder }}</span>
         <HotkeyHint color="light" :hotkey="props.hotkey" />
       </div>
@@ -92,10 +96,8 @@ onMounted(() => {
         </Button>
       </div>
 
-      <textarea v-if="type === 'textarea'" ref="textarea" v-model="model"
-        :class="combineClasses(textareaClass, props.class)" :disabled="disabled" />
-      <input v-else ref="input" v-model="model" :type="type" :class="combineClasses(inputClass, 'w-full')"
-        :disabled="disabled" />
+      <textarea v-if="type === 'textarea'" ref="textarea" v-model="model" :class="combineClasses(textareaClass, props.class)" :disabled="disabled" />
+      <input v-else ref="input" v-model="model" :type="type" :class="combineClasses(inputClass, 'w-full')" :disabled="disabled" />
     </div>
   </Hotkey>
 </template>

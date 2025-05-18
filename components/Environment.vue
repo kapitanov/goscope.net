@@ -3,12 +3,12 @@
 <script setup lang="ts">
 import { environment } from '../config';
 const props = defineProps({
-    name: { type: String, default: '' },
+  name: { type: String, default: '' }
 });
 </script>
 
 <template>
-    <span v-if="!props.name || environment === props.name">
-        <slot></slot>
-    </span>
+  <span v-if="!props.name || environment === props.name">
+    <slot></slot>
+  </span>
 </template>

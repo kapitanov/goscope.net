@@ -296,14 +296,14 @@ export function wrapIntoComments(str: string): string {
 
   for (const i in lines) {
     const line = lines[i];
-    if ((+i) > 0) {
-      result += '\n'; 
+    if (+i > 0) {
+      result += '\n';
     }
 
-    if (!line.match(/^\s*$/)){
-      result += `// ${line}`; 
+    if (!line.match(/^\s*$/)) {
+      result += `// ${line}`;
     } else {
-      result += '//'; 
+      result += '//';
     }
   }
   return result;

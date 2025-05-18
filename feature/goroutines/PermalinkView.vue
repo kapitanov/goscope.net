@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import Header from './Header.vue';
 import Viewer from './Viewer.vue';
 import { GoroutineProfile, fetch } from './impl';

@@ -14,7 +14,7 @@ const props = defineProps({
   busy: { type: Boolean, default: false },
   class: { type: String, default: '' },
   color: { type: String, default: '' },
-  align: { type: String, default: 'center' },
+  align: { type: String, default: 'center' }
 });
 
 const colorSchemes = {
@@ -121,7 +121,7 @@ const contentClass = computed(() => {
         'mx-2': true,
         'my-1': true,
         'overflow-hidden': true,
-        'w-full': true,
+        'w-full': true
       };
     case 'sm':
       return {
@@ -131,7 +131,7 @@ const contentClass = computed(() => {
         'gap-1': true,
         'mx-1': true,
         'overflow-hidden': true,
-        'w-full': true,
+        'w-full': true
       };
     case 'xs':
       return {
@@ -141,7 +141,7 @@ const contentClass = computed(() => {
         'gap-1': true,
         'mx-1': true,
         'overflow-hidden': true,
-        'w-full': true,
+        'w-full': true
       };
     default:
       return {
@@ -152,7 +152,7 @@ const contentClass = computed(() => {
         'mx-1': true,
         'my-1': true,
         'overflow-hidden': true,
-        'w-full': true,
+        'w-full': true
       };
   }
 });
@@ -163,20 +163,23 @@ const isBusy = computed(() => !props.disabled && !!props.busy);
 </script>
 
 <template>
-  <a v-if="isHref && !nuxtLink && !isDisabled && !isBusy" :href="href"
-    :class="combineClasses(clickable, layout, props.class)" :title="title">
+  <a v-if="isHref && !nuxtLink && !isDisabled && !isBusy" :href="href" :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </a>
-  <NuxtLink v-if="isHref && nuxtLink && !isDisabled && !isBusy" :href="href"
-    :class="combineClasses(clickable, layout, props.class)" :title="title">
+  <NuxtLink v-if="isHref && nuxtLink && !isDisabled && !isBusy" :href="href" :class="combineClasses(clickable, layout, props.class)" :title="title">
     <span :class="contentClass">
       <slot />
     </span>
   </NuxtLink>
-  <button v-if="!isHref && !isDisabled && !isBusy" :class="combineClasses(clickable, layout, props.class)" :title="title"
-    :type="props.type" @click="emit('click')">
+  <button
+    v-if="!isHref && !isDisabled && !isBusy"
+    :class="combineClasses(clickable, layout, props.class)"
+    :title="title"
+    :type="props.type"
+    @click="emit('click')"
+  >
     <span :class="contentClass">
       <slot />
     </span>

@@ -3,7 +3,7 @@
 <script setup lang="ts">
 const props = defineProps({
   code: { type: String, default: '' },
-  copyable: { type: Boolean, default: true },
+  copyable: { type: Boolean, default: true }
 });
 </script>
 

@@ -111,7 +111,7 @@ BenchmarkSearch/JumpSearch     1826902 N      694.01 ns/op   8 NumCPU   1000000 
 `;
     const result = wrapIntoComments(input);
 
-    const expected =`// goos: darwin
+    const expected = `// goos: darwin
 // goarch: arm64
 // pkg: goscope.net/pprof/go-examples/benchmark
 // cpu: Apple M2

@@ -4,7 +4,7 @@
 import Header from './Header.vue';
 import About from './About.vue';
 import Viewer from './Viewer.vue';
-import TextInput  from './TextInput.vue';
+import TextInput from './TextInput.vue';
 import UrlInput from './UrlInput.vue';
 import { GoroutineProfile } from './impl';
 
