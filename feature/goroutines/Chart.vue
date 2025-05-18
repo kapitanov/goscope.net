@@ -38,12 +38,12 @@ const data = computed(() => {
   const data = categories.map((c) => c.count);
 
   return {
-    labels: labels,
+    labels,
     datasets: [
       {
         label: 'Goroutines',
         backgroundColor: 'rgb(14, 116, 144)',
-        data: data
+        data
       }
     ]
   };
