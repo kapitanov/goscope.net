@@ -18,13 +18,13 @@ const hotkey = computed(() => {
 
 const classes = computed(() => {
   return {
-    'flex': true,
+    flex: true,
     'items-center': true,
     'ms-2': true,
     'opacity-50': true,
-    'border': true,
+    border: true,
     'border-1': true,
-    'rounded': true,
+    rounded: true,
     'px-1': true,
     'text-xs': true,
     'text-gray-500': props.color === 'light',

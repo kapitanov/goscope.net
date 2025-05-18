@@ -42,6 +42,7 @@ export const ICONS = {
   MARKDOWN: 'material-symbols:markdown-sharp',
   TEXT: 'material-symbols:text-format',
   CODE: 'material-symbols:code',
+  BAR_CHART: 'material-symbols:bar-chart',
 
   GOLANG: 'tabler:brand-golang',
   GOPHER: 'logos:gopher'

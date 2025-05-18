@@ -5,9 +5,7 @@ import { features } from '../../composables/useFeatureFlag';
 </script>
 
 <template>
-    <FeatureGuard :feature="features.DEMO">
-        <div>
-            DEMO
-        </div>
-    </FeatureGuard>
+  <FeatureGuard :feature="features.DEMO">
+    <div>DEMO</div>
+  </FeatureGuard>
 </template>

@@ -3,6 +3,7 @@
 <script setup lang="ts">
 import StateFilter from './StateFilter.vue';
 import Table from './Table.vue';
+import Chart from './Chart.vue';
 import { GoroutineProfile, filter } from './impl';
 import { APP_URL, ICONS } from '~/const';
 
@@ -63,7 +64,7 @@ const refreshDisplayData = () => {
 
   displayData.value = filter(props.data as GoroutineProfile, {
     text: textFilter.value,
-    states: stateFilter.value,
+    states: stateFilter.value
   });
 };
 watch(
@@ -82,6 +83,11 @@ const clearFilter = () => {
   textFilter.value = '';
   stateFilter.value = [];
 };
+
+const isChartExpanded = ref(true);
+const toggleChart = () => {
+  isChartExpanded.value = !isChartExpanded.value;
+};
 </script>
 
 <template>
@@ -97,19 +103,26 @@ const clearFilter = () => {
       <Button title="Collapse all table rows" class="grow lg:grow-0" @click="() => tableControl.collapse()">
         <Icon :name="ICONS.COLLAPSE" />
       </Button>
+      <Button title="Toggle distribution chart" class="grow lg:grow-0" @click="() => toggleChart()">
+        <Icon :name="ICONS.BAR_CHART" />
+      </Button>
 
-      <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard"
-        class="inline-block grow lg:hidden">
+      <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard" class="inline-block grow lg:hidden">
         <Icon :name="ICONS.LINK" />
       </CopyButton>
-      <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink"
-        class="inline-block grow lg:hidden" />
+      <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink" class="inline-block grow lg:hidden" />
     </div>
 
     <div class="flex sm:flex-row flex-col gap-1 mb-1">
       <StateFilter v-model="stateFilter" class="w-full sm:w-1/2 lg:w-[220px]" :data="data" />
-      <TextField ref="textFilterField" v-model="textFilter" class="w-full sm:w-1/2 lg:w-[220px]"
-        placeholder="Filter by text..." hotkey="/" alt-hotkey="ctrl+KeyK" />
+      <TextField
+        ref="textFilterField"
+        v-model="textFilter"
+        class="w-full sm:w-1/2 lg:w-[220px]"
+        placeholder="Filter by text..."
+        hotkey="/"
+        alt-hotkey="ctrl+KeyK"
+      />
       <Hotkey hotkey="KeyX" @pressed="clearFilter" />
       <Button v-if="hasFilter" @click="clearFilter">
         <Icon :name="ICONS.X" />
@@ -126,6 +139,10 @@ const clearFilter = () => {
       </CopyButton>
       <ShareButton v-if="permalink && isWebShareSupported" :url="permalink" title="Share permalink" />
     </div>
+  </div>
+
+  <div v-if="isChartExpanded" class="flex flex-col">
+    <Chart v-if="displayData" :data="displayData" />
   </div>
 
   <Table v-if="displayData" :data="displayData" />

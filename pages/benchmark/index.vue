@@ -6,8 +6,7 @@ import { features } from '~/composables/useFeatureFlag';
 </script>
 
 <template>
-    <FeatureGuard :feature="features.BENCHMARK_VISUALIZER">
-        <DefaultView />
-    </FeatureGuard>
+  <FeatureGuard :feature="features.BENCHMARK_VISUALIZER">
+    <DefaultView />
+  </FeatureGuard>
 </template>
-

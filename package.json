@@ -41,5 +41,9 @@
     "prettier": "^3.5.3",
     "ts-jest": "^29.2.5",
     "wrangler": "^3.109.2"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.9",
+    "vue-chartjs": "^5.3.2"
   }
 }

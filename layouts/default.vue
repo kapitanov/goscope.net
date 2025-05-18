@@ -27,7 +27,7 @@ class ModalOverlay {
     this.modal = null;
   }
 }
-const modalOverlay = new ModalOverlay()
+const modalOverlay = new ModalOverlay();
 provide('ModalOverlay', modalOverlay);
 </script>
 <template>
@@ -50,9 +50,15 @@ provide('ModalOverlay', modalOverlay);
           <PageFooter />
         </footer>
 
-        <div v-if="isModalOpen" class="fixed inset-0 bg-gray-50 bg-opacity-75 transition-opacity z-20"
-          @click="() => { modalOverlay.click(); }">
-        </div>
+        <div
+          v-if="isModalOpen"
+          class="fixed inset-0 bg-gray-50 bg-opacity-75 transition-opacity z-20"
+          @click="
+            () => {
+              modalOverlay.click();
+            }
+          "
+        ></div>
       </main>
     </GoogleAnalytics>
   </NuxtErrorBoundary>

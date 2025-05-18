@@ -7,7 +7,7 @@ const buttonClass = computed(() => {
   return {
     'inline-block': true,
     'me-2': true,
-    'self-baseline':true,
+    'self-baseline': true,
     'text-gray-900': state.value === 'idle',
     'hover:text-cyan-700': state.value === 'idle',
     'active:text-cyan-900': state.value === 'idle',
