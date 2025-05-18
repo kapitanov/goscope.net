@@ -34,7 +34,7 @@ const categories = computed(() => {
     }
   }
 
-  const m = Math.max(...categories.map((c) => c.count));
+  const m = categories.length > 0 ? Math.max(...categories.map((c) => c.count)) : 1;
   for (const c of categories) {
     c.percentage = Math.round((c.count / m) * 100);
   }
