@@ -1,11 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
-import { Bar } from 'vue-chartjs';
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
 const props = defineProps({
   data: { type: Object, default: null }
 });
@@ -42,40 +37,6 @@ const categories = computed(() => {
   return categories;
 });
 
-const data = computed(() => {
-  const cs = categories.value;
-
-  const labels = cs.map((c) => c.name);
-  const data = cs.map((c) => c.count);
-
-  return {
-    labels,
-    datasets: [
-      {
-        label: 'Goroutines',
-        backgroundColor: 'rgb(14, 116, 144)',
-        data
-      }
-    ]
-  };
-});
-const options = computed(() => {
-  return {
-    responsive: true,
-    indexAxis: 'y',
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    },
-    plugins: {
-      legend: {
-        display: false
-      }
-    }
-  };
-});
-
 const onClick = (category: Category) => {
   emit('select', category.name);
   return false;
@@ -83,9 +44,6 @@ const onClick = (category: Category) => {
 </script>
 
 <template>
-  <div class="hidden">
-    <Bar :data="data" :options="options" />
-  </div>
   <ul class="flex flex-col w-full list-none my-2">
     <li v-for="(c, i) in categories" :key="i" class="flex items">
       <a href="#" class="flex flex-row w-full block mb-1" @click.prevent="onClick(c)">
