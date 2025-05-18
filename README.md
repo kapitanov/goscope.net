@@ -27,13 +27,19 @@ Hope this app would be useful for other Gophers as well.
 
 ## Features
 
-At the initial release **GoScope** has only one feature:
+**GoScope** has the following features:
 
 - Explore Goroutines stack traces dump.
 
   ![](./public/images/goroutines-preview.png)
 
-  This feature let's you take a deep look at the output of `/debug/pprof/goroutine?debug=2` endpoint of your Golang application.
+  This feature lets you take a deep look at the output of `/debug/pprof/goroutine?debug=2` endpoint of your Golang application.
+
+- Explore Benchmark results.
+
+  ![](./public/images/benchmarkviz-preview.png)
+
+  This feature lets you take a pretty look at the output of your Go benchmarks.
 
 ## How to build and run
 

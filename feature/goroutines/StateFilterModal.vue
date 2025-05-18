@@ -40,24 +40,6 @@ effect(() => {
   rebuildItems();
 });
 
-const selectAll = () => {
-  for (const item of items.value) {
-    item.selected = true;
-  }
-};
-
-const selectRunnable = () => {
-  for (const item of items.value) {
-    item.selected = item.state === 'runnable' || item.state === 'running';
-  }
-};
-
-const selectNonRunnable = () => {
-  for (const item of items.value) {
-    item.selected = item.state !== 'runnable' && item.state !== 'running';
-  }
-};
-
 const onSubmit = () => {
   let result = [];
   for (const item of items.value) {
@@ -72,6 +54,30 @@ const onSubmit = () => {
 
   emit('select', result);
   emit('close');
+};
+
+const selectAll = () => {
+  for (const item of items.value) {
+    item.selected = true;
+  }
+
+  onSubmit();
+};
+
+const selectRunnable = () => {
+  for (const item of items.value) {
+    item.selected = item.state === 'runnable' || item.state === 'running';
+  }
+
+  onSubmit();
+};
+
+const selectNonRunnable = () => {
+  for (const item of items.value) {
+    item.selected = item.state !== 'runnable' && item.state !== 'running';
+  }
+
+  onSubmit();
 };
 </script>
 
@@ -88,9 +94,18 @@ const onSubmit = () => {
         <h3 class="text-base font-semibold leading-6 text-gray-900">Filter goroutines by their state</h3>
         <div class="mt-2">
           <div class="flex flex-row gap-1">
-            <Button size="xs" class="min-w-32 grow" @click="selectAll"> All <HotkeyHint hotkey="A" /> </Button>
-            <Button size="xs" class="min-w-32 grow" @click="selectRunnable"> Runnable only <HotkeyHint hotkey="R" /> </Button>
-            <Button size="xs" class="min-w-32 grow" @click="selectNonRunnable"> Non-runnable only <HotkeyHint hotkey="N" /> </Button>
+            <Button size="xs" class="min-w-32 grow" @click="selectAll">
+              All
+              <HotkeyHint hotkey="A" />
+            </Button>
+            <Button size="xs" class="min-w-32 grow" @click="selectRunnable">
+              Runnable only
+              <HotkeyHint hotkey="R" />
+            </Button>
+            <Button size="xs" class="min-w-32 grow" @click="selectNonRunnable">
+              Non-runnable only
+              <HotkeyHint hotkey="N" />
+            </Button>
           </div>
           <div class="flex flex-col mt-4 overflow-y-auto min-h-[250px] max-h-[250px]">
             <template v-for="item in items" :key="item.state">
@@ -119,9 +134,13 @@ const onSubmit = () => {
       </div>
       <div class="bg-gray-50 p-4 flex">
         <div class="grow"></div>
-        <Button type="submit" size="sm" class="min-w-32 ms-1 h-full"> <Icon :name="ICONS.CHECK" /> OK <HotkeyHint hotkey="Enter" /> </Button>
+        <Button type="submit" size="sm" class="min-w-32 ms-1 h-full">
+          <Icon :name="ICONS.CHECK" /> OK
+          <HotkeyHint hotkey="Enter" />
+        </Button>
         <Button size="sm" class="min-w-32 ms-1 h-full" @click="emit('close')">
-          <Icon :name="ICONS.X" /> Cancel <HotkeyHint hotkey="Escape" />
+          <Icon :name="ICONS.X" /> Cancel
+          <HotkeyHint hotkey="Escape" />
         </Button>
       </div>
     </form>
