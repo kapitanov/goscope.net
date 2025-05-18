@@ -84,9 +84,8 @@ const clearFilter = () => {
   stateFilter.value = [];
 };
 
-const isChartExpanded = ref(true);
-const toggleChart = () => {
-  isChartExpanded.value = !isChartExpanded.value;
+const onSelectCategoryFromChart = (category: string) => {
+  stateFilter.value = [category];
 };
 </script>
 
@@ -102,9 +101,6 @@ const toggleChart = () => {
       </Button>
       <Button title="Collapse all table rows" class="grow lg:grow-0" @click="() => tableControl.collapse()">
         <Icon :name="ICONS.COLLAPSE" />
-      </Button>
-      <Button title="Toggle distribution chart" class="grow lg:grow-0" @click="() => toggleChart()">
-        <Icon :name="ICONS.BAR_CHART" />
       </Button>
 
       <CopyButton v-if="permalink" :text="permalink" title="Copy permalink to clipboard" class="inline-block grow lg:hidden">
@@ -141,9 +137,7 @@ const toggleChart = () => {
     </div>
   </div>
 
-  <div v-if="isChartExpanded" class="flex flex-col">
-    <Chart v-if="displayData" :data="displayData" />
-  </div>
+  <Chart v-if="displayData && (!stateFilter || stateFilter.length === 0)" :data="displayData" @select="onSelectCategoryFromChart" />
 
   <Table v-if="displayData" :data="displayData" />
 </template>
