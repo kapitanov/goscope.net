@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@vite-pwa/nuxt', 'nuxt-gtag', 'nuxt-icon', 'nuxt-snackbar'],
+  modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@vite-pwa/nuxt', 'nuxt-gtag', 'nuxt-icon', 'nuxt-snackbar', '@nuxt/eslint'],
 
   snackbar: {
     bottom: true,
@@ -111,6 +111,18 @@ export default defineNuxtConfig({
   },
 
   tour: { prefix: 'V' },
+
+  eslint: {
+    rules: {
+      semi: ['off'],
+      'space-before-function-paren': ['off'],
+      'vue/max-attributes-per-line': ['off'],
+      'vue/singleline-html-element-content-newline': ['off'],
+      'vue/html-indent': ['off'],
+      'vue/first-attribute-linebreak': ['off'],
+      'vue/html-closing-bracket-newline': ['off']
+    }
+  },
 
   compatibilityDate: '2024-09-29'
 });
