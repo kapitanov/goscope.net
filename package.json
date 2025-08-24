@@ -28,7 +28,7 @@
     "@vite-pwa/nuxt": "^1.0.4",
     "axios": "^1.11.0",
     "eslint": "^8.57.0",
-    "eslint-config-prettier": "^10.1.5",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "fuse.js": "^7.1.0",
     "jest": "^30.0.5",
