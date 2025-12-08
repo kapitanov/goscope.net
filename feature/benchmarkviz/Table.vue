@@ -25,7 +25,7 @@ const table = computed(() => (props.data && asTable(props.data as Output, { time
       </tr>
     </thead>
     <tbody class="font-mono text-sm">
-      <tr v-for="(row, lineIndex) in table.rows" :key="line" :class="{ 'bg-gray-200': lineIndex % 2 !== 0 }">
+      <tr v-for="(row, lineIndex) in table.rows" :key="row.name" :class="{ 'bg-gray-200': lineIndex % 2 !== 0 }">
         <td class="text-start ps-2 py-2">
           {{ row.name }}
         </td>
