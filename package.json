@@ -17,10 +17,10 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@nuxt/eslint": "^1.11.0",
     "@nuxt/image": "^1.11.0",
     "@nuxt/kit": "^4.0.3",
     "@nuxt/schema": "^4.2.0",
-    "@nuxt/eslint": "^1.11.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@types/jest": "^30.0.0",
     "@types/moment": "^2.13.0",
@@ -38,5 +38,8 @@
     "prettier": "^3.7.4",
     "ts-jest": "^29.4.1",
     "wrangler": "^4.45.2"
+  },
+  "dependencies": {
+    "globals": "^16.5.0"
   }
 }
