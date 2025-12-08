@@ -11,35 +11,28 @@ describe('benchmark/parser', () => {
       pkg: 'goscope.net/pprof/go-examples/benchmark',
       cpu: 'Apple M2',
       properties: [
-        { name: 'N', precision: 0, maxFormattedValueWidth: 7, maxFormattedTextWidth: 9 },
-        { name: 'ns/op', precision: 2, maxFormattedValueWidth: 9, maxFormattedTextWidth: 15 },
-        { name: 'NumCPU', precision: 0, maxFormattedValueWidth: 1, maxFormattedTextWidth: 8 },
-        { name: 'items/count', precision: 0, maxFormattedValueWidth: 7, maxFormattedTextWidth: 19 },
-        { name: 'B/op', precision: 0, maxFormattedValueWidth: 1, maxFormattedTextWidth: 6 },
-        { name: 'allocs/op', precision: 0, maxFormattedValueWidth: 1, maxFormattedTextWidth: 11 }
+        { name: 'N', precision: 0 },
+        { name: 'ns/op', precision: 1 },
+        { name: 'NumCPU', precision: 0 },
+        { name: 'items/count', precision: 0 },
+        { name: 'B/op', precision: 0 },
+        { name: 'allocs/op', precision: 0 }
       ],
       lines: [] as Line[],
-      maxNameWidth: 28
     };
 
     expected.lines.push({
       name: 'BenchmarkSearch/LinearSearch',
-      values: [7406, 151091, 8.0, 1000000, 0, 0],
-      formattedValues: ['7406', '151091.00', '8', '1000000', '0', '0'],
-      formattedTexts: ['7406 N', '151091.00 ns/op', '8 NumCPU', '1000000 items/count', '0 B/op', '0 allocs/op']
+      values: [7306, 215740, 8.0, 1000000, 0, 0],
     });
 
     expected.lines.push({
       name: 'BenchmarkSearch/BinarySearch',
-      values: [9824552, 121.1, 8.0, 1000000, 0, 0],
-      formattedValues: ['9824552', '121.10', '8', '1000000', '0', '0'],
-      formattedTexts: ['9824552 N', '121.10 ns/op', '8 NumCPU', '1000000 items/count', '0 B/op', '0 allocs/op']
+      values: [7995318, 149.5, 8.0, 1000000, 0, 0],
     });
     expected.lines.push({
       name: 'BenchmarkSearch/JumpSearch',
-      values: [1826902, 694.01, 8.0, 1000000, 0, 0],
-      formattedValues: ['1826902', '694.01', '8', '1000000', '0', '0'],
-      formattedTexts: ['1826902 N', '694.01 ns/op', '8 NumCPU', '1000000 items/count', '0 B/op', '0 allocs/op']
+      values: [1542253, 931.4, 8.0, 1000000, 0, 0],
     });
 
     expect(result).toStrictEqual(expected);
@@ -74,9 +67,9 @@ goarch: arm64
 pkg: goscope.net/pprof/go-examples/benchmark
 cpu: Apple M2
 
-BenchmarkSearch/LinearSearch      7406 N   151091.00 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
-BenchmarkSearch/BinarySearch   9824552 N      121.10 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
-BenchmarkSearch/JumpSearch     1826902 N      694.01 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+BenchmarkSearch/LinearSearch      7306 N   215740.0 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+BenchmarkSearch/BinarySearch   7995318 N      149.5 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+BenchmarkSearch/JumpSearch     1542253 N      931.4 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
 `;
 
     expect(result).toStrictEqual(expected);
@@ -88,11 +81,11 @@ describe('benchmark/asMarkdown', () => {
     const result = asMarkdown(parse(example));
 
     const expected =
-      '| Benchmark                      |           N |             ns/op |     NumCPU |           items/count |     B/op |     allocs/op |\n' +
-      '|:-------------------------------|------------:|------------------:|-----------:|----------------------:|---------:|--------------:|\n' +
-      '| `BenchmarkSearch/LinearSearch` |    `7406 N` | `151091.00 ns/op` | `8 NumCPU` | `1000000 items/count` | `0 B/op` | `0 allocs/op` |\n' +
-      '| `BenchmarkSearch/BinarySearch` | `9824552 N` |    `121.10 ns/op` | `8 NumCPU` | `1000000 items/count` | `0 B/op` | `0 allocs/op` |\n' +
-      '| `BenchmarkSearch/JumpSearch`   | `1826902 N` |    `694.01 ns/op` | `8 NumCPU` | `1000000 items/count` | `0 B/op` | `0 allocs/op` |\n';
+      '| Benchmark                      |         N |      ns/op |   NumCPU |   items/count |   B/op |   allocs/op |\n' +
+      '|:-------------------------------|----------:|-----------:|---------:|--------------:|-------:|------------:|\n' +
+      '| `BenchmarkSearch/LinearSearch` |    `7306` | `215740.0` |      `8` |     `1000000` |    `0` |         `0` |\n' +
+      '| `BenchmarkSearch/BinarySearch` | `7995318` |    `149.5` |      `8` |     `1000000` |    `0` |         `0` |\n' +
+      '| `BenchmarkSearch/JumpSearch`   | `1542253` |    `931.4` |      `8` |     `1000000` |    `0` |         `0` |\n';
 
     expect(result).toStrictEqual(expected);
   });
@@ -105,9 +98,9 @@ goarch: arm64
 pkg: goscope.net/pprof/go-examples/benchmark
 cpu: Apple M2
 
-BenchmarkSearch/LinearSearch      7406 N   151091.00 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
-BenchmarkSearch/BinarySearch   9824552 N      121.10 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
-BenchmarkSearch/JumpSearch     1826902 N      694.01 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+BenchmarkSearch/LinearSearch      7406 N   215740.0 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+BenchmarkSearch/BinarySearch   7995318 N      149.5 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+BenchmarkSearch/JumpSearch     1542253 N      931.4 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
 `;
     const result = wrapIntoComments(input);
 
@@ -116,9 +109,9 @@ BenchmarkSearch/JumpSearch     1826902 N      694.01 ns/op   8 NumCPU   1000000 
 // pkg: goscope.net/pprof/go-examples/benchmark
 // cpu: Apple M2
 //
-// BenchmarkSearch/LinearSearch      7406 N   151091.00 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
-// BenchmarkSearch/BinarySearch   9824552 N      121.10 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
-// BenchmarkSearch/JumpSearch     1826902 N      694.01 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op`;
+// BenchmarkSearch/LinearSearch      7406 N   215740.0 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+// BenchmarkSearch/BinarySearch   7995318 N      149.5 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
+// BenchmarkSearch/JumpSearch     1542253 N      931.4 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op`;
     expect(result).toStrictEqual(expected);
   });
 });

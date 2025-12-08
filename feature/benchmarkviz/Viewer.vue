@@ -3,7 +3,8 @@
 <script setup lang="ts">
 import Summary from './Summary.vue';
 import Table from './Table.vue';
-import { Output, asMarkdown, asText, wrapIntoComments } from './impl';
+import TimeFormatSelector from './TimeFormatSelector.vue';
+import { Output, asMarkdown, asText, wrapIntoComments, TimeFormat } from './impl';
 import { ICONS } from '~/const';
 
 const props = defineProps({
@@ -13,8 +14,9 @@ const props = defineProps({
 const emit = defineEmits(['reset']);
 const snackbar = useSnackbar();
 
-const markdownTextRepresentation = computed(() => asMarkdown(props?.data as Output));
-const plainTextRepresentation = computed(() => asText(props?.data as Output));
+const timeFormat = ref('ns' as TimeFormat);
+const markdownTextRepresentation = computed(() => asMarkdown(props?.data as Output, { timeFormat: timeFormat.value }));
+const plainTextRepresentation = computed(() => asText(props?.data as Output, { timeFormat: timeFormat.value }));
 
 async function copyHandler(print: (output: Output) => string) {
   const data = props.data as Output;
@@ -96,9 +98,16 @@ const selectActiveTab = (tab: string) => {
   </div>
 
   <div class="mt-2">
-    <div v-if="activeTab === 'table'">
+    <div class="flex flex-row gap-1">
       <Summary :data="data" />
-      <Table :data="data" />
+      <div class="grow"></div>
+      <TimeFormatSelector v-model="timeFormat" />
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <div v-if="activeTab === 'table'">
+      <Table :data="data" :timeFormat="timeFormat" />
     </div>
     <div v-if="activeTab === 'markdown'">
       <CodeBlock :code="markdownTextRepresentation" :copyable="false" />

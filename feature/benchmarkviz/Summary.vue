@@ -8,9 +8,9 @@ const props = defineProps({
 
 <template>
   <div class="flex flex-row gap-1">
-    <Badge name="pkg" :value="props.data.pkg" />
-    <Badge name="os" :value="props.data.goos" />
-    <Badge name="arch" :value="props.data.goarch" />
-    <Badge name="cpu" :value="props.data.cpu" />
+    <Badge v-if="props.data.pkg" name="pkg" :value="props.data.pkg" />
+    <Badge v-if="props.data.goos" name="os" :value="props.data.goos" />
+    <Badge v-if="props.data.goarch" name="arch" :value="props.data.goarch" />
+    <Badge v-if="props.data.cpu" name="cpu" :value="props.data.cpu" />
   </div>
 </template>
