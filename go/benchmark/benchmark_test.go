@@ -39,6 +39,7 @@ func BenchmarkSearch(b *testing.B) {
 		b.Run(c.Name, func(b *testing.B) {
 			b.ReportMetric(float64(len(data)), "items/count")
 			b.ReportMetric(float64(runtime.NumCPU()), "NumCPU")
+			b.SetBytes(1024*1024 + 512*1024 + 128)
 			b.ReportAllocs()
 
 			for i := 0; i < b.N; i++ {
