@@ -5,9 +5,9 @@ import { Output, TimeFormat, asTable } from './impl';
 
 const props = defineProps({
   data: { type: Object, default: null },
-  timeFormat: { type: String, default: null },
+  timeFormat: { type: String, default: null }
 });
-const table = computed(() => props.data && asTable(props.data as Output, { timeFormat: props.timeFormat  as TimeFormat }) || null);
+const table = computed(() => (props.data && asTable(props.data as Output, { timeFormat: props.timeFormat as TimeFormat })) || null);
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const table = computed(() => props.data && asTable(props.data as Output, { timeF
         <th class="text-start ps-2">Name</th>
         <th
           v-for="(header, headerIndex) in table.headers"
-          :key="property"
+          :key="header.name"
           :class="{ 'text-end': true, 'pe-2': headerIndex === table.headers.length - 1 }"
         >
           {{ header.name }}
@@ -31,7 +31,7 @@ const table = computed(() => props.data && asTable(props.data as Output, { timeF
         </td>
         <td
           v-for="(header, headerIndex) in table.headers"
-          :key="header"
+          :key="header.name"
           :class="{ 'text-end': true, 'py-2': true, 'pe-2': headerIndex === table.headers.length - 1 }"
         >
           {{ row.formattedValues[headerIndex] }}

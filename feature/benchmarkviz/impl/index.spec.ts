@@ -18,21 +18,21 @@ describe('benchmark/parser', () => {
         { name: 'B/op', precision: 0 },
         { name: 'allocs/op', precision: 0 }
       ],
-      lines: [] as Line[],
+      lines: [] as Line[]
     };
 
     expected.lines.push({
       name: 'BenchmarkSearch/LinearSearch',
-      values: [7306, 215740, 8.0, 1000000, 0, 0],
+      values: [7306, 215740, 8.0, 1000000, 0, 0]
     });
 
     expected.lines.push({
       name: 'BenchmarkSearch/BinarySearch',
-      values: [7995318, 149.5, 8.0, 1000000, 0, 0],
+      values: [7995318, 149.5, 8.0, 1000000, 0, 0]
     });
     expected.lines.push({
       name: 'BenchmarkSearch/JumpSearch',
-      values: [1542253, 931.4, 8.0, 1000000, 0, 0],
+      values: [1542253, 931.4, 8.0, 1000000, 0, 0]
     });
 
     expect(result).toStrictEqual(expected);

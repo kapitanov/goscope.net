@@ -34,7 +34,7 @@ export function parse(input: string): Output {
     pkg: '',
     cpu: '',
     properties: [] as Property[],
-    lines: [] as Line[],
+    lines: [] as Line[]
   };
 
   const lines = input.split('\n');
@@ -129,7 +129,7 @@ function parseBenchmarkLine(str: string, output: Output): boolean {
 
   const line: Line = {
     name,
-    values: [],
+    values: []
   };
 
   output.lines.push(line);
@@ -195,8 +195,8 @@ export function detectValuePrecision(value: number): number {
 }
 
 export interface Table {
-  headers:TableHeader[];
-  rows:TableRow[];
+  headers: TableHeader[];
+  rows: TableRow[];
   maxNameWidth: number;
 }
 
@@ -215,24 +215,24 @@ export interface TableRow {
 export type TimeFormat = 'ns' | 'us' | 'ms' | 's';
 export const defaultTimeFormat: TimeFormat = 'ns';
 
-export interface TableOptions  {
+export interface TableOptions {
   timeFormat?: TimeFormat;
 }
 
 export function asTable(output: Output, options?: TableOptions): Table {
-  const table : Table = {
+  const table: Table = {
     headers: [],
     rows: [],
-    maxNameWidth: 0,
-  }
+    maxNameWidth: 0
+  };
 
-   for (const i in output.properties) {
+  for (const i in output.properties) {
     table.headers.push({
       name: formatHeaderName(output.properties[i]!.name, options),
       maxFormattedValueWidth: 0,
-      maxFormattedTextWidth: 0,
+      maxFormattedTextWidth: 0
     });
-   }
+  }
 
   for (const line of output.lines) {
     table.maxNameWidth = Math.max(table.maxNameWidth, line.name.length);
@@ -240,9 +240,9 @@ export function asTable(output: Output, options?: TableOptions): Table {
     const row: TableRow = {
       name: line.name,
       formattedValues: [],
-      formattedTexts: [],
+      formattedTexts: []
     };
-     table.rows.push(row);
+    table.rows.push(row);
 
     for (const i in line.values) {
       const formattedValue = formatRowValue(output.properties[i]!.name, +line.values[i]!, output.properties[i]!.precision, options);
@@ -254,7 +254,7 @@ export function asTable(output: Output, options?: TableOptions): Table {
       table.headers[i]!.maxFormattedTextWidth = Math.max(table.headers[i]!.maxFormattedTextWidth, formattedText.length);
     }
   }
-  
+
   return table;
 }
 
@@ -298,16 +298,16 @@ export function asText(output: Output, options?: TableOptions): string {
 
   let str = '';
   if (!!output.goos) {
-    str += `goos: ${output.goos}\n`
+    str += `goos: ${output.goos}\n`;
   }
   if (!!output.goarch) {
-    str += `goarch: ${output.goarch}\n`
+    str += `goarch: ${output.goarch}\n`;
   }
-  if (!!output.goos) {
-    str += `pkg: ${output.pkg}\n`
+  if (!!output.pkg) {
+    str += `pkg: ${output.pkg}\n`;
   }
-  if (!!output.goos) {
-    str += `cpu: ${output.cpu}\n`
+  if (!!output.cpu) {
+    str += `cpu: ${output.cpu}\n`;
   }
   if (str) {
     str += '\n';
