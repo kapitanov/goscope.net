@@ -12,7 +12,7 @@ jobs:
     name: Deploy to production
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Setup node env
         uses: actions/setup-node@v6
         with:
