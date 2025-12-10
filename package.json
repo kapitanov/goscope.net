@@ -17,7 +17,14 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@iconify-json/logos": "^1.2.10",
+    "@iconify-json/material-symbols": "^1.2.49",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/ph": "^1.2.2",
+    "@iconify-json/tabler": "^1.2.23",
+    "@iconify/vue": "^5.0.0",
     "@nuxt/eslint": "^1.11.0",
+    "@nuxt/icon": "^2.1.0",
     "@nuxt/image": "^1.11.0",
     "@nuxt/kit": "^4.0.3",
     "@nuxt/schema": "^4.2.0",
@@ -28,6 +35,7 @@
     "axios": "^1.13.1",
     "eslint": "^9.28.0",
     "fuse.js": "^7.1.0",
+    "globals": "^16.5.0",
     "jest": "^30.2.0",
     "jest-junit": "^16.0.0",
     "moment": "^2.30.1",
@@ -38,8 +46,5 @@
     "prettier": "^3.7.4",
     "ts-jest": "^29.4.1",
     "wrangler": "^4.45.2"
-  },
-  "dependencies": {
-    "globals": "^16.5.0"
   }
 }
