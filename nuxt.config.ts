@@ -2,6 +2,7 @@
 
 import { NuxtConfig } from 'nuxt/schema';
 import { commitHash, buildDate, environment, googleAnalyticsToken, featureFlags } from './config';
+import { listAllIcons } from './const';
 
 const cloudflare: NuxtConfig = {
   nitro: {
@@ -27,7 +28,18 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@vite-pwa/nuxt', 'nuxt-gtag', 'nuxt-icon', 'nuxt-snackbar', '@nuxt/eslint'],
+  modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@vite-pwa/nuxt', 'nuxt-gtag', '@nuxt/icon', 'nuxt-snackbar', '@nuxt/eslint'],
+
+  icon: {
+    mode: 'css',
+    cssLayer: 'base',
+    provider: 'none',
+    serverBundle: 'local',
+    clientBundle: {
+      scan: true,
+      icons: listAllIcons()
+    }
+  },
 
   snackbar: {
     bottom: true,

@@ -47,6 +47,8 @@ export const ICONS = {
   GOPHER: 'logos:gopher'
 };
 
+export const listAllIcons = () => Object.values(ICONS);
+
 export const HEAD = {
   title: APP_NAME,
   bodyAttrs: {
