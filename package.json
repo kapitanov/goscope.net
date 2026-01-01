@@ -21,7 +21,7 @@
     "@iconify-json/material-symbols": "^1.2.49",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/ph": "^1.2.2",
-    "@iconify-json/tabler": "^1.2.23",
+    "@iconify-json/tabler": "^1.2.26",
     "@iconify/vue": "^5.0.0",
     "@nuxt/eslint": "^1.11.0",
     "@nuxt/icon": "^2.1.0",
