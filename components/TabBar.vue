@@ -17,9 +17,17 @@ watch(
 provide('selectTab', (tab: string) => {
   emit('select', tab);
 });
+
+const ulClass = {
+  flex: true,
+  'gap-2': true,
+  border: true,
+  'border-cyan-800': true,
+  rounded: true
+};
 </script>
 <template>
-  <ul :class="'flex gap-2 ' + props.class">
+  <ul :class="combineClasses(ulClass, props.class)">
     <slot></slot>
   </ul>
 </template>

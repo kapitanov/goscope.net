@@ -12,22 +12,27 @@ const onClick = () => {
   }
 };
 
+const commonClass = {
+  'h-full': true,
+  'text-base': true,
+  'py-1': true,
+  'px-2': true,
+  'first:rounded-l': true,
+  'last:rounded-r': true
+};
 const activeClass = {
-  'text-xl': true,
-  'text-cyan-700': true,
-  'border-b-2': true,
-  'border-cyan-700': true
+  'text-white': true,
+  'bg-cyan-700': true
 };
 const inactiveClass = {
-  'text-xl': true,
   'text-black': true,
   'hover:text-cyan-700': true
 };
 </script>
 <template>
-  <li>
-    <a href="" :class="activeTab === props.name ? activeClass : inactiveClass" @click.prevent="onClick">
+  <li class="h-full">
+    <button type="button" :class="combineClasses(commonClass, activeTab === props.name ? activeClass : inactiveClass)" @click="onClick">
       <slot></slot>
-    </a>
+    </button>
   </li>
 </template>

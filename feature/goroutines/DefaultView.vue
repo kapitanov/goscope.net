@@ -7,6 +7,7 @@ import Viewer from './Viewer.vue';
 import TextInput from './TextInput.vue';
 import UrlInput from './UrlInput.vue';
 import { GoroutineProfile } from './impl';
+import { ICONS } from '~/const';
 
 const data = ref<GoroutineProfile | null>(null);
 
@@ -25,15 +26,11 @@ const onSelectTab = (tab: string) => {
 </script>
 <template>
   <div>
-    <Header>
-      <span v-if="data?.url">
-        Displaying data from <span class="font-mono">{{ data.url }}</span>
-      </span>
-      <span v-if="data?.text"> Displaying data from manually entered text </span>
-      <TabBar v-if="!data" class="grow" :active="activeTab" @select="onSelectTab">
+    <Header :goback-visible="!!data" goback-label="Try another stacktrace" @goback="onReset()">
+      <!-- <TabBar v-if="!data" class="grow" :active="activeTab" @select="onSelectTab">
         <TabItem name="text"> From Text </TabItem>
         <TabItem name="url"> From URL </TabItem>
-      </TabBar>
+      </TabBar> -->
     </Header>
 
     <div v-if="!data">
