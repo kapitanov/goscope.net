@@ -92,10 +92,6 @@ const onSelectCategoryFromChart = (category: string) => {
 <template>
   <div class="flex flex-col lg:flex-row gap-1 mt-4 mb-2">
     <div class="flex flex-row gap-1 mb-1 justify-items-stretch lg:justify-items-start">
-      <!-- <Button align="center" class="grow lg:grow-0" @click="emit('reset')">
-        <Icon :name="ICONS.RESET" />
-        <span class="hidden md:inline">Try another stack trace</span>
-      </Button> -->
       <Button title="Expand all table rows" class="grow lg:grow-0" @click="() => tableControl.expand()">
         <Icon :name="ICONS.EXPAND" />
         <span class="hidden md:inline">Expand all</span>
