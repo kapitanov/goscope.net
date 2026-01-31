@@ -4,6 +4,8 @@
 import TextInput from './TextInput.vue';
 import About from './About.vue';
 import Viewer from './Viewer.vue';
+import QuickStartGuide from './QuickStartGuide.vue';
+import PreviewSection from './PreviewSection.vue';
 import { Output } from './impl';
 
 const data = ref<Output | null>(null);
@@ -23,6 +25,10 @@ const onReset = () => {
         <strong>Benchmark visualizer</strong> is a tool to display an output of <CodeInline>go test -bench</CodeInline>
         command in a pretty format, allowing you to view, understand and export results of your benchmarks.
       </div>
+
+      <QuickStart id="benchmarkviz-input">
+        <QuickStartGuide />
+      </QuickStart>
 
       <div class="mt-4">
         <About />

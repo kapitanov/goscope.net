@@ -5,6 +5,7 @@ import Header from './Header.vue';
 import About from './About.vue';
 import Viewer from './Viewer.vue';
 import TextInput from './TextInput.vue';
+import QuickStartGuide from './QuickStartGuide.vue';
 import { GoroutineProfile } from './impl';
 
 const data = ref<GoroutineProfile | null>(null);
@@ -26,6 +27,10 @@ const onReset = () => {
         <strong>Goroutines viewer</strong> is a tool to view all goroutines in your application at once. It takes a snapshot of all goroutines (taken
         from PPROF) and displays them in a table form, allowing you to filter it and view goroutines state at glance.
       </div>
+
+      <QuickStart id="goroutines-input">
+        <QuickStartGuide />
+      </QuickStart>
 
       <div class="mt-4">
         <About />
