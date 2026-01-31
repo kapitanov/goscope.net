@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
   <div class="flex flex-row">
     <div class="w-1/2 border border-gray-200">
-      <img :src="props.imageUrl" alt="" class="w-full" />
+      <img :src="props.imageUrl" alt="Preview" class="w-full" />
     </div>
 
     <div class="grow pl-8">

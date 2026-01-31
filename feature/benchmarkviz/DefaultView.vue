@@ -5,7 +5,6 @@ import TextInput from './TextInput.vue';
 import About from './About.vue';
 import Viewer from './Viewer.vue';
 import QuickStartGuide from './QuickStartGuide.vue';
-import PreviewSection from './PreviewSection.vue';
 import { Output } from './impl';
 
 const data = ref<Output | null>(null);
