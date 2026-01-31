@@ -23,6 +23,8 @@ function isSelected(option: Option): boolean {
 
 function select(option: Option) {
   model.value = option.value;
+
+  useTrackEvent('select_item', { screen_name: 'goroutines', content_type: 'time_format', content_id: option.value });
 }
 
 function buttonStyle(active: boolean, first: boolean, last: boolean): any {

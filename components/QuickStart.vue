@@ -19,7 +19,7 @@ const dismiss = () => {
   visible.value = false;
   localStorage.setItem(`quickstart-dismissed-${props.id}`, 'true');
 
-  useTrackEvent('quickstart_dismissed', { feature: props.id });
+  useTrackEvent('tutorial_complete', { content_id: props.id });
 };
 </script>
 

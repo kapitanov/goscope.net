@@ -12,6 +12,8 @@ const data = ref<GoroutineProfile | null>(null);
 
 const onData = (value: GoroutineProfile) => {
   data.value = value;
+
+  useTrackEvent('select_content', { content_type: 'goroutines', screen_name: 'default_view' });
 };
 
 const onReset = () => {
