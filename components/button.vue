@@ -119,7 +119,7 @@ const contentClass = computed(() => {
         'justify-center': props.align === 'center',
         'gap-1': true,
         'mx-2': true,
-        'my-1': true,
+        'my-0': true,
         'overflow-hidden': true,
         'w-full': true
       };
@@ -150,7 +150,7 @@ const contentClass = computed(() => {
         'justify-center': true,
         'gap-1': true,
         'mx-1': true,
-        'my-1': true,
+        'my-0': true,
         'overflow-hidden': true,
         'w-full': true
       };

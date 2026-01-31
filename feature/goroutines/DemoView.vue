@@ -14,8 +14,10 @@ const onReset = () => {
 
 <template>
   <div>
-    <Header> Displaying demo data </Header>
+    <Header :goback-visible="true" goback-label="Try another stack trace" @goback="onReset()">
+      Displaying demo data
+    </Header>
 
-    <Viewer :data="data" @reset="onReset" />
+    <Viewer :data="data" />
   </div>
 </template>

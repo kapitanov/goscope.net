@@ -7,8 +7,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex flex-row border border-cyan-700 rounded">
-    <div class="text-white bg-cyan-700 py-0 px-2">{{ props.name }}</div>
-    <div class="text-cyan-700 bg-white py-0 px-2 rounded-tr rounded-br">{{ props.value }}</div>
+  <div class="flex flex-row border border-gray-500 rounded">
+    <div class="text-white bg-gray-500 py-0 px-2">{{ props.name }}</div>
+    <div class="text-gray-500 bg-white py-0 px-2 rounded-tr rounded-br">{{ props.value }}</div>
   </div>
 </template>

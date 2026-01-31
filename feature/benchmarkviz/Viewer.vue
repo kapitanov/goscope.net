@@ -56,30 +56,19 @@ const selectActiveTab = (tab: string) => {
 </script>
 
 <template>
-  <div class="flex items-center mb-4">
-    <div class="flex gap-2 lg:items-end lg:flex-row flex-col">
-      <h1 class="md:text-2xl text-xl font-semibold">Benchmark viewer</h1>
-      <TabBar :active="activeTab" @select="selectActiveTab">
-        <TabItem name="table"> Table </TabItem>
-        <TabItem name="markdown"> Markdown </TabItem>
-        <TabItem name="plain"> Plain text </TabItem>
-      </TabBar>
-      <div class="text-gray-500 text-balance break-all">
-        <span v-if="props.isDemo">Displaying demo data</span>
-      </div>
-    </div>
+  <div class="flex gap-2 lg:items-end lg:flex-row flex-col mb-4">
+    <Button align="center" class="grow lg:grow-0" @click="emit('reset')">
+      <Icon :name="ICONS.RESET" />
+      <span class="hidden md:inline">Try another benchmark</span>
+    </Button>
+    <h1 class="md:text-2xl text-xl font-semibold">
+      <span>Benchmark viewer</span>
+      <span v-if="props.isDemo" class="text-gray-500 text-balance break-all text-base font-normal ms-2">Displaying demo data</span>
+    </h1>
+    <div class="grow"></div>
   </div>
 
-  <div class="flex flex-col lg:flex-row gap-1 mt-4 mb-2">
-    <div class="flex flex-row gap-1 mb-1 justify-items-stretch lg:justify-items-start">
-      <Button align="center" class="grow lg:grow-0" @click="emit('reset')">
-        <Icon :name="ICONS.RESET" />
-        <span class="hidden md:inline">Try another benchmark</span>
-      </Button>
-    </div>
-
-    <div class="grow"></div>
-
+  <div class="flex flex-col lg:flex-row gap-1 mt-4 mb-4">
     <Button align="center" class="grow lg:grow-0" @click="copyMarkdownHandler">
       <Icon :name="ICONS.COPY" />
       <span class="hidden md:inline">Copy as MarkDown</span>
@@ -95,6 +84,14 @@ const selectActiveTab = (tab: string) => {
       <span class="hidden md:inline">Copy as code comments</span>
       <Icon :name="ICONS.CODE" />
     </Button>
+
+    <div class="grow"></div>
+
+    <TabBar :active="activeTab" @select="selectActiveTab">
+      <TabItem name="table"> Table </TabItem>
+      <TabItem name="markdown"> Markdown </TabItem>
+      <TabItem name="plain"> Plain text </TabItem>
+    </TabBar>
   </div>
 
   <div class="mt-2">

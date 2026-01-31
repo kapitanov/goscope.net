@@ -52,7 +52,7 @@ const textareaClass = {
 const inputClass = {
   ...baseClass,
   'px-2': true,
-  'py-2': true
+  'py-1': true
 };
 
 const textarea = ref<null | HTMLTextAreaElement>(null);
