@@ -64,7 +64,8 @@ const useSampleHandler = (sample: Sample) => {
   setText(sample.value);
 
   useTrackEvent('select_goroutines_example', {
-    id: sample.id
+    content_type: 'goroutines_example',
+    content_id: sample.id
   });
 };
 </script>
