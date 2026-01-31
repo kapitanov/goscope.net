@@ -9,6 +9,10 @@ const isExpanded = ref(false);
 
 const clickHandler = () => {
   isExpanded.value = !isExpanded.value;
+
+   if (isExpanded.value) {
+    useTrackEvent('screen_view', { screen_name: 'about', content_id: 'goroutines' });
+  }
 };
 
 const collapseButton = {

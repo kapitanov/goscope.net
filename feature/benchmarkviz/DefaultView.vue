@@ -11,6 +11,8 @@ const data = ref<Output | null>(null);
 
 const onData = (value: Output) => {
   data.value = value;
+
+  useTrackEvent('select_content', { content_type: 'benchmark', screen_name: 'default_view' });
 };
 
 const onReset = () => {

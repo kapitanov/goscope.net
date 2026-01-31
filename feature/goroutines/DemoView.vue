@@ -9,6 +9,7 @@ const router = useRouter();
 const data = parse(example);
 const onReset = () => {
   router.push('/goroutines');
+  useTrackEvent('reset_goroutines', { from: 'demo_view' });
 };
 </script>
 

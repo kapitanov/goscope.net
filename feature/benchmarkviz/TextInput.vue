@@ -16,10 +16,7 @@ const setText = (value: string) => {
 const useExampleHandler = () => {
   setText(example);
 
-  useTrackEvent('select_content', {
-    content_type: 'example',
-    content_id: 'benchmarkviz_text'
-  });
+   useTrackEvent('select_content', { content_type: 'benchmark', content_id: 'example' });
 };
 
 const clearHandler = () => {

@@ -8,6 +8,8 @@ const router = useRouter();
 const data = parse(example);
 const onReset = () => {
   router.push('/benchmark');
+
+  useTrackEvent('reset_benchmark', { from: 'demo_view' });
 };
 </script>
 
