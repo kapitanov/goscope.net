@@ -18,6 +18,6 @@ const onReset = () => {
       Displaying demo data
     </Header>
 
-    <Viewer :data="data" @reset="onReset" />
+    <Viewer :data="data" />
   </div>
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { combineClasses } from '~/utils/classes';
+
 const props = defineProps({
   active: { type: String, default: '' },
   class: { type: String, default: '' }

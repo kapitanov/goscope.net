@@ -36,6 +36,6 @@ const onReset = () => {
       </div>
     </div>
 
-    <Viewer v-if="data" :data="data" @reset="onReset" />
+    <Viewer v-if="data" :data="data" />
   </div>
 </template>

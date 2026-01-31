@@ -10,7 +10,6 @@ import { APP_URL, ICONS } from '~/const';
 const props = defineProps({
   data: { type: Object, default: null }
 });
-const emit = defineEmits(['reset']);
 
 const permalink = computed(() => {
   const data = props.data as GoroutineProfile;

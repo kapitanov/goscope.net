@@ -7,13 +7,13 @@ const props = defineProps({
   gobackVisible: { type: Boolean, default: false },
   gobackLabel: { type: String, default: null }
 });
-const emits = defineEmits(['goback']);
+const emit = defineEmits(['goback']);
 </script>
 
 <template>
   <div class="flex items-center mb-4">
     <div class="flex gap-2 lg:items-end lg:flex-row flex-col">
-      <Button v-if="props.gobackVisible" align="center" class="grow lg:grow-0" @click="emits('goback')">
+      <Button v-if="props.gobackVisible" align="center" class="grow lg:grow-0" @click="emit('goback')">
         <Icon :name="ICONS.RESET" />
         <span class="hidden md:inline">{{ props.gobackLabel }}</span>
       </Button>
