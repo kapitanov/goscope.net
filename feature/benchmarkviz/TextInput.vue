@@ -22,15 +22,6 @@ const useExampleHandler = () => {
   });
 };
 
-const pasteHandler = async () => {
-  try {
-    const value = await navigator.clipboard.readText();
-    setText(value);
-  } catch (err) {
-    error.value = err;
-  }
-};
-
 const clearHandler = () => {
   setText('');
 };
@@ -47,11 +38,10 @@ const goHandler = () => {
 
 <template>
   <Hotkey hotkey="Ctrl+Enter" @pressed="goHandler" />
-  <Hotkey hotkey="Ctrl+V" @pressed="pasteHandler" />
 
   <div class="mb-2">Paste your benchmark console output (it won't be sent anywhere) and click "Go!" to visualize it.</div>
 
-  <TextField v-model="text" type="textarea" class="w-full" placeholder="Paste your benchmark output here" :disabled="disabled" :autofocus="true" />
+  <TextEditor v-model="text" class="w-full" placeholder="Paste your benchmark output here" :disabled="disabled" :autofocus="true" />
 
   <div class="flex flex-col md:flex-row gap-2 mt-2">
     <div class="flex gap-1">
@@ -67,11 +57,6 @@ const goHandler = () => {
     </div>
     <div class="hidden md:block grow"></div>
     <div class="flex gap-1">
-      <Button :disabled="disabled" class="w-full md:w-auto" @click="pasteHandler">
-        <Icon :name="ICONS.PASTE" />
-        <span>Paste from clipboard</span>
-        <HotkeyHint hotkey="Ctrl+V" />
-      </Button>
       <Button :disabled="disabled" class="w-full md:w-auto" @click="clearHandler">
         <Icon :name="ICONS.CLEAR" />
         <span>Clear</span>
