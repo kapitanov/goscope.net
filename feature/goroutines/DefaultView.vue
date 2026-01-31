@@ -19,7 +19,7 @@ const onReset = () => {
 </script>
 <template>
   <div>
-    <Header :goback-visible="!!data" goback-label="Try another stacktrace" @goback="onReset()"></Header>
+    <Header :goback-visible="!!data" goback-label="Try another stack trace" @goback="onReset()"></Header>
 
     <div v-if="!data">
       <div class="mt-4">
