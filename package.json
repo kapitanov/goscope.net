@@ -33,7 +33,7 @@
     "@types/moment": "^2.13.0",
     "@vite-pwa/nuxt": "^1.0.4",
     "axios": "^1.13.1",
-    "eslint": "^9.28.0",
+    "eslint": "^9.39.2",
     "fuse.js": "^7.1.0",
     "globals": "^16.5.0",
     "jest": "^30.2.0",
