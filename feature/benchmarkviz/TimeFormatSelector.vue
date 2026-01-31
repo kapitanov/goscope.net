@@ -12,7 +12,7 @@ interface Option {
 }
 const options: Option[] = [
   { name: 'ns/op', value: 'ns' },
-  { name: 'us/op', value: 'us' },
+  { name: '\u03BCs/op', value: 'us' },
   { name: 'ms/op', value: 'ms' },
   { name: 's/op', value: 's' }
 ];

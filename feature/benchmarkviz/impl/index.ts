@@ -262,7 +262,7 @@ function formatHeaderName(originalName: string, options?: TableOptions): string 
   if (originalName === 'ns/op' && options?.timeFormat) {
     switch (options.timeFormat) {
       case 'us':
-        return 'us/op';
+        return '\u03BCs/op';
       case 'ms':
         return 'ms/op';
       case 's':
