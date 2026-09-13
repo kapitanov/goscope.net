@@ -38,7 +38,7 @@ import { features } from '../composables/useFeatureFlag';
 
     <HeroBlock v-feature="features.BENCHMARK_VISUALIZER" image-src="/images/benchmarkviz-preview.png"
       title-text="Benchmark viewer" button-text="View a benchmark results" href="/benchmark" demo-text="Try demo"
-      demo-href="/benchmark/demo" mirror="true">
+      demo-href="/benchmark/demo" :mirror="true">
       <div>
         Visualize your Go benchmark results:
 
@@ -46,6 +46,20 @@ import { features } from '../composables/useFeatureFlag';
           <li>View benchmark results in a form of pretty printed table</li>
           <li>Format them into Markdown to paste into your documentation or blog posts</li>
           <li>Format them as a plain text with neat alignment</li>
+        </ul>
+      </div>
+    </HeroBlock>
+
+    <HeroBlock v-feature="features.BENCHMARK_COMPARER" image-src="/images/benchmark-compare-preview.png"
+      title-text="Benchmark comparer" button-text="Compare benchmark results" href="/benchmark/compare" demo-text="Try demo"
+      demo-href="/benchmark/compare/demo">
+      <div>
+        Compare two Go benchmark runs, like a clone of <CodeInline>benchstat</CodeInline> in your browser:
+
+        <ul class="list-disc ms-8 mt-2">
+          <li>See what changed and whether it's statistically significant</li>
+          <li>Supports <CodeInline>-benchmem</CodeInline> and custom <CodeInline>b.ReportMetric()</CodeInline> metrics</li>
+          <li>Export the comparison to Markdown or plain text</li>
         </ul>
       </div>
     </HeroBlock>

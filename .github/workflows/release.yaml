@@ -39,6 +39,7 @@ jobs:
           ENV: PRODUCTION
           FEATURE_GOROUTINES: true
           FEATURE_BENCHMARK_VISUALIZER: true
+          FEATURE_BENCHMARK_COMPARER: true
       - name: Deploy project to production
         run: make deploy
         env:
