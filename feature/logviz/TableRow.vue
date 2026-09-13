@@ -41,10 +41,16 @@ const contextualTextClass = computed(() => {
   <div class="flex flex-col gap-1 px-2 py-1 font-mono border-b border-gray-200">
     <div class="flex flex-row gap-2">
       <div class="w-6 shrink-0">
-        <a href="" class="block hover:text-cyan-700" @click.prevent="toggleHandler">
+        <button
+          type="button"
+          class="block hover:text-cyan-700"
+          :aria-expanded="expanded"
+          aria-label="Toggle log entry details"
+          @click="toggleHandler"
+        >
           <Icon v-if="!expanded" :name="ICONS.EXPAND_ROW" />
           <Icon v-if="expanded" :name="ICONS.COLLAPSE_ROW" />
-        </a>
+        </button>
       </div>
       <div class="hidden md:block w-44 shrink-0 overflow-hidden text-ellipsis" :title="item.timestamp">
         <span :class="contextualTextClass">{{ item.timestamp || '—' }}</span>
