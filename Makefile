@@ -59,6 +59,10 @@ smoketest:
 	@TEST_URL="$(ROOT_URL)/goroutines/" make _smoketest_url
 	@TEST_URL="$(ROOT_URL)/goroutines/demo" make _smoketest_url
 	@TEST_URL="$(ROOT_URL)/goroutines/demo/" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz/" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz/demo" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz/demo/" make _smoketest_url
 
 _smoketest_url:
 	@[ -z "$(TEST_URL)" ] && echo "TEST_URL is not set" && exit 1 || true

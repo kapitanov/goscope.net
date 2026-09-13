@@ -35,6 +35,7 @@ export const ICONS = {
   EXPAND_ROW: 'ph:plus-square',
   COLLAPSE_ROW: 'ph:minus-square',
   LIST_CHECKS: 'ph:list-checks',
+  FUNNEL: 'ph:funnel',
   CHECK: 'ph:check',
   CHECK_SQUARE: 'ph:check-square',
   SQUARE: 'ph:square',

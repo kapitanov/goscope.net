@@ -13,17 +13,22 @@ import { features } from '../composables/useFeatureFlag';
           <Icon :name="ICONS.GOLANG" size="2em" class="align-middle" />
           <span class="align-middle">&nbsp;scope</span>
         </h1>
-        <h2 class="text-2xl sm:text-4xl font-bold text-gray-100">
-          Let's explore your Go programs!
-        </h2>
+        <h2 class="text-2xl sm:text-4xl font-bold text-gray-100">Let's explore your Go programs!</h2>
         <div class="mt-6 text-lg text-gray-300">
           This is a collection of interactive visualizations to help you understand how your Go programs work.
         </div>
       </div>
     </div>
 
-    <HeroBlock v-feature="features.GOROUTINES" image-src="/images/goroutines-preview.png" title-text="Goroutines viewer"
-      button-text="Explore goroutines" href="/goroutines" demo-text="Try demo" demo-href="/goroutines/demo">
+    <HeroBlock
+      v-feature="features.GOROUTINES"
+      image-src="/images/goroutines-preview.png"
+      title-text="Goroutines viewer"
+      button-text="Explore goroutines"
+      href="/goroutines"
+      demo-text="Try demo"
+      demo-href="/goroutines/demo"
+    >
       <div>
         Dig into goroutines of your program:
 
@@ -36,9 +41,16 @@ import { features } from '../composables/useFeatureFlag';
       </div>
     </HeroBlock>
 
-    <HeroBlock v-feature="features.BENCHMARK_VISUALIZER" image-src="/images/benchmarkviz-preview.png"
-      title-text="Benchmark viewer" button-text="View a benchmark results" href="/benchmark" demo-text="Try demo"
-      demo-href="/benchmark/demo" :mirror="true">
+    <HeroBlock
+      v-feature="features.BENCHMARK_VISUALIZER"
+      image-src="/images/benchmarkviz-preview.png"
+      title-text="Benchmark viewer"
+      button-text="View a benchmark results"
+      href="/benchmark"
+      demo-text="Try demo"
+      demo-href="/benchmark/demo"
+      :mirror="true"
+    >
       <div>
         Visualize your Go benchmark results:
 
@@ -50,9 +62,15 @@ import { features } from '../composables/useFeatureFlag';
       </div>
     </HeroBlock>
 
-    <HeroBlock v-feature="features.BENCHMARK_COMPARER" image-src="/images/benchmark-compare-preview.png"
-      title-text="Benchmark comparer" button-text="Compare benchmark results" href="/benchmark/compare" demo-text="Try demo"
-      demo-href="/benchmark/compare/demo">
+    <HeroBlock
+      v-feature="features.BENCHMARK_COMPARER"
+      image-src="/images/benchmark-compare-preview.png"
+      title-text="Benchmark comparer"
+      button-text="Compare benchmark results"
+      href="/benchmark/compare"
+      demo-text="Try demo"
+      demo-href="/benchmark/compare/demo"
+    >
       <div>
         Compare two Go benchmark runs, like a clone of <CodeInline>benchstat</CodeInline> in your browser:
 
@@ -60,6 +78,27 @@ import { features } from '../composables/useFeatureFlag';
           <li>See what changed and whether it's statistically significant</li>
           <li>Supports <CodeInline>-benchmem</CodeInline> and custom <CodeInline>b.ReportMetric()</CodeInline> metrics</li>
           <li>Export the comparison to Markdown or plain text</li>
+        </ul>
+      </div>
+    </HeroBlock>
+
+    <HeroBlock
+      v-feature="features.LOG_VISUALIZER"
+      image-src="/images/logviz-preview.png"
+      title-text="Log visualizer"
+      button-text="Explore log events"
+      href="/logviz"
+      demo-text="Try demo"
+      demo-href="/logviz/demo"
+      :mirror="true"
+    >
+      <div>
+        Make sense of your application logs:
+
+        <ul class="list-disc ms-8 mt-2">
+          <li>Supports JSON payloads, logfmt and JSON Lines - auto-detected line by line</li>
+          <li>Filter log entries by level, free text or any structured field</li>
+          <li>Drill down into a single entry to see all of its fields</li>
         </ul>
       </div>
     </HeroBlock>
