@@ -2,7 +2,6 @@
 
 <script setup lang="ts">
 import Header from './Header.vue';
-import About from './About.vue';
 import Viewer from './Viewer.vue';
 import TextInput from './TextInput.vue';
 import QuickStartGuide from './QuickStartGuide.vue';
@@ -33,10 +32,6 @@ const onReset = () => {
       <QuickStart id="goroutines-input">
         <QuickStartGuide />
       </QuickStart>
-
-      <div class="mt-4">
-        <About />
-      </div>
 
       <div class="mt-4">
         <TextInput @data="onData" />
