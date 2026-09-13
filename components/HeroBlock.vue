@@ -12,16 +12,16 @@ defineProps({
 </script>
 
 <template>
-  <div class="mb-4 bg-gray-200 rounded">
+  <div class="mb-4 bg-gray-200 rounded min-h-[320px] flex flex-col">
     <div class="flex lg:hidden m-4 mb-0">
       <h3 class="font-bold text-2xl sm:text-2xl">
         {{ titleText }}
       </h3>
     </div>
-    <div class="flex flex-col lg:flex-row gap-4 p-4">
+    <div class="flex flex-col lg:flex-row gap-4 p-4 grow">
       <div v-if="!mirror" class="w-full lg:w-6/12">
-        <a :href="href">
-          <img :src="imageSrc" class="border border-white" />
+        <a :href="href" class="block h-full">
+          <img :src="imageSrc" class="border border-white w-full h-full object-contain" />
         </a>
       </div>
       <div class="grow flex flex-col gap-1">
@@ -50,9 +50,9 @@ defineProps({
           </Button>
         </div>
       </div>
-      <div v-if="!!mirror" class="w-6/12">
-        <a :href="href">
-          <img :src="imageSrc" class="border border-white" />
+      <div v-if="mirror" class="w-full lg:w-6/12">
+        <a :href="href" class="block h-full">
+          <img :src="imageSrc" class="border border-white w-full h-full object-contain" />
         </a>
       </div>
     </div>

@@ -7,19 +7,25 @@ const props = defineProps({
   id: { type: String, default: '' }
 });
 
+const storageKey = `quickstart-dismissed-${props.id}`;
 const visible = ref<boolean>(true);
+
 onMounted(() => {
-  const v = localStorage.getItem(`quickstart-dismissed-${props.id}`);
-  if (v && v !== '') {
-    visible.value = false;
-  }
+  visible.value = localStorage.getItem(storageKey) !== 'true';
 });
 
-const dismiss = () => {
+const hide = () => {
   visible.value = false;
-  localStorage.setItem(`quickstart-dismissed-${props.id}`, 'true');
+  localStorage.setItem(storageKey, 'true');
 
   useTrackEvent('tutorial_complete', { content_id: props.id });
+};
+
+const show = () => {
+  visible.value = true;
+  localStorage.setItem(storageKey, 'false');
+
+  useTrackEvent('tutorial_start', { content_id: props.id });
 };
 </script>
 
@@ -29,8 +35,11 @@ const dismiss = () => {
 
     <div class="flex justify-center mt-8">
       <div>
-        <Button @click="dismiss"> <Icon :name="ICONS.X" class="w-4 h-4 mr-1" /> Dismiss this guide </Button>
+        <Button @click="hide"> <Icon :name="ICONS.X" class="w-4 h-4 mr-1" /> Hide this guide </Button>
       </div>
     </div>
+  </div>
+  <div v-else class="my-4">
+    <Button @click="show"> <Icon :name="ICONS.QUESTION" class="w-4 h-4 mr-1" /> Show guide </Button>
   </div>
 </template>
