@@ -2,7 +2,6 @@
 
 <script setup lang="ts">
 import TextInput from './TextInput.vue';
-import About from './About.vue';
 import Viewer from './Viewer.vue';
 import QuickStartGuide from './QuickStartGuide.vue';
 import { Output } from './impl';
@@ -30,10 +29,6 @@ const onReset = () => {
       <QuickStart id="benchmarkviz-input">
         <QuickStartGuide />
       </QuickStart>
-
-      <div class="mt-4">
-        <About />
-      </div>
 
       <div class="mt-4">
         <TextInput @data="onData" />
