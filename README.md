@@ -45,8 +45,8 @@ Hope this app would be useful for other Gophers as well.
 
   ![](./public/images/logviz-preview.png)
 
-  This feature lets you view application log entries in a table, auto-detecting whether they are formatted as JSON payloads,
-  logfmt or JSON Lines, and filter them by level, free text or any structured field.
+This feature lets you view application log entries in a table, auto-detecting whether they are formatted as JSON payloads,
+logfmt or JSON Lines, and filtering them by level, free text, or any structured field.
 
 ## How to build and run
 
