@@ -100,8 +100,7 @@ const selectNone = () => {
     item.selected = false;
   }
 
-  emit('select', selectedKey.value ? { key: selectedKey.value, values: [] } : null);
-  emit('close');
+  onSubmit();
 };
 </script>
 
