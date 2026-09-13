@@ -23,6 +23,7 @@ export const features = {
   GOROUTINES: 'goroutines',
   BENCHMARK_VISUALIZER: 'benchmark_visualizer',
   BENCHMARK_COMPARER: 'benchmark_comparer',
+  LOG_VISUALIZER: 'log_visualizer',
   DEMO: 'demo'
 };
 

@@ -41,6 +41,7 @@ jobs:
           FEATURE_GOROUTINES: true
           FEATURE_BENCHMARK_VISUALIZER: true
           FEATURE_BENCHMARK_COMPARER: true
+          FEATURE_LOG_VISUALIZER: true
       - name: Deploy project to staging
         run: make deploy
         env:

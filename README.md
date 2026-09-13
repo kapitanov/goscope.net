@@ -41,6 +41,13 @@ Hope this app would be useful for other Gophers as well.
 
   This feature lets you take a pretty look at the output of your Go benchmarks.
 
+- Visualize log events.
+
+  ![](./public/images/logviz-preview.png)
+
+This feature lets you view application log entries in a table, auto-detecting whether they are formatted as JSON payloads,
+logfmt or JSON Lines, and filtering them by level, free text, or any structured field.
+
 ## How to build and run
 
 ### Build
@@ -101,15 +108,17 @@ Also, it's recommended to set the following environment variables:
 
 ## Feature flags
 
-Feature flags are defines as environment variables.
+Feature flags are defined as environment variables.
 
-| Environment variable           | Feature                    |
-| ------------------------------ | -------------------------- |
-| `FEATURE_GOROUTINES`           | Enable "Goroutines viewer" |
-| `FEATURE_BENCHMARK_VISUALIZER` | Enable "Benchmark viewer"  |
+| Environment variable           | Feature                     |
+| ------------------------------ | --------------------------- |
+| `FEATURE_GOROUTINES`           | Enable "Goroutines viewer"  |
+| `FEATURE_BENCHMARK_VISUALIZER` | Enable "Benchmark viewer"   |
+| `FEATURE_BENCHMARK_COMPARER`   | Enable "Benchmark comparer" |
+| `FEATURE_LOG_VISUALIZER`       | Enable "Log visualizer"     |
 
 The value of an environment variable is not relevant: any non-empty value will be treated as "enabled".
-If no feature flags environment variables are set, the applciation will treat all flags as enabled.
+If no feature flags environment variables are set, the application will treat all flags as enabled.
 
 ## Contributions
 
