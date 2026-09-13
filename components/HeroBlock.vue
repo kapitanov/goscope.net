@@ -50,7 +50,7 @@ defineProps({
           </Button>
         </div>
       </div>
-      <div v-if="!!mirror" class="w-6/12">
+      <div v-if="mirror" class="w-full lg:w-6/12">
         <a :href="href" class="block h-full">
           <img :src="imageSrc" class="border border-white w-full h-full object-contain" />
         </a>
