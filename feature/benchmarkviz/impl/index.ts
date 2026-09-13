@@ -394,21 +394,21 @@ export function wrapIntoComments(str: string): string {
   return result;
 }
 
-function padLeft(s: string, n: number): string {
+export function padLeft(s: string, n: number): string {
   for (; s.length < n; ) {
     s = ' ' + s;
   }
   return s;
 }
 
-function padRight(s: string, n: number): string {
+export function padRight(s: string, n: number): string {
   for (; s.length < n; ) {
     s = s + ' ';
   }
   return s;
 }
 
-function repeatFor(s: string, n: number): string {
+export function repeatFor(s: string, n: number): string {
   let r = '';
   for (; r.length < n; ) {
     r += s;
