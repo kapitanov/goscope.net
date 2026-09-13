@@ -108,7 +108,7 @@ Also, it's recommended to set the following environment variables:
 
 ## Feature flags
 
-Feature flags are defines as environment variables.
+Feature flags are defined as environment variables.
 
 | Environment variable           | Feature                     |
 | ------------------------------ | --------------------------- |
