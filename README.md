@@ -118,7 +118,7 @@ Feature flags are defined as environment variables.
 | `FEATURE_LOG_VISUALIZER`       | Enable "Log visualizer"     |
 
 The value of an environment variable is not relevant: any non-empty value will be treated as "enabled".
-If no feature flags environment variables are set, the applciation will treat all flags as enabled.
+If no feature flags environment variables are set, the application will treat all flags as enabled.
 
 ## Contributions
 
