@@ -55,7 +55,7 @@ const selectActiveTab = (tab: string) => {
   <div class="flex flex-col lg:flex-row gap-1 mt-4 mb-4">
     <Button align="center" class="grow lg:grow-0" @click="copyComparisonMarkdown">
       <Icon :name="ICONS.COPY" />
-      <span class="hidden md:inline">Copy as MarkDown</span>
+      <span class="hidden md:inline">Copy as Markdown</span>
       <Icon :name="ICONS.MARKDOWN" />
     </Button>
     <Button align="center" class="grow lg:grow-0" @click="copyComparisonText">
