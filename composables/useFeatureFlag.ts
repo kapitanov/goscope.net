@@ -22,6 +22,7 @@ export function isFeatureEnabled(feature: string): boolean {
 export const features = {
   GOROUTINES: 'goroutines',
   BENCHMARK_VISUALIZER: 'benchmark_visualizer',
+  BENCHMARK_COMPARER: 'benchmark_comparer',
   DEMO: 'demo'
 };
 

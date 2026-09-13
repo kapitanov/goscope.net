@@ -1,6 +1,14 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 
 <script setup lang="ts">
+import { example as EXAMPLE_OUTPUT } from './impl';
+import SOURCE_CODE from /* @vite-ignore */ '~/go/benchmark/benchmark_test.go?raw';
+
+const exampleSourceCode = (SOURCE_CODE as unknown as string).trim();
+const exampleShellOutput = `$ go test -bench=.
+
+${EXAMPLE_OUTPUT}`;
+
 const features = [
   'Clean table format with aligned columns',
   'Performance metrics breakdown (ns/op, B/op, allocs/op)',
@@ -30,4 +38,19 @@ const steps = [
 <template>
   <QuickStartHeroBlock image-url="/images/benchmarkviz-preview.png" :features="features" />
   <QuickStartGuideBlock :steps="steps" />
+
+  <div class="mt-4">
+    <h3 class="text-lg font-semibold mb-3 text-gray-800">Don't have a benchmark yet?</h3>
+    <p>
+      Golang offers a built-in benchmarking framework as a part of the <CodeInline>testing</CodeInline> package. For instance, try running the
+      following test file:
+    </p>
+    <CodeBlock :code="exampleSourceCode" />
+    <p>Save this file as <CodeInline>benchmark_test.go</CodeInline>, then run it with <CodeInline>go test -bench=.</CodeInline> command:</p>
+    <CodeBlock :code="exampleShellOutput" />
+    <p>
+      For more information, please refer to
+      <Hyperlink href="https://pkg.go.dev/testing#hdr-Benchmarks" target="_blank" text="the official documentation" />.
+    </p>
+  </div>
 </template>
