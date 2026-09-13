@@ -408,7 +408,7 @@ export function padRight(s: string, n: number): string {
   return s;
 }
 
-export function repeatFor(s: string, n: number): string {
+function repeatFor(s: string, n: number): string {
   let r = '';
   for (; r.length < n; ) {
     r += s;
