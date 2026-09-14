@@ -38,7 +38,7 @@ const steps = [
   <QuickStartGuideBlock :steps="steps" />
 
   <div class="mt-4">
-    <h3 class="text-lg font-semibold mb-3 text-gray-800">Supported log formats</h3>
+    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">Supported log formats</h3>
     <p>
       <strong>Log visualizer</strong> automatically detects the format of every log line you paste in, so you can even mix and match different formats
       within the same input.

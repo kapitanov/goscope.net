@@ -90,8 +90,8 @@ const selectNonRunnable = () => {
       <Hotkey hotkey="Enter" @pressed="onSubmit" />
       <Hotkey hotkey="Escape" @pressed="emit('close')" />
 
-      <div class="bg-white p-4">
-        <h3 class="text-base font-semibold leading-6 text-gray-900">Filter goroutines by their state</h3>
+      <div class="bg-white dark:bg-surface p-4">
+        <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-100">Filter goroutines by their state</h3>
         <div class="mt-2">
           <div class="flex flex-row gap-1">
             <Button size="xs" class="min-w-32 grow" @click="selectAll">
@@ -110,7 +110,7 @@ const selectNonRunnable = () => {
           <div class="flex flex-col mt-4 overflow-y-auto min-h-[250px] max-h-[250px]">
             <template v-for="item in items" :key="item.state">
               <div
-                class="flex flex-row rounded border border-1 border-white p-1 mb-1 cursor-pointer hover:border-cyan-600"
+                class="flex flex-row rounded border border-1 border-white dark:border-surface p-1 mb-1 cursor-pointer hover:border-cyan-600"
                 @click="
                   () => {
                     item.selected = !item.selected;
@@ -132,7 +132,7 @@ const selectNonRunnable = () => {
           </div>
         </div>
       </div>
-      <div class="bg-gray-50 p-4 flex">
+      <div class="bg-gray-50 dark:bg-gray-800 p-4 flex">
         <div class="grow"></div>
         <Button type="submit" size="sm" class="min-w-32 ms-1 h-full">
           <Icon :name="ICONS.CHECK" /> OK

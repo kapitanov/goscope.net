@@ -37,7 +37,7 @@ provide('ModalOverlay', modalOverlay);
     </template>
 
     <GoogleAnalytics>
-      <header class="sticky top-0 w-full h-16 border-b border-gray-500 bg-white px-8 mb-8 z-10">
+      <header class="sticky top-0 w-full h-16 border-b border-gray-300 dark:border-gray-700 bg-background px-8 mb-8 z-10">
         <PageHeader />
       </header>
 
@@ -52,7 +52,7 @@ provide('ModalOverlay', modalOverlay);
 
         <div
           v-if="isModalOpen"
-          class="fixed inset-0 bg-gray-50 bg-opacity-75 transition-opacity z-20"
+          class="fixed inset-0 bg-gray-50/75 dark:bg-black/60 transition-opacity z-20"
           @click="
             () => {
               modalOverlay.click();

@@ -142,10 +142,10 @@ const clearHandler = () => {
       </div>
     </div>
 
-    <ul class="grow text-gray-500 text-sm">
+    <ul class="grow text-gray-500 dark:text-gray-400 text-sm">
       <li>We will fetch this URL locally, so it must be accessible from your computer. No data will be sent to our servers.</li>
-      <li v-if="!validationError && urlHint" class="text-yellow-700">Don't forget to add <code>?debug=2</code> to your URL.</li>
-      <li v-if="validationError" class="text-red-700">
+      <li v-if="!validationError && urlHint" class="text-yellow-700 dark:text-yellow-400">Don't forget to add <code>?debug=2</code> to your URL.</li>
+      <li v-if="validationError" class="text-red-700 dark:text-red-400">
         {{ validationError }}
       </li>
     </ul>

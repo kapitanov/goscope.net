@@ -8,11 +8,11 @@ const buttonClass = computed(() => {
     'inline-block': true,
     'me-2': true,
     'self-baseline': true,
-    'text-gray-900': state.value === 'idle',
-    'hover:text-cyan-700': state.value === 'idle',
-    'active:text-cyan-900': state.value === 'idle',
-    'text-green-900': state.value === 'ok',
-    'text-red-900': state.value === 'error'
+    'text-gray-900 dark:text-gray-100': state.value === 'idle',
+    'hover:text-cyan-700 dark:hover:text-cyan-400': state.value === 'idle',
+    'active:text-cyan-900 dark:active:text-cyan-500': state.value === 'idle',
+    'text-green-900 dark:text-green-400': state.value === 'ok',
+    'text-red-900 dark:text-red-400': state.value === 'error'
   };
 });
 

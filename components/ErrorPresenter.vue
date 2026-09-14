@@ -9,11 +9,13 @@ const emit = defineEmits(['dismiss']);
 const slots = useSlots();
 const closeButtonClass = {
   'text-red-900': true,
-  'hover:text-red-700': true
+  'dark:text-red-400': true,
+  'hover:text-red-700': true,
+  'dark:hover:text-red-300': true
 };
 </script>
 <template>
-  <div v-if="error" class="border-2 rounded border-red-200 bg-red-200 p-2 flex flex-col gap-2">
+  <div v-if="error" class="border-2 rounded border-red-200 dark:border-red-900 bg-red-200 dark:bg-red-950 p-2 flex flex-col gap-2">
     <div class="flex gap-1">
       <p class="grow">{{ props.error }}</p>
       <button v-if="dismissable" :class="closeButtonClass" @click="emit('dismiss')">
@@ -21,7 +23,7 @@ const closeButtonClass = {
       </button>
     </div>
     <div v-if="slots.default">
-      <div class="border-t border-red-700 bg-red-200 pt-2">
+      <div class="border-t border-red-700 dark:border-red-800 bg-red-200 dark:bg-red-950 pt-2">
         <slot></slot>
       </div>
     </div>

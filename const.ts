@@ -45,7 +45,11 @@ export const ICONS = {
   CODE: 'material-symbols:code',
 
   GOLANG: 'tabler:brand-golang',
-  GOPHER: 'logos:gopher'
+  GOPHER: 'logos:gopher',
+
+  THEME_LIGHT: 'ph:sun',
+  THEME_DARK: 'ph:moon',
+  THEME_AUTO: 'ph:desktop'
 };
 
 export const listAllIcons = () => Object.values(ICONS);
@@ -53,7 +57,7 @@ export const listAllIcons = () => Object.values(ICONS);
 export const HEAD = {
   title: APP_NAME,
   bodyAttrs: {
-    class: 'bg-background'
+    class: 'bg-background text-foreground'
   },
   link: [
     // Favicon

@@ -28,7 +28,9 @@ const activeClass = {
 };
 const inactiveClass = {
   'text-black': true,
-  'hover:text-cyan-700': true
+  'dark:text-gray-200': true,
+  'hover:text-cyan-700': true,
+  'dark:hover:text-cyan-400': true
 };
 </script>
 <template>

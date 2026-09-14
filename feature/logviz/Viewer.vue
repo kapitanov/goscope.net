@@ -94,12 +94,12 @@ const formatLabel = computed(() => {
     </Button>
     <h1 class="md:text-2xl text-xl font-semibold">
       <span>Log visualizer</span>
-      <span v-if="props.isDemo" class="text-gray-500 text-balance break-all text-base font-normal ms-2">Displaying demo data</span>
+      <span v-if="props.isDemo" class="text-gray-500 dark:text-gray-400 text-balance break-all text-base font-normal ms-2">Displaying demo data</span>
     </h1>
     <div class="grow"></div>
   </div>
 
-  <div v-if="formatLabel" class="text-gray-500 text-sm mb-2">
+  <div v-if="formatLabel" class="text-gray-500 dark:text-gray-400 text-sm mb-2">
     Detected input format: <span class="font-mono">{{ formatLabel }}</span>
   </div>
 

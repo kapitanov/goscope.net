@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const classes = {
   'font-mono': true,
-  'text-cyan-700': true
+  'text-cyan-700': true,
+  'dark:text-cyan-400': true
 };
 </script>
 

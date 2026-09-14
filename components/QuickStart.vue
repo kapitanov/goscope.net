@@ -30,7 +30,7 @@ const show = () => {
 </script>
 
 <template>
-  <div v-if="visible" class="border-t border-b border-cyan-800 -mx-8 my-8 px-8 py-8 bg-cyan-50">
+  <div v-if="visible" class="border-t border-b border-cyan-800 dark:border-cyan-700 -mx-8 my-8 px-8 py-8 bg-cyan-50 dark:bg-cyan-950">
     <slot></slot>
 
     <div class="flex justify-center mt-8">

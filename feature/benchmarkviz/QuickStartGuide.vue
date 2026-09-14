@@ -40,7 +40,7 @@ const steps = [
   <QuickStartGuideBlock :steps="steps" />
 
   <div class="mt-4">
-    <h3 class="text-lg font-semibold mb-3 text-gray-800">Don't have a benchmark yet?</h3>
+    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">Don't have a benchmark yet?</h3>
     <p>
       Golang offers a built-in benchmarking framework as a part of the <CodeInline>testing</CodeInline> package. For instance, try running the
       following test file:

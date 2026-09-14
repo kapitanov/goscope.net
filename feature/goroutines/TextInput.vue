@@ -70,20 +70,20 @@ const useSampleHandler = (sample: Sample) => {
 <template>
   <Hotkey hotkey="Ctrl+Enter" @pressed="goHandler" />
 
-  <h4 class="text-sm font-bold text-gray-700 mb-3 flex items-center">Try with sample data:</h4>
+  <h4 class="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center">Try with sample data:</h4>
 
   <div class="flex space-x-2 w-full mb-2">
     <template v-for="s in samples" :key="s.id">
       <button
         type="button"
-        class="flex flex-col items-start w-1/4 p-4 border border-cyan-800 rounded cursor-pointer hover:bg-gray-50"
+        class="flex flex-col items-start w-1/4 p-4 border border-cyan-800 dark:border-cyan-600 rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"
         @click="useSampleHandler(s)"
       >
-        <div class="font-semibold text-gray-800 flex items-center">
+        <div class="font-semibold text-gray-800 dark:text-gray-100 flex items-center">
           <Icon :name="ICONS.USE_EXAMPLE" class="mr-1" />
           <span>{{ s.title }}</span>
         </div>
-        <div class="text-sm text-gray-600 mt-1">
+        <div class="text-sm text-gray-600 dark:text-gray-300 mt-1">
           {{ s.description }}
         </div>
       </button>
@@ -109,7 +109,7 @@ const useSampleHandler = (sample: Sample) => {
     <div class="hidden md:block grow"></div>
   </div>
 
-  <div class="grow text-gray-500 text-sm mt-2">We will process this PPROF text locally. No data will be sent to our servers.</div>
+  <div class="grow text-gray-500 dark:text-gray-400 text-sm mt-2">We will process this PPROF text locally. No data will be sent to our servers.</div>
 
   <div class="mt-2">
     <ErrorPresenter :error="error" />
