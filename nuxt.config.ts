@@ -2,7 +2,7 @@
 
 import { NuxtConfig } from 'nuxt/schema';
 import { commitHash, buildDate, environment, googleAnalyticsToken, featureFlags } from './config';
-import { listAllIcons } from './const';
+import { APP_NAME, APP_NAME_SHORT, listAllIcons } from './const';
 
 const cloudflare: NuxtConfig = {
   nitro: {
@@ -90,22 +90,24 @@ export default defineNuxtConfig({
     filename: 'index.ts',
     registerType: 'autoUpdate',
     manifest: {
-      name: 'goscope.net',
-      short_name: 'goscope_net',
-      theme_color: '#ffffff',
+      name: APP_NAME,
+      short_name: APP_NAME_SHORT,
+      display: 'standalone',
+      theme_color: '#0e7490',
+      background_color: '#ffffff',
       icons: [
         {
-          src: 'pwa-192x192.png',
+          src: 'android-chrome-192x192.png',
           sizes: '192x192',
           type: 'image/png'
         },
         {
-          src: 'pwa-512x512.png',
+          src: 'android-chrome-512x512.png',
           sizes: '512x512',
           type: 'image/png'
         },
         {
-          src: 'pwa-512x512.png',
+          src: 'android-chrome-512x512.png',
           sizes: '512x512',
           type: 'image/png',
           purpose: 'any maskable'

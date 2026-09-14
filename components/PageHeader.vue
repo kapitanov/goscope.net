@@ -25,6 +25,7 @@ const ICONS = C.ICONS;
       </NuxtLink>
     </div>
     <div class="flex gap-x-2 justify-end">
+      <InstallAppButton />
       <ThemeSwitcher />
       <CircleButton :href="C.GITHUB_URL" target="_blank">
         <Icon :name="ICONS.GITHUB" />
