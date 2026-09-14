@@ -8,7 +8,7 @@ const ICONS = C.ICONS;
   <nav class="flex items-center justify-between">
     <div class="flex flex-1">
       <NuxtLink href="/" class="flex gap-x-2 items-center">
-        <Icon :name="ICONS.GOLANG" size="4em" class="text-cyan-900" />
+        <Icon :name="ICONS.GOLANG" size="4em" class="text-cyan-900 dark:text-cyan-400" />
       </NuxtLink>
       <NuxtLink href="/" class="flex gap-x-2 items-center">
         <span class="hidden sm:inline text-xl sm:text-2xl md:text-3xl text-foreground">
@@ -24,7 +24,8 @@ const ICONS = C.ICONS;
         </BetaNotice>
       </NuxtLink>
     </div>
-    <div class="flex gap-x-12 justify-end">
+    <div class="flex gap-x-2 justify-end">
+      <ThemeSwitcher />
       <CircleButton :href="C.GITHUB_URL" target="_blank">
         <Icon :name="ICONS.GITHUB" />
       </CircleButton>

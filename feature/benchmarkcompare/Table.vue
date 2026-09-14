@@ -25,7 +25,7 @@ const table = computed(() => (comparison.value ? renderTable(comparison.value) :
       </tr>
     </thead>
     <tbody class="font-mono text-sm">
-      <tr v-for="(row, rowIndex) in table.rows" :key="row.name" :class="{ 'bg-gray-200': rowIndex % 2 !== 0 }">
+      <tr v-for="(row, rowIndex) in table.rows" :key="row.name" :class="{ 'bg-gray-200 dark:bg-gray-800': rowIndex % 2 !== 0 }">
         <td class="text-start ps-2 py-2">{{ row.name }}</td>
         <td
           v-for="(cell, cellIndex) in row.cells"

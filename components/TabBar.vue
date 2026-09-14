@@ -25,6 +25,7 @@ const ulClass = {
   'gap-2': true,
   border: true,
   'border-cyan-800': true,
+  'dark:border-cyan-600': true,
   rounded: true
 };
 </script>

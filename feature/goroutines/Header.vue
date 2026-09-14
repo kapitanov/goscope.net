@@ -18,7 +18,7 @@ const emit = defineEmits(['goback']);
         <span class="hidden md:inline">{{ props.gobackLabel }}</span>
       </Button>
       <h1 class="md:text-2xl text-xl font-semibold">Goroutines viewer</h1>
-      <div class="text-gray-500 text-balance break-all">
+      <div class="text-gray-500 dark:text-gray-400 text-balance break-all">
         <slot></slot>
       </div>
     </div>

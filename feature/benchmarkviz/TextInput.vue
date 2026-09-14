@@ -61,7 +61,7 @@ const goHandler = () => {
     </div>
   </div>
 
-  <div class="grow text-gray-500 text-sm mt-2">We will process this benchmark output locally. No data will be sent to our servers.</div>
+  <div class="grow text-gray-500 dark:text-gray-400 text-sm mt-2">We will process this benchmark output locally. No data will be sent to our servers.</div>
 
   <div class="mt-2">
     <ErrorPresenter :error="error" />

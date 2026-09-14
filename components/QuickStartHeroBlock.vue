@@ -9,12 +9,12 @@ const props = defineProps({
 
 <template>
   <div class="flex flex-row">
-    <div class="w-1/2 border border-gray-200">
+    <div class="w-1/2 border border-gray-200 dark:border-gray-700">
       <img :src="props.imageUrl" alt="Preview" class="w-full" />
     </div>
 
     <div class="grow pl-8">
-      <h3 class="text-lg font-semibold mb-3 text-gray-800 flex items-center">What you'll get</h3>
+      <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100 flex items-center">What you'll get</h3>
       <ul class="ml-8 list-disc space-y-3">
         <li v-for="feature in props.features" :key="feature">{{ feature }}</li>
       </ul>

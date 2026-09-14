@@ -47,7 +47,7 @@ const selectActiveTab = (tab: string) => {
     </Button>
     <h1 class="md:text-2xl text-xl font-semibold">
       <span>Benchmark comparer</span>
-      <span v-if="props.isDemo" class="text-gray-500 text-balance break-all text-base font-normal ms-2">Displaying demo data</span>
+      <span v-if="props.isDemo" class="text-gray-500 dark:text-gray-400 text-balance break-all text-base font-normal ms-2">Displaying demo data</span>
     </h1>
     <div class="grow"></div>
   </div>

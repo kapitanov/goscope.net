@@ -25,20 +25,31 @@ const borderClass = {
   border: true,
   'border-1': true,
   'bg-white': true,
+  'dark:bg-surface': true,
   'border-gray-500': true,
+  'dark:border-gray-600': true,
   'hover:border-cyan-700': true,
+  'dark:hover:border-cyan-500': true,
   'focus:border-cyan-700': true,
+  'dark:focus:border-cyan-500': true,
   'disabled:border-gray-500': true,
+  'dark:disabled:border-gray-600': true,
   'disabled:text-gray-500': true,
-  'disabled:bg-gray-200': true
+  'dark:disabled:text-gray-400': true,
+  'disabled:bg-gray-200': true,
+  'dark:disabled:bg-gray-700': true
 };
 
 const baseClass = {
   'font-mono': true,
   rounded: true,
   'bg-white': true,
+  'dark:bg-surface': true,
+  'text-foreground': true,
   'disabled:text-gray-500': true,
-  'disabled:bg-gray-200': true
+  'dark:disabled:text-gray-400': true,
+  'disabled:bg-gray-200': true,
+  'dark:disabled:bg-gray-700': true
 };
 
 const textareaClass = {
@@ -76,7 +87,7 @@ onMounted(() => {
     <div :class="combineClasses(borderClass, props.class)">
       <div
         v-if="!model && type === 'textarea'"
-        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-top px-2 py-2 text-gray-500"
+        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-top px-2 py-2 text-gray-500 dark:text-gray-400"
       >
         <span class="grow">{{ placeholder }}</span>
         <HotkeyHint color="light" :hotkey="props.hotkey" />
@@ -84,7 +95,7 @@ onMounted(() => {
 
       <div
         v-if="!model && type !== 'textarea'"
-        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-center px-2 py-2 text-gray-500"
+        class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none flex items-center px-2 py-2 text-gray-500 dark:text-gray-400"
       >
         <span class="grow">{{ placeholder }}</span>
         <HotkeyHint color="light" :hotkey="props.hotkey" />

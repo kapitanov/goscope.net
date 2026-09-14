@@ -27,14 +27,14 @@ defineProps({
     <TableRow v-for="item in data.items" :key="item.id" :item="item" />
   </div>
 
-  <div v-if="data && data.items && data.items.length !== data.total" class="text-gray-900 mt-2">
+  <div v-if="data && data.items && data.items.length !== data.total" class="text-gray-900 dark:text-gray-100 mt-2">
     Displaying {{ data?.items?.length }} of {{ data?.total }} goroutines.
   </div>
 
-  <div v-if="data && data.items && data.items.length === data.total" class="text-gray-900 mt-2">Displaying all {{ data?.total }} goroutines.</div>
+  <div v-if="data && data.items && data.items.length === data.total" class="text-gray-900 dark:text-gray-100 mt-2">Displaying all {{ data?.total }} goroutines.</div>
 
-  <div class="text-gray-600 text-sm mt-2">
-    Click on a goroutine to see its stack trace. Runnable goroutines are highlighted <span class="text-green-900">in green</span>, non-runnable -
-    <span class="text-red-900">in red</span>.
+  <div class="text-gray-600 dark:text-gray-300 text-sm mt-2">
+    Click on a goroutine to see its stack trace. Runnable goroutines are highlighted <span class="text-green-900 dark:text-green-400">in green</span>, non-runnable -
+    <span class="text-red-900 dark:text-red-400">in red</span>.
   </div>
 </template>

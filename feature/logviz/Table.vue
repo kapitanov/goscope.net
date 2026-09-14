@@ -28,14 +28,14 @@ defineProps({
     <TableRow v-for="item in data.items" :key="item.index" :item="item" />
   </div>
 
-  <div v-if="data && data.items && data.items.length !== data.total" class="text-gray-900 mt-2">
+  <div v-if="data && data.items && data.items.length !== data.total" class="text-gray-900 dark:text-gray-100 mt-2">
     Displaying {{ data?.items?.length }} of {{ data?.total }} log entries.
   </div>
 
-  <div v-if="data && data.items && data.items.length === data.total" class="text-gray-900 mt-2">Displaying all {{ data?.total }} log entries.</div>
+  <div v-if="data && data.items && data.items.length === data.total" class="text-gray-900 dark:text-gray-100 mt-2">Displaying all {{ data?.total }} log entries.</div>
 
-  <div class="text-gray-600 text-sm mt-2">
-    Click on a log entry to see all of its fields. Errors are highlighted <span class="text-red-900">in red</span>, warnings -
-    <span class="text-yellow-700">in yellow</span>.
+  <div class="text-gray-600 dark:text-gray-300 text-sm mt-2">
+    Click on a log entry to see all of its fields. Errors are highlighted <span class="text-red-900 dark:text-red-400">in red</span>, warnings -
+    <span class="text-yellow-700 dark:text-yellow-400">in yellow</span>.
   </div>
 </template>

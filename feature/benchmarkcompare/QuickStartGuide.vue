@@ -43,7 +43,7 @@ const steps = [
   <QuickStartGuideBlock :steps="steps" />
 
   <div class="mt-4">
-    <h3 class="text-lg font-semibold mb-3 text-gray-800">Don't have two benchmark runs yet?</h3>
+    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">Don't have two benchmark runs yet?</h3>
     <p>Run the very same benchmark twice: once before your change, once after it. For instance, try running the following test file:</p>
     <CodeBlock :code="exampleSourceCode" />
     <p>Save this file as <CodeInline>benchmark_test.go</CodeInline>, then run it before and after your change:</p>

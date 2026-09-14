@@ -47,7 +47,7 @@ const onClick = (category: Category) => {
   <ul class="flex flex-col w-full list-none my-2">
     <li v-for="(c, i) in categories" :key="i" class="flex items">
       <a href="#" class="flex flex-row w-full block mb-1" @click.prevent="onClick(c)">
-        <div class="text-xs text-end me-1 text-gray-500 hover:text-cyan-700 content-center" style="width: 300px">
+        <div class="text-xs text-end me-1 text-gray-500 dark:text-gray-400 hover:text-cyan-700 dark:hover:text-cyan-400 content-center" style="width: 300px">
           {{ c.name }}
         </div>
         <div class="flex justify-start w-full">

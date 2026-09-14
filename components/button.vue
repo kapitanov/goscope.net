@@ -30,8 +30,11 @@ const colorSchemes = {
     },
     disabledNonClickable: {
       'border-gray-400': true,
+      'dark:border-gray-600': true,
       'text-gray-500': true,
+      'dark:text-gray-400': true,
       'bg-gray-400': true,
+      'dark:bg-gray-700': true,
       'cursor-not-allowed': true
     },
     busyNonClickable: {
@@ -52,8 +55,11 @@ const colorSchemes = {
     },
     disabledNonClickable: {
       'border-gray-400': true,
+      'dark:border-gray-600': true,
       'text-gray-700': true,
+      'dark:text-gray-400': true,
       'bg-gray-400': true,
+      'dark:bg-gray-700': true,
       'cursor-not-allowed': true
     },
     busyNonClickable: {

@@ -35,11 +35,11 @@ const steps = [
   <QuickStartGuideBlock :steps="steps" />
 
   <div class="mt-4">
-    <h3 class="text-lg font-semibold mb-3 text-gray-800">Don't have PPROF data yet?</h3>
+    <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">Don't have PPROF data yet?</h3>
     <p>Package <Hyperlink href="https://pkg.go.dev/net/http/pprof" text="pprof" /> serves via its HTTP server runtime profiling data.</p>
     <p>
       The package is typically only imported for the side effect of registering its HTTP handlers. The handled paths all begin with
-      <code class="font-mono text-cyan-900">/debug/pprof/</code>.
+      <code class="font-mono text-cyan-900 dark:text-cyan-400">/debug/pprof/</code>.
     </p>
     <p>To use pprof, link this package into your program:</p>
     <!-- eslint-disable-next-line vue/html-quotes -->
@@ -47,8 +47,8 @@ const steps = [
     <p>For instance, try running the following program:</p>
     <CodeBlock :code="exampleSourceCode" />
     <p>
-      <strong>Goroutines viewer</strong> needs only one of profiles data, which is <code class="font-mono text-cyan-900">goroutine</code> profile in
-      <code class="font-mono text-cyan-900">?debug=2</code> format.
+      <strong>Goroutines viewer</strong> needs only one of profiles data, which is <code class="font-mono text-cyan-900 dark:text-cyan-400">goroutine</code> profile in
+      <code class="font-mono text-cyan-900 dark:text-cyan-400">?debug=2</code> format.
     </p>
     <p>
       To get it, run the program and open

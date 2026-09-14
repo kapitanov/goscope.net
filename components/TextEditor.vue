@@ -29,12 +29,19 @@ const borderClass = {
   border: true,
   'border-1': true,
   'bg-white': true,
+  'dark:bg-surface': true,
   'border-gray-500': true,
+  'dark:border-gray-600': true,
   'hover:border-cyan-700': true,
+  'dark:hover:border-cyan-500': true,
   'focus:border-cyan-700': true,
+  'dark:focus:border-cyan-500': true,
   'disabled:border-gray-500': true,
+  'dark:disabled:border-gray-600': true,
   'disabled:text-gray-500': true,
+  'dark:disabled:text-gray-400': true,
   'disabled:bg-gray-200': true,
+  'dark:disabled:bg-gray-700': true,
   'h-64': true,
   'p-2': true,
   'overflow-y-scroll': true
@@ -42,18 +49,26 @@ const borderClass = {
 const baseClass = {
   'font-mono': true,
   'bg-white': true,
+  'dark:bg-surface': true,
   'disabled:text-gray-500': true,
-  'disabled:bg-gray-200': true
+  'dark:disabled:text-gray-400': true,
+  'disabled:bg-gray-200': true,
+  'dark:disabled:bg-gray-700': true
 };
 const numbersClass = {
   ...baseClass,
   'text-gray-400': true,
+  'dark:text-gray-500': true,
   'pr-2': true,
   'border-r': true,
   'border-gray-500': true,
+  'dark:border-gray-600': true,
   'hover:border-cyan-700': true,
+  'dark:hover:border-cyan-500': true,
   'focus:border-cyan-700': true,
+  'dark:focus:border-cyan-500': true,
   'disabled:border-gray-500': true,
+  'dark:disabled:border-gray-600': true,
   '-my-2': true,
   'py-2': true,
   'text-right': true,
@@ -62,6 +77,7 @@ const numbersClass = {
 };
 const textareaClass = {
   ...baseClass,
+  'text-foreground': true,
   'outline-none': true,
   'p-0': true,
   'pl-2': true,
