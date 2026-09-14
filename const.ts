@@ -49,7 +49,9 @@ export const ICONS = {
 
   THEME_LIGHT: 'ph:sun',
   THEME_DARK: 'ph:moon',
-  THEME_AUTO: 'ph:desktop'
+  THEME_AUTO: 'ph:desktop',
+
+  INSTALL: 'ph:download-simple'
 };
 
 export const listAllIcons = () => Object.values(ICONS);
@@ -78,7 +80,6 @@ export const HEAD = {
       sizes: '16x16',
       href: '/favicon-16x16.png'
     },
-    { rel: 'manifest', href: '/site.webmanifest' },
     { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#0e7490' },
 
     // Sitemap
@@ -91,7 +92,8 @@ export const HEAD = {
   ],
   meta: [
     // App theme
-    { name: 'theme-color', content: '#0e7490' },
+    { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' },
+    { name: 'theme-color', content: '#202224', media: '(prefers-color-scheme: dark)' },
     { name: 'msapplication-TileColor', content: '#ffffff' }
   ]
 };
