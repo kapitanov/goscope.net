@@ -36,17 +36,17 @@ const spanClass = {
 </script>
 
 <template>
-  <a v-if="!isButton && !nuxtLink" :href="href" :class="anchorClass" :target="target" :title="title">
+  <a v-if="!isButton && !props.nuxtLink" :href="props.href" :class="anchorClass" :target="props.target" :title="props.title">
     <span :class="spanClass">
       <slot />
     </span>
   </a>
-  <NuxtLink v-if="!isButton && !!nuxtLink" :href="href" :class="anchorClass" :target="target" :title="title">
+  <NuxtLink v-if="!isButton && !!props.nuxtLink" :href="props.href" :class="anchorClass" :target="props.target" :title="props.title">
     <span :class="spanClass">
       <slot />
     </span>
   </NuxtLink>
-  <button v-if="isButton" type="button" :class="anchorClass" :title="title" :aria-label="title" @click="emit('click')">
+  <button v-if="isButton" type="button" :class="anchorClass" :title="props.title" :aria-label="props.title" @click="emit('click')">
     <span :class="spanClass">
       <slot />
     </span>
