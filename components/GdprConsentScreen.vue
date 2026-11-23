@@ -34,9 +34,9 @@ if (props.enable) {
 }
 </script>
 <template>
+  <slot />
   <ClientOnly>
     <template v-if="show">
-      <slot></slot>
       <div class="fixed bottom-0 left-0 top-0 right-0 z-10 bg-white/50 dark:bg-black/50"></div>
       <div class="z-20 sticky bottom-0 left-0 right-0 border-t border-white bg-cyan-900 text-white p-8 flex flex-col md:flex-row">
         <div class="grow flex flex-col">
@@ -51,9 +51,6 @@ if (props.enable) {
           <Button @click="decline">Decline</Button>
         </div>
       </div>
-    </template>
-    <template v-else>
-      <slot></slot>
     </template>
   </ClientOnly>
 </template>

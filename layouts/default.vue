@@ -6,12 +6,18 @@ useHead({ ...C.HEAD, title: C.APP_NAME });
 
 const isModalOpen = ref(false);
 
+interface Modal {
+  closed: () => void;
+}
+
 class ModalOverlay {
+  private modal: Modal | null;
+
   constructor() {
     this.modal = null;
   }
 
-  show(modal) {
+  show(modal: Modal) {
     this.modal = modal;
     isModalOpen.value = true;
     document.body.style.overflow = 'hidden';

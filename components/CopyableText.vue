@@ -18,7 +18,7 @@ const buttonClass = computed(() => {
 
 const slots = useSlots();
 
-const getSlotChildrenText = (children: any[]) =>
+const getSlotChildrenText = (children: any[]): string =>
   children
     .map((node: any) => {
       if (!node.children || typeof node.children === 'string') {

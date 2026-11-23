@@ -17,11 +17,10 @@ const permalink = computed(() => {
     return null;
   }
 
-  return window && window.location
-    ? `${window.location.origin}/goroutines?url=${encodeURIComponent(data.url)}`
-    : `${APP_URL}/goroutines?url=${encodeURIComponent(data.url)}`;
+  const origin = typeof window !== 'undefined' && window.location ? window.location.origin : APP_URL;
+  return `${origin}/goroutines?url=${encodeURIComponent(data.url)}`;
 });
-const isWebShareSupported = navigator?.share !== undefined;
+const isWebShareSupported = typeof navigator !== 'undefined' && navigator.share !== undefined;
 
 class TableControl {
   private expandHandlers: (() => void)[] = [];
