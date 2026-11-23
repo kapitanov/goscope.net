@@ -1,13 +1,20 @@
 <script setup lang="ts">
+import type { PropType } from 'vue';
 import { GoroutineProfile } from './impl';
 import { ICONS } from '~/const';
 
+interface StateItem {
+  state: string;
+  count: number;
+  selected: boolean;
+}
+
 const props = defineProps({
   data: { type: Object, default: null },
-  selected: { type: Array, default: null }
+  selected: { type: Array as PropType<string[] | null>, default: null }
 });
 const emit = defineEmits(['select', 'close']);
-const items = ref([]);
+const items = ref<StateItem[]>([]);
 const rebuildItems = () => {
   const data = props.data as GoroutineProfile;
   if (!data) {

@@ -6,10 +6,7 @@ const props = defineProps({
   data: { type: Object, default: null },
   class: { type: String, default: null }
 });
-const model = defineModel({
-  default: [] as string[],
-  type: Array as PropType<string[]>
-});
+const model = defineModel<string[]>({ default: () => [] });
 
 const isModalOpen = ref(false);
 const showModal = () => {

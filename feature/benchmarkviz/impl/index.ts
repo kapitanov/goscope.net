@@ -274,21 +274,26 @@ function formatHeaderName(originalName: string, options?: TableOptions): string 
 }
 
 function formatRowValue(originalName: string, value: number, precision: number, options?: TableOptions): string {
+  let convertedPrecision = precision;
+
   if (originalName === 'ns/op' && options?.timeFormat) {
     switch (options.timeFormat) {
       case 'us':
         value /= 1e3;
+        convertedPrecision += 3;
         break;
       case 'ms':
         value /= 1e6;
+        convertedPrecision += 6;
         break;
       case 's':
         value /= 1e9;
+        convertedPrecision += 9;
         break;
     }
   }
 
-  return (+value).toFixed(precision);
+  return (+value).toFixed(convertedPrecision);
 }
 
 export function asText(output: Output, options?: TableOptions): string {
