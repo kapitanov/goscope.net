@@ -17,7 +17,7 @@ const rebuildItems = () => {
 
   const m = new Map<string, number>();
   for (const goroutine of data.items) {
-    m.set(goroutine.state, m.get(goroutine.state) ?? 0 + 1);
+    m.set(goroutine.state, (m.get(goroutine.state) ?? 0) + 1);
   }
 
   items.value = Array.from(m.entries())
