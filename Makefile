@@ -20,7 +20,7 @@ prepare:
 	echo "];" >> ./config.ts
 
 install: prepare
-	@[ ! -d "./node_modules" ] && npm install || true
+	@if [ ! -d "./node_modules" ]; then npm ci; fi
 
 dev: install prepare
 	@ENV="development" make util-dev
