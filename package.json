@@ -44,7 +44,7 @@
     "nuxt-gtag": "^5.0.0",
     "nuxt-icon": "^0.6.10",
     "nuxt-snackbar": "^1.4.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.9.9",
     "ts-jest": "^29.4.14",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.3.14",
