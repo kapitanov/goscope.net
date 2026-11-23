@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { example, parse, Output, Line, detectValuePrecision, asText, asMarkdown, wrapIntoComments } from './index';
+import { example, parse, Output, Line, detectValuePrecision, asTable, asText, asMarkdown, wrapIntoComments } from './index';
 
 describe('benchmark/parser', () => {
   test('should parse built-in example', () => {
@@ -113,5 +113,15 @@ BenchmarkSearch/JumpSearch     1542253 N      931.4 ns/op   8 NumCPU   1000000 i
 // BenchmarkSearch/BinarySearch   7995318 N      149.5 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op
 // BenchmarkSearch/JumpSearch     1542253 N      931.4 ns/op   8 NumCPU   1000000 items/count   0 B/op   0 allocs/op`;
     expect(result).toStrictEqual(expected);
+  });
+});
+
+describe('benchmark/time format', () => {
+  test('keeps the converted value instead of rounding it to zero', () => {
+    const output = parse('BenchmarkA  3  149.5 ns/op\nBenchmarkB  3  930000 ns/op\n');
+
+    expect(asTable(output, { timeFormat: 'us' }).rows.map((row) => row.formattedValues[1])).toEqual(['0.1495', '930.0000']);
+    expect(asTable(output, { timeFormat: 'ms' }).rows.map((row) => row.formattedValues[1])).toEqual(['0.0001495', '0.9300000']);
+    expect(asTable(output, { timeFormat: 's' }).rows.map((row) => row.formattedValues[1])).toEqual(['0.0000001495', '0.0009300000']);
   });
 });
