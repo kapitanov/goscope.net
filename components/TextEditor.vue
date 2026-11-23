@@ -17,10 +17,7 @@ const props = defineProps({
   autofocus: { type: Boolean, default: false }
 });
 
-const lineCount = computed(() => {
-  console.log('model value:', model.value);
-  return (model.value ?? '').split('\n').length;
-});
+const lineCount = computed(() => (model.value ?? '').split('\n').length);
 
 const borderClass = {
   flex: true,
