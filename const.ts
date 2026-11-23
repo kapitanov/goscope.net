@@ -64,27 +64,27 @@ export const HEAD = {
   link: [
     // Favicon
     {
-      rel: 'apple-touch-icon',
+      rel: 'apple-touch-icon' as const,
       sizes: '180x180',
       href: '/apple-touch-icon.png'
     },
     {
-      rel: 'icon',
+      rel: 'icon' as const,
       type: 'image/png',
       sizes: '32x32',
       href: '/favicon-32x32.png'
     },
     {
-      rel: 'icon',
+      rel: 'icon' as const,
       type: 'image/png',
       sizes: '16x16',
       href: '/favicon-16x16.png'
     },
-    { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#0e7490' },
+    { rel: 'mask-icon' as const, href: '/safari-pinned-tab.svg', color: '#0e7490' },
 
     // Sitemap
     {
-      rel: 'sitemap',
+      rel: 'sitemap' as const,
       type: 'application/xml',
       title: 'Sitemap',
       href: '/sitemap.xml'
