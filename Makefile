@@ -1,10 +1,10 @@
-.PHONY: all help install run build test lint preview deploy
+.PHONY: all help install run build test lint typecheck preview deploy
 
 COMMIT_HASH=$(shell git log --pretty=format:%h -n 1)
 COMMIT_MESSAGE=$(shell git log --pretty=format:%s -n 1)
 COMMIT_BRANCH=main
 
-all: install build test lint
+all: install build test lint typecheck
 
 help:
 	@echo "make [install|run|build|test|lint|format|preview|deploy]"
@@ -36,6 +36,9 @@ test: install
 
 lint: install
 	npm run lint
+
+typecheck: install
+	npm run typecheck
 
 format: install
 	npm run format

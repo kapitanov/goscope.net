@@ -41,8 +41,8 @@ function parseGoroutine(reader: TextReader): Goroutine | null {
 
   const matchGoRoutine = reader.match(/^goroutine (\d+) \[([^:]+)\]:$/) || reader.fail('expected a goroutine header');
   const goroutine: Goroutine = {
-    id: parseInt(matchGoRoutine[1]),
-    state: matchGoRoutine[2],
+    id: parseInt(matchGoRoutine[1]!),
+    state: matchGoRoutine[2]!,
     stack: [],
     text: ''
   };
@@ -60,9 +60,9 @@ function parseGoroutine(reader: TextReader): Goroutine | null {
     const matchStack = reader.match(/^\s+([^:]+):?(\d*)\s?([^$]*)$/) || reader.fail('expected a goroutine stack frame');
     const stackFrame: GoroutineStackFrame = {
       function: functionName,
-      file: matchStack[1],
+      file: matchStack[1]!,
       line: parseInt(matchStack[2] || '0'),
-      offset: matchStack[3]
+      offset: matchStack[3]!
     };
     goroutine.stack.push(stackFrame);
   }
@@ -89,7 +89,7 @@ class TextReader {
       return '';
     }
 
-    return this.lines[this.i];
+    return this.lines[this.i]!;
   }
 
   match(matcher: { [Symbol.match](string: string): RegExpMatchArray | null }): RegExpMatchArray | null {

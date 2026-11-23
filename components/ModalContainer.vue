@@ -1,15 +1,20 @@
 <script setup lang="ts">
-const modalOverlay = inject('ModalOverlay');
+interface ModalOverlay {
+  show(modal: { closed: () => void }): void;
+  hide(): void;
+}
+
+const modalOverlay = inject<ModalOverlay>('ModalOverlay');
 const emit = defineEmits(['close']);
 onMounted(() => {
-  modalOverlay.show({
+  modalOverlay?.show({
     closed: () => {
       emit('close');
     }
   });
 });
 onUnmounted(() => {
-  modalOverlay.hide();
+  modalOverlay?.hide();
 });
 const slots = useSlots();
 </script>
