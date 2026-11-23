@@ -31,5 +31,7 @@ jobs:
         run: make test
       - name: Lint project
         run: make lint
+      - name: Typecheck project
+        run: make typecheck
       - name: Build project
         run: make build
