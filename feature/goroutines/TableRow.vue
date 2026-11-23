@@ -60,7 +60,7 @@ const contextualTextClass = computed(() => {
             @click.prevent="toggleHandler"
           >
             <span :class="contextualTextClass">
-              {{ item.stack[0].function }}
+              {{ item.stack[0]?.function || '(no stack)' }}
             </span>
           </a>
         </CopyableText>
@@ -73,7 +73,7 @@ const contextualTextClass = computed(() => {
         <CopyableText>
           <a href="" class="grow-1 hover:text-cyan-700 dark:hover:text-cyan-400 hover:underline decoration-cyan-700 text-balance break-all" @click.prevent="toggleHandler">
             <span :class="contextualTextClass">
-              {{ item.stack[0].function }}
+              {{ item.stack[0]?.function || '(no stack)' }}
             </span>
           </a>
         </CopyableText>
@@ -87,7 +87,7 @@ const contextualTextClass = computed(() => {
       <div class="grow">
         <CopyButton size="xs" :text="item.text">Copy stack trace</CopyButton>
         <ul class="border-s-2 border-cyan-900 dark:border-cyan-600 mt-2">
-          <li v-for="frame in item.stack" :key="frame.id" class="flex flex-col ms-2">
+          <li v-for="(frame, index) in item.stack" :key="index" class="flex flex-col ms-2">
             <span class="text-cyan-900 dark:text-cyan-400 text-balance break-all">
               {{ frame.function }}
             </span>
