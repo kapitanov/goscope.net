@@ -28,7 +28,7 @@ export default defineNuxtConfig({
   ...cloudflare,
   ...runtime,
 
-  modules: ['@nuxt/image', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@vite-pwa/nuxt', 'nuxt-gtag', '@nuxt/icon', 'nuxt-snackbar', '@nuxt/eslint'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@vite-pwa/nuxt', 'nuxt-gtag', '@nuxt/icon', 'nuxt-snackbar', '@nuxt/eslint'],
 
   colorMode: {
     preference: 'system',
