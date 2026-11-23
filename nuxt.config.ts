@@ -57,6 +57,7 @@ export default defineNuxtConfig({
 
   gtag: {
     id: googleAnalyticsToken,
+    initMode: 'manual',
     loadingStrategy: 'async',
     initCommands: [
       [
