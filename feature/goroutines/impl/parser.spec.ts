@@ -21,4 +21,11 @@ created by main.main in goroutine 1
   test('should not parse empty string', () => {
     expect(() => parse('')).toThrow();
   });
+
+  test('should parse a header-only goroutine with an empty stack', () => {
+    const result = parse('goroutine 1 [running]:');
+
+    expect(result.items).toHaveLength(1);
+    expect(result.items[0]!.stack).toStrictEqual([]);
+  });
 });
