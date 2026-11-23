@@ -88,8 +88,8 @@ function parseTextWithPayloadLine(index: number, line: string): LogEntry | null 
 
 // Format 3: "Logfmt" - space-separated key=value pairs,
 // e.g. timestamp=2026-03-17T14:28:47.365387Z level=ERROR logger=diagapi msg="..." ...
-const LOGFMT_LINE = /^([A-Za-z0-9_.-]+=(?:"(?:[^"\\]|\\.)*"|[^\s]+)\s*)+$/;
-const LOGFMT_TOKEN = /([A-Za-z0-9_.-]+)=("(?:[^"\\]|\\.)*"|[^\s]+)/g;
+const LOGFMT_LINE = /^([A-Za-z0-9_.@-]+=(?:"(?:[^"\\]|\\.)*"|[^\s]+)\s*)+$/;
+const LOGFMT_TOKEN = /([A-Za-z0-9_.@-]+)=("(?:[^"\\]|\\.)*"|[^\s]+)/g;
 
 function parseLogfmtLine(index: number, line: string): LogEntry | null {
   if (!LOGFMT_LINE.test(line)) {

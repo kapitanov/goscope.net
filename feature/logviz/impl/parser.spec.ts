@@ -278,3 +278,15 @@ describe('logviz/parser field name matching', () => {
     expect(item.message).toBe('something failed');
   });
 });
+
+describe('logviz/parser logfmt keys', () => {
+  test('should recognize @timestamp in a logfmt entry', () => {
+    const result = parse('@timestamp=2026-01-01T00:00:00Z level=ERROR msg="boom"');
+
+    const item = result.items[0]!;
+    expect(item.format).toBe('logfmt');
+    expect(item.timestamp).toBe('2026-01-01T00:00:00Z');
+    expect(item.level).toBe('ERROR');
+    expect(item.message).toBe('boom');
+  });
+});
