@@ -56,16 +56,26 @@ deploy:
 smoketest:
 	@[ -z "$(ROOT_URL)" ] && echo "ROOT_URL is not set" && exit 1 || true
 
-	@TEST_URL="$(ROOT_URL)" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/goroutines" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/goroutines/" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/goroutines/demo" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/goroutines/demo/" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/logviz" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/logviz/" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/logviz/demo" make _smoketest_url
-	@TEST_URL="$(ROOT_URL)/logviz/demo/" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)" EXPECT_TEXT="Goroutines viewer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/" EXPECT_TEXT="Goroutines viewer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/goroutines" EXPECT_TEXT="Goroutines viewer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/goroutines/" EXPECT_TEXT="Goroutines viewer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/goroutines/demo" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/goroutines/demo/" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark" EXPECT_TEXT="Benchmark visualizer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark/" EXPECT_TEXT="Benchmark visualizer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark/demo" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark/demo/" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark/compare" EXPECT_TEXT="Benchmark comparer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark/compare/" EXPECT_TEXT="Benchmark comparer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark/compare/demo" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/benchmark/compare/demo/" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz" EXPECT_TEXT="Log visualizer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz/" EXPECT_TEXT="Log visualizer" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz/demo" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/logviz/demo/" EXPECT_TEXT="Displaying demo data" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/privacy-policy" EXPECT_TEXT="Privacy Policy" make _smoketest_url
+	@TEST_URL="$(ROOT_URL)/terms" EXPECT_TEXT="Terms and conditions" make _smoketest_url
 
 _smoketest_url:
 	@[ -z "$(TEST_URL)" ] && echo "TEST_URL is not set" && exit 1 || true
@@ -74,4 +84,10 @@ _smoketest_url:
 	echo "GET $$TEST_URL -> $$STATUS"; \
 	if [ "$$STATUS" -ne 200 ]; then \
 		exit 1; \
+	fi; \
+	if [ -n "$(EXPECT_TEXT)" ]; then \
+		if ! curl -s "$$TEST_URL" | grep -qF -- "$(EXPECT_TEXT)"; then \
+			echo "GET $$TEST_URL: missing expected text: $(EXPECT_TEXT)"; \
+			exit 1; \
+		fi; \
 	fi;
