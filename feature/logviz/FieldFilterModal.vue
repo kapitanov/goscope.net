@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { PropType } from 'vue';
 import { FieldFilterArgs, LogEntries } from './impl';
 import { ICONS } from '~/const';
 
 const props = defineProps({
   data: { type: Object, default: null },
-  selected: { type: Object, default: null }
+  selected: { type: Object as PropType<FieldFilterArgs | null>, default: null }
 });
 const emit = defineEmits(['select', 'close']);
 
@@ -124,7 +125,7 @@ const selectNone = () => {
               size="xs"
               :color="k.key === selectedKey ? 'default' : ''"
               class="min-w-24 grow"
-              :class="{ 'opacity-50': k.key !== selectedKey }"
+              :class="k.key !== selectedKey ? 'opacity-50' : ''"
               @click="selectKey(k.key)"
             >
               {{ k.key }}

@@ -133,19 +133,5 @@ export default defineNuxtConfig({
     }
   },
 
-  tour: { prefix: 'V' },
-
-  eslint: {
-    rules: {
-      semi: ['off'],
-      'space-before-function-paren': ['off'],
-      'vue/max-attributes-per-line': ['off'],
-      'vue/singleline-html-element-content-newline': ['off'],
-      'vue/html-indent': ['off'],
-      'vue/first-attribute-linebreak': ['off'],
-      'vue/html-closing-bracket-newline': ['off']
-    }
-  },
-
   compatibilityDate: '2024-09-29'
 });
