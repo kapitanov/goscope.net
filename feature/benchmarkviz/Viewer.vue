@@ -40,13 +40,13 @@ async function copyHandler(print: (output: Output) => string) {
 }
 
 function copyMarkdownHandler() {
-  copyHandler((data) => asMarkdown(data));
+  copyHandler((data) => asMarkdown(data, { timeFormat: timeFormat.value }));
 }
 function copyPlainTextHandler() {
-  copyHandler((data) => asText(data));
+  copyHandler((data) => asText(data, { timeFormat: timeFormat.value }));
 }
 function copyCommentTextHandler() {
-  copyHandler((data) => wrapIntoComments(asText(data)));
+  copyHandler((data) => wrapIntoComments(asText(data, { timeFormat: timeFormat.value })));
 }
 
 const activeTab = ref('table');
